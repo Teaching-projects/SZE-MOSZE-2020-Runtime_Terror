@@ -7,7 +7,7 @@ class Game {
     public:
     Unit player;
     Unit enemy;
-    Game(Unit&, Unit&);
+    Game(Unit, Unit);
     const void SimulateTurn(Unit&, Unit&);
     const void Combat();
     const void PrintCurrentState();

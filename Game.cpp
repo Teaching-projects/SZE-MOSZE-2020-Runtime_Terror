@@ -2,7 +2,7 @@
 
 #include "Game.h"
 
-Game::Game(Unit& player, Unit& enemy) : player(player), enemy(enemy) {
+Game::Game(Unit player, Unit enemy) : player(player), enemy(enemy) {
 }
 
 const void Game::SimulateTurn(Unit &attacker, Unit &target) {          
