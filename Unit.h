@@ -6,11 +6,11 @@
 class Unit {
     public:
     Unit(std::string, int, int);
-    std::string name;
+    const std::string name;
     int health;
-    int damage;
+    const int damage;
     bool IsDead();
-    void Attack(Unit&);
+    const void Attack(Unit&);
 };
 
 #endif

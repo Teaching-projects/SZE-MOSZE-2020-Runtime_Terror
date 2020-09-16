@@ -8,9 +8,9 @@ class Game {
     Unit player;
     Unit enemy;
     Game(Unit&, Unit&);
-    void SimulateTurn(Unit&, Unit&);
-    void Combat();
-    void PrintCurrentState();
+    const void SimulateTurn(Unit&, Unit&);
+    const void Combat();
+    const void PrintCurrentState();
 };
 
 #endif
