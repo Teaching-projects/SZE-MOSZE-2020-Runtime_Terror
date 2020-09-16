@@ -1,8 +1,8 @@
 #include "Unit.h"
 #include <string>
 
-bool Unit::IsDead() {
-    return (health <= 0) ? true : false;
+const bool Unit::IsDead() {
+    return health <= 0;
 }
 
 Unit::Unit(std::string name, int health, int damage) : name(name), health(health), damage(damage) {

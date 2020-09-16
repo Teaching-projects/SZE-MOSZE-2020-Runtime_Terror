@@ -9,7 +9,7 @@ class Unit {
     const std::string name;
     int health;
     const int damage;
-    bool IsDead();
+    const bool IsDead();
     const void Attack(Unit&);
 };
 
