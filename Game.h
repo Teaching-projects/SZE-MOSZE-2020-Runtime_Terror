@@ -3,14 +3,17 @@
 
 #include "Unit.h"
 
-class Game {
-    public:
+class Game
+{
+public:
+    Game(const Unit, const Unit);
+
+private:
     Unit player;
     Unit enemy;
-    Game(Unit, Unit);
-    const void SimulateTurn(Unit&, Unit&);
-    const void Combat();
-    const void PrintCurrentState();
+    void SimulateTurn(const Unit &, Unit &) const;
+    void Combat();
+    void PrintCurrentState() const;
 };
 
 #endif

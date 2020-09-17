@@ -1,14 +1,18 @@
 #include "Unit.h"
 #include <string>
 
-const bool Unit::IsDead() {
+bool Unit::IsDead() const
+{
     return health <= 0;
 }
 
-Unit::Unit(std::string name, int health, int damage) : name(name), health(health), damage(damage) {
+Unit::Unit(const std::string name, const int health, const int damage) : name(name), health(health), damage(damage)
+{
 }
 
-const void Unit::Attack(Unit &target) {
+void Unit::Attack(Unit &target) const
+{
     target.health -= damage;
-    if (target.health < 0) target.health = 0;
+    if (target.health < 0)
+        target.health = 0;
 }

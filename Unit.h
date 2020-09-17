@@ -3,14 +3,16 @@
 
 #include <string>
 
-class Unit {
-    public:
-    Unit(std::string, int, int);
+class Unit
+{
+public:
+    Unit(const std::string, const int, const int);
     const std::string name;
     int health;
     const int damage;
-    const bool IsDead();
-    const void Attack(Unit&);
+
+    bool IsDead() const;
+    void Attack(Unit &) const;
 };
 
 #endif

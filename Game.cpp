@@ -2,27 +2,34 @@
 
 #include "Game.h"
 
-Game::Game(Unit player, Unit enemy) : player(player), enemy(enemy) {
+Game::Game(const Unit player, const Unit enemy) : player(player), enemy(enemy)
+{
+    Combat(); //ha kivesszük a privátból akkor mehet vissza a mainbe
 }
 
-const void Game::SimulateTurn(Unit &attacker, Unit &target) {          
+void Game::SimulateTurn(const Unit &attacker, Unit &target) const
+{
     std::cout << attacker.name << " -> " << target.name << std::endl;
     attacker.Attack(target);
-    PrintCurrentState();             
+    PrintCurrentState();
 }
 
-const void Game::Combat() {
+void Game::Combat()
+{
     PrintCurrentState();
     bool endCombat = false;
-    while (!endCombat) {
+    while (!endCombat)
+    {
         SimulateTurn(player, enemy);
-        if (enemy.IsDead()) {
+        if (enemy.IsDead())
+        {
             endCombat = true;
             std::cout << enemy.name << " died. " << player.name << " wins." << std::endl;
             break;
-        }  
-        SimulateTurn(enemy, player);    
-        if (player.IsDead()) {
+        }
+        SimulateTurn(enemy, player);
+        if (player.IsDead())
+        {
             endCombat = true;
             std::cout << player.name << " died. " << enemy.name << " wins." << std::endl;
             break;
@@ -30,7 +37,10 @@ const void Game::Combat() {
     }
 }
 
-const void Game::PrintCurrentState() {
-    std::cout << player.name << ": " << "HP: " << player.health << ", DMG: " << player.damage << std::endl;
-    std::cout << enemy.name << ": " << "HP: " << enemy.health << ", DMG: " << enemy.damage << std::endl;
+void Game::PrintCurrentState() const
+{
+    std::cout << player.name << ": "
+              << "HP: " << player.health << ", DMG: " << player.damage << std::endl;
+    std::cout << enemy.name << ": "
+              << "HP: " << enemy.health << ", DMG: " << enemy.damage << std::endl;
 }
