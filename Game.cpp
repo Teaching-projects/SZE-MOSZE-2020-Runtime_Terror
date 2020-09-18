@@ -9,7 +9,7 @@ Game::Game(const Unit player, const Unit enemy) : player(player), enemy(enemy)
 
 void Game::SimulateTurn(const Unit &attacker, Unit &target) const
 {
-    std::cout << attacker.name << " -> " << target.name << std::endl;
+    std::cout << attacker.GetName() << " -> " << target.GetName() << std::endl;
     attacker.Attack(target);
     PrintCurrentState();
 }
@@ -24,14 +24,14 @@ void Game::Combat()
         if (enemy.IsDead())
         {
             endCombat = true;
-            std::cout << enemy.name << " died. " << player.name << " wins." << std::endl;
+            std::cout << enemy.GetName() << " died. " << player.GetName() << " wins." << std::endl;
             break;
         }
         SimulateTurn(enemy, player);
         if (player.IsDead())
         {
             endCombat = true;
-            std::cout << player.name << " died. " << enemy.name << " wins." << std::endl;
+            std::cout << player.GetName() << " died. " << enemy.GetName() << " wins." << std::endl;
             break;
         }
     }
@@ -39,8 +39,8 @@ void Game::Combat()
 
 void Game::PrintCurrentState() const
 {
-    std::cout << player.name << ": "
-              << "HP: " << player.health << ", DMG: " << player.damage << std::endl;
-    std::cout << enemy.name << ": "
-              << "HP: " << enemy.health << ", DMG: " << enemy.damage << std::endl;
+    std::cout << player.GetName() << ": "
+              << "HP: " << player.GetHealth() << ", DMG: " << player.GetDamage() << std::endl;
+    std::cout << enemy.GetName() << ": "
+              << "HP: " << enemy.GetHealth() << ", DMG: " << enemy.GetDamage() << std::endl;
 }

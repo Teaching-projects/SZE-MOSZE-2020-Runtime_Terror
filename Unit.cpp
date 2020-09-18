@@ -10,9 +10,30 @@ Unit::Unit(const std::string name, const int health, const int damage) : name(na
 {
 }
 
+std::string Unit::GetName() const 
+{
+    return name;
+}
+
+int Unit::GetHealth() const 
+{
+    return health;
+}
+
+int Unit::GetDamage() const 
+{
+    return damage;
+}
+
 void Unit::Attack(Unit &target) const
 {
-    target.health -= damage;
-    if (target.health < 0)
-        target.health = 0;
+    target.SufferDamage(damage);
+}
+
+void Unit::SufferDamage(int damageRecieved)
+{
+    health -= damageRecieved;
+    if(health < 0) {
+        health = 0;
+    }
 }
