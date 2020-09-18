@@ -2,7 +2,7 @@
 
 #include "Game.h"
 
-Game::Game(const Unit player, const Unit enemy) : player(player), enemy(enemy)
+Game::Game(const Unit &player, const Unit &enemy) : player(player), enemy(enemy)
 {
     Combat();
 }
