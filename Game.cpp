@@ -4,7 +4,7 @@
 
 Game::Game(const Unit player, const Unit enemy) : player(player), enemy(enemy)
 {
-    Combat(); //ha kivesszük a privátból akkor mehet vissza a mainbe
+    Combat();
 }
 
 void Game::SimulateTurn(const Unit &attacker, Unit &target) const
