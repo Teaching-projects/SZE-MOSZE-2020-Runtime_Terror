@@ -8,4 +8,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - run: g++ -Wall main.cpp Unit.cpp Game.cpp
       - run: ./run-test.sh
