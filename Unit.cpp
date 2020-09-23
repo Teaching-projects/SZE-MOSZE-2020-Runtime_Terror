@@ -48,10 +48,9 @@ void Unit::SufferDamage(int damageRecieved)
     }
 }
 
-Unit& Unit::parseUnit(const string fileName) 
+Unit Unit::parseUnit(const string fileName) 
 {
     vector<string> text;
-    vector<string> valid;
     string currentLine;
 
     ifstream file(fileName);
@@ -74,16 +73,12 @@ Unit& Unit::parseUnit(const string fileName)
     for (size_t i = 0; i < text.size(); i++)
     {
         size_t pos = 0;
-        std::string token;
         while ((pos = text[i].find(':')) != string::npos)
         {
-            token = text[i].substr(0, pos);
-            valid.push_back(token);
             text[i].erase(0, pos + 1);
         }
-        valid.push_back(text[i]);
     }
 
-    static Unit u = Unit(text[0], stoi(text[1]), stoi(text[2]));
+    Unit u = Unit(text[0],stoi(text[1]),stoi(text[2]));
     return u;
 }
