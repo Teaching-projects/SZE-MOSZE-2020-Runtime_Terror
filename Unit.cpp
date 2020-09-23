@@ -68,6 +68,7 @@ Unit Unit::parseUnit(const string fileName)
         text[i].erase(remove(text[i].begin(), text[i].end(), ' '), text[i].end());
         text[i].erase(remove(text[i].begin(), text[i].end(), '"'), text[i].end());
         text[i].erase(remove(text[i].begin(), text[i].end(), ','), text[i].end());
+        text[i].erase(remove(text[i].begin(), text[i].end(), '\r'), text[i].end());
     }
 
     for (size_t i = 0; i < text.size(); i++)
@@ -79,6 +80,5 @@ Unit Unit::parseUnit(const string fileName)
         }
     }
 
-    Unit u = Unit(text[0],stoi(text[1]),stoi(text[2]));
-    return u;
+    return Unit(text[0],stoi(text[1]),stoi(text[2]));
 }
