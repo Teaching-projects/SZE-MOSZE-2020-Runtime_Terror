@@ -1,7 +1,7 @@
 #!/bin/bash
 
-IFS=$'\n'
+IFS=$'\n\r'
 
 for i in `cat input.txt`; do
-    echo ./a.out "$i"
+    echo $i | xargs ./a.out
 done
