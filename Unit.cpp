@@ -6,18 +6,16 @@
 #include <fstream>
 #include <algorithm>
 
-using namespace std;
-
 bool Unit::IsDead() const
 {
     return health <= 0;
 }
 
-Unit::Unit(const string name, const int health, const int damage) : name(name), health(health), damage(damage)
+Unit::Unit(const std::string name, const int health, const int damage) : name(name), health(health), damage(damage)
 {
 }
 
-string Unit::GetName() const 
+std::string Unit::GetName() const 
 {
     return name;
 }
@@ -45,12 +43,12 @@ void Unit::SufferDamage(int damageRecieved)
     }
 }
 
-Unit Unit::parseUnit(const string fileName) 
+Unit Unit::parseUnit(const std::string fileName) 
 {
-    vector<string> text;
-    string currentLine;
+    std::vector<std::string> text;
+    std::string currentLine;
 
-    ifstream file;
+    std::ifstream file;
 
     file.open(fileName);
 
@@ -74,13 +72,13 @@ Unit Unit::parseUnit(const string fileName)
         for (size_t i = 0; i < text.size(); i++)
         {
             size_t pos = 0;
-            while ((pos = text[i].find(':')) != string::npos)
+            while ((pos = text[i].find(':')) != std::string::npos)
             {
                 text[i].erase(0, pos + 1);
             }
         }
     
-        return Unit(text[0],stoi(text[1]),stoi(text[2]));
+        return Unit(text[0],std::stoi(text[1]),std::stoi(text[2]));
     
     } else {
         throw std::runtime_error("file " + fileName + " doesn't exist");
