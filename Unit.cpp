@@ -43,6 +43,11 @@ void Unit::SufferDamage(int damageRecieved)
     }
 }
 
+void Unit::RemoveChar(std::string &text, const char c)
+{
+    text.erase(remove(text.begin(), text.end(), c), text.end());
+}
+
 Unit Unit::parseUnit(const std::string fileName) 
 {
     std::vector<std::string> text;
@@ -63,10 +68,10 @@ Unit Unit::parseUnit(const std::string fileName)
 
         for (size_t i = 0; i < text.size(); i++)
         {
-            text[i].erase(remove(text[i].begin(), text[i].end(), ' '), text[i].end());
-            text[i].erase(remove(text[i].begin(), text[i].end(), '"'), text[i].end());
-            text[i].erase(remove(text[i].begin(), text[i].end(), ','), text[i].end());
-            text[i].erase(remove(text[i].begin(), text[i].end(), '\r'), text[i].end());
+            RemoveChar(text[i], ' ');
+            RemoveChar(text[i], '"');
+            RemoveChar(text[i], ',');
+            RemoveChar(text[i], '\r');
         }
 
         for (size_t i = 0; i < text.size(); i++)

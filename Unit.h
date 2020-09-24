@@ -21,6 +21,8 @@ private:
     const std::string name;
     int health;
     const int damage;
+
+    static void RemoveChar(std::string &, const char);
 };
 
 #endif
