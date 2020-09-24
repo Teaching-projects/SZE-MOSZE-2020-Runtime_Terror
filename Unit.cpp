@@ -53,32 +53,40 @@ Unit Unit::parseUnit(const string fileName)
     vector<string> text;
     string currentLine;
 
-    ifstream file(fileName);
+    ifstream file;
 
-    while (getline(file, currentLine))
-    {
-        text.push_back(currentLine);
-    }
+    file.open(fileName);
 
-    text.erase(text.end());
-    text.erase(text.begin());
-
-    for (size_t i = 0; i < text.size(); i++)
-    {
-        text[i].erase(remove(text[i].begin(), text[i].end(), ' '), text[i].end());
-        text[i].erase(remove(text[i].begin(), text[i].end(), '"'), text[i].end());
-        text[i].erase(remove(text[i].begin(), text[i].end(), ','), text[i].end());
-        text[i].erase(remove(text[i].begin(), text[i].end(), '\r'), text[i].end());
-    }
-
-    for (size_t i = 0; i < text.size(); i++)
-    {
-        size_t pos = 0;
-        while ((pos = text[i].find(':')) != string::npos)
+    if(file) {
+        while (getline(file, currentLine))
         {
-            text[i].erase(0, pos + 1);
+            text.push_back(currentLine);
         }
-    }
 
-    return Unit(text[0],stoi(text[1]),stoi(text[2]));
+        text.erase(text.end());
+        text.erase(text.begin());
+
+        for (size_t i = 0; i < text.size(); i++)
+        {
+            text[i].erase(remove(text[i].begin(), text[i].end(), ' '), text[i].end());
+            text[i].erase(remove(text[i].begin(), text[i].end(), '"'), text[i].end());
+            text[i].erase(remove(text[i].begin(), text[i].end(), ','), text[i].end());
+            text[i].erase(remove(text[i].begin(), text[i].end(), '\r'), text[i].end());
+        }
+
+        for (size_t i = 0; i < text.size(); i++)
+        {
+            size_t pos = 0;
+            while ((pos = text[i].find(':')) != string::npos)
+            {
+                text[i].erase(0, pos + 1);
+            }
+        }
+    
+        return Unit(text[0],stoi(text[1]),stoi(text[2]));
+    
+    } else {
+        throw std::runtime_error("file " + fileName + " doesn't exist");
+    }    
+
 }
