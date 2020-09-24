@@ -2,11 +2,8 @@
   
 #include <iostream>
 #include <string>
-#include <time.h>
 #include <vector>
 #include <fstream>
-#include <stdio.h>
-#include <string.h>
 #include <algorithm>
 
 using namespace std;
