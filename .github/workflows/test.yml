@@ -11,3 +11,4 @@ jobs:
       - run: g++ -Wall main.cpp Unit.cpp Game.cpp
       - run: chmod +x test.sh
       - run: ./test.sh
+      - run: diff output.txt expected-output.txt
