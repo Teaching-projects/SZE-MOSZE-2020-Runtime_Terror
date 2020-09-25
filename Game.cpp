@@ -9,14 +9,11 @@ Game::Game(const Unit &player, const Unit &enemy) : player(player), enemy(enemy)
 
 void Game::SimulateTurn(const Unit &attacker, Unit &target) const
 {
-    std::cout << attacker.GetName() << " -> " << target.GetName() << std::endl;
     attacker.Attack(target);
-    PrintCurrentState();
 }
 
 void Game::Combat()
 {
-    PrintCurrentState();
     bool endCombat = false;
     while (!endCombat)
     {

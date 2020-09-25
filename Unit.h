@@ -11,6 +11,8 @@ public:
     void Attack(Unit &) const;
     void SufferDamage(int);
 
+    static Unit parseUnit(const std::string);
+
     std::string GetName() const;
     int GetHealth() const;
     int GetDamage() const;
@@ -19,6 +21,8 @@ private:
     const std::string name;
     int health;
     const int damage;
+
+    static void RemoveChar(std::string &, const char);
 };
 
 #endif

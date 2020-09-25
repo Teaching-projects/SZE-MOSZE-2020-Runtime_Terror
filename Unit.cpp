@@ -1,5 +1,10 @@
 #include "Unit.h"
+  
+#include <iostream>
 #include <string>
+#include <vector>
+#include <fstream>
+#include <algorithm>
 
 bool Unit::IsDead() const
 {
@@ -36,4 +41,52 @@ void Unit::SufferDamage(int damageRecieved)
     if(health < 0) {
         health = 0;
     }
+}
+
+void Unit::RemoveChar(std::string &text, const char c)
+{
+    text.erase(remove(text.begin(), text.end(), c), text.end());
+}
+
+Unit Unit::parseUnit(const std::string fileName) 
+{
+    std::vector<std::string> text;
+    std::string currentLine;
+
+    std::ifstream file;
+
+    file.open(fileName);
+
+    if(file) {
+        while (getline(file, currentLine))
+        {
+            text.push_back(currentLine);
+        }
+
+        text.erase(text.end());
+        text.erase(text.begin());
+
+        for (size_t i = 0; i < text.size(); i++)
+        {
+            RemoveChar(text[i], ' ');
+            RemoveChar(text[i], '"');
+            RemoveChar(text[i], ',');
+            RemoveChar(text[i], '\r');
+        }
+
+        for (size_t i = 0; i < text.size(); i++)
+        {
+            size_t pos = 0;
+            while ((pos = text[i].find(':')) != std::string::npos)
+            {
+                text[i].erase(0, pos + 1);
+            }
+        }
+    
+        return Unit(text[0],std::stoi(text[1]),std::stoi(text[2]));
+    
+    } else {
+        throw std::runtime_error("file " + fileName + " doesn't exist");
+    }    
+
 }

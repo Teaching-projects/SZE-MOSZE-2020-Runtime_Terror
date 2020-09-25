@@ -10,7 +10,13 @@ using namespace std;
 
 int main(int argc, char *argv[])
 {
-    Unit player = Unit(argv[1], stoi(argv[2]), stoi(argv[3]));
-    Unit enemy = Unit(argv[4], stoi(argv[5]), stoi(argv[6]));
-    Game game = Game(player, enemy);
+    try {
+        Unit a = Unit::parseUnit("unit/"+string(argv[1]));
+        Unit b = Unit::parseUnit("unit/"+string(argv[2]));
+        Game game = Game(a, b);
+        return 0;
+    } catch(const std::runtime_error& e) {
+        std::cerr << "exception: " << e.what() << std::endl; 
+        return 1;
+    }
 }
