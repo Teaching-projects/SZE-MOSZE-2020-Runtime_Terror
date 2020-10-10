@@ -28,7 +28,7 @@ void Player::Attack(Player& target)
 {
     Unit::Attack(target);
     xp += damage;
-    if(level - 1 != (xp = 100))
+    if(level - 1 != (xp / 100))
     {
         LevelUp();
     }
