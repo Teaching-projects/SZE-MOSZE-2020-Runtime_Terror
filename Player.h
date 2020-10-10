@@ -12,6 +12,7 @@ class Player : public Unit
     int GetXp() const;
 
     void Attack(Player&);
+    static Player parsePlayer(const std::string);
 
     private:
     int xp = 0;

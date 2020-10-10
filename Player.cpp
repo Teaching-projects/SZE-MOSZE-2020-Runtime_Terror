@@ -33,3 +33,9 @@ void Player::Attack(Player& target)
         LevelUp();
     }
 }
+
+Player Player::parsePlayer(const std::string fileName)
+{
+    Unit parsedUnit = Unit::parseUnit(fileName);
+    return Player(parsedUnit.GetName(), parsedUnit.GetHealth(), parsedUnit.GetDamage());
+}

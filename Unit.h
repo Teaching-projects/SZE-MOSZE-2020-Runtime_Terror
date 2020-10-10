@@ -20,7 +20,7 @@ class Unit
     protected:
     const std::string name;
     int health;
-    const int damage;
+    int damage;
 
     private:
     static void RemoveChar(std::string &, const char);
