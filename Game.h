@@ -2,6 +2,7 @@
 #define GAME_HEADER
 
 #include "Unit.h"
+#include "Player.h"
 
 class Game
 {
