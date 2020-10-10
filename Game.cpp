@@ -2,9 +2,9 @@
 
 #include "Game.h"
 
-Game::Game(const Unit &player, const Unit &enemy) : player(player), enemy(enemy)
+Game::Game()
 {
-    Combat();
+    
 }
 
 void Game::SimulateTurn(const Unit &attacker, Unit &target) const
@@ -12,32 +12,53 @@ void Game::SimulateTurn(const Unit &attacker, Unit &target) const
     attacker.Attack(target);
 }
 
-void Game::Combat()
+void Game::SimulateTurn(const Player &attacker, Player &target)
+{
+    attacker.Attack(target);
+}
+
+void Game::Combat(Unit &a, Unit &b)
 {
     bool endCombat = false;
     while (!endCombat)
     {
-        SimulateTurn(player, enemy);
-        if (enemy.IsDead())
+        SimulateTurn(a, b);
+        if (b.IsDead())
         {
             endCombat = true;
-            std::cout << enemy.GetName() << " died. " << player.GetName() << " wins." << std::endl;
+            std::cout << b.GetName() << " died. " << a.GetName() << " wins." << std::endl;
             break;
         }
-        SimulateTurn(enemy, player);
-        if (player.IsDead())
+        SimulateTurn(b, a);
+        if (a.IsDead())
         {
             endCombat = true;
-            std::cout << player.GetName() << " died. " << enemy.GetName() << " wins." << std::endl;
+            std::cout << a.GetName() << " died. " << b.GetName() << " wins." << std::endl;
             break;
         }
     }
 }
 
-void Game::PrintCurrentState() const
+void Game::Combat(Player &a, Player &b)
 {
-    std::cout << player.GetName() << ": "
-              << "HP: " << player.GetHealth() << ", DMG: " << player.GetDamage() << std::endl;
-    std::cout << enemy.GetName() << ": "
-              << "HP: " << enemy.GetHealth() << ", DMG: " << enemy.GetDamage() << std::endl;
+    bool endCombat = false;
+    while (!endCombat)
+    {
+        SimulateTurn(a, b);
+        if (b.IsDead())
+        {
+            endCombat = true;
+            std::cout << b.GetName() << " died. " << a.GetName() << " wins." << std::endl;
+            std::cout << a.GetName() << " - " << "HP: " << a.GetHealth() << " DMG: " << b.GetDamage() << " XP: " << a.GetXp() << " LVL: " << a.GetLevel() << std::endl;
+            break;
+        }
+        SimulateTurn(b, a);
+        if (a.IsDead())
+        {
+            endCombat = true;
+            std::cout << a.GetName() << " died. " << b.GetName() << " wins." << std::endl;
+            std::cout << b.GetName() << ": " << "HP: " << b.GetHealth() << " DMG: " << b.GetDamage() << " XP: " << b.GetXp() << " LVL: " << b.GetLevel() << std::endl;           
+            break;
+        }
+    }
 }

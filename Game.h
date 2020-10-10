@@ -6,14 +6,13 @@
 class Game
 {
 public:
-    Game(const Unit&, const Unit&);
+    Game();
+    void Combat(Unit&, Unit&);
+    void Combat(Player&, Player&);
 
-private:
-    Unit player;
-    Unit enemy;
+private:    
     void SimulateTurn(const Unit&, Unit&) const;
-    void Combat();
-    void PrintCurrentState() const;
+    void SimulateTurn(const Player&, Player&);
 };
 
 #endif
