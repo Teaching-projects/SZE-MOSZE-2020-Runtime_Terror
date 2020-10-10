@@ -5,7 +5,7 @@
 
 class Unit
 {
-public:
+    public:
     Unit(const std::string, const int, const int);
     bool IsDead() const;
     void Attack(Unit &) const;
@@ -17,11 +17,12 @@ public:
     int GetHealth() const;
     int GetDamage() const;
 
-private:
+    protected:
     const std::string name;
     int health;
     const int damage;
 
+    private:
     static void RemoveChar(std::string &, const char);
 };
 
