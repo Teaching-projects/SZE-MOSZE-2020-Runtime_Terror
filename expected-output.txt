@@ -1,6 +1,12 @@
-Lajcsi died. Kakarott wins.
+Kakarott died. Lajcsi wins.
+Lajcsi: HP: 88 DMG: 55 XP: 100 LVL: 2
 Viktor died. Kakarott wins.
-Lajcsi died. Kakarott wins.
+Kakarott - HP: 111 DMG: 10 XP: 255 LVL: 3
+Kakarott died. Lajcsi wins.
+Lajcsi - HP: 88 DMG: 30 XP: 100 LVL: 2
 Viktor died. Lajcsi wins.
+Lajcsi - HP: 86 DMG: 10 XP: 270 LVL: 3
 Viktor died. Kakarott wins.
+Kakarott: HP: 111 DMG: 36 XP: 255 LVL: 3
 Viktor died. Lajcsi wins.
+Lajcsi: HP: 86 DMG: 60 XP: 270 LVL: 3
