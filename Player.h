@@ -11,6 +11,8 @@ class Player : public Unit
     int GetLevel() const;
     int GetXp() const;
 
+    void Attack(Player&);
+
     private:
     int xp = 0;
     int level = 1;
