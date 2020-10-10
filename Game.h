@@ -13,7 +13,7 @@ public:
 
 private:    
     void SimulateTurn(const Unit&, Unit&) const;
-    void SimulateTurn(const Player&, Player&);
+    void SimulateTurn(Player&, Player&);
 };
 
 #endif

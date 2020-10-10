@@ -12,7 +12,7 @@ void Game::SimulateTurn(const Unit &attacker, Unit &target) const
     attacker.Attack(target);
 }
 
-void Game::SimulateTurn(const Player &attacker, Player &target)
+void Game::SimulateTurn(Player &attacker, Player &target)
 {
     attacker.Attack(target);
 }
