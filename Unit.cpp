@@ -11,8 +11,9 @@ bool Unit::IsDead() const
     return health <= 0;
 }
 
-Unit::Unit(const std::string name, const int health, const int damage) : name(name), health(health), damage(damage)
+Unit::Unit(const std::string name, const int health, const int damage, const float atkcooldown) : name(name), health(health), damage(damage), atkcooldown(atkcooldown)
 {
+    currentcooldown = atkcooldown;
 }
 
 std::string Unit::GetName() const 
@@ -83,7 +84,7 @@ Unit Unit::parseUnit(const std::string fileName)
             }
         }
     
-        return Unit(text[0],std::stoi(text[1]),std::stoi(text[2]));
+        return Unit(text[0],std::stoi(text[1]),std::stoi(text[2]),std::stof(text[3]));
     
     } else {
         throw std::runtime_error("file " + fileName + " doesn't exist");

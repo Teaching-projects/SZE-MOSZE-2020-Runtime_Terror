@@ -6,10 +6,9 @@
 class Unit
 {
 public:
-    Unit(const std::string, const int, const int);
+    Unit(const std::string, const int, const int, const float);
     bool IsDead() const;
     void Attack(Unit &) const;
-    void SufferDamage(int);
 
     static Unit parseUnit(const std::string);
 
@@ -21,8 +20,11 @@ private:
     const std::string name;
     int health;
     const int damage;
+    const float atkcooldown;
+    float currentcooldown;
 
     static void RemoveChar(std::string &, const char);
+    void SufferDamage(int);
 };
 
 #endif
