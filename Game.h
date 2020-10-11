@@ -11,7 +11,7 @@ public:
 private:
     Unit player;
     Unit enemy;
-    void SimulateTurn(const Unit&, Unit&) const;
+    void SimulateTurn(Unit&, Unit&) const;
     void Combat();
     void PrintCurrentState() const;
 };

@@ -7,9 +7,9 @@ Game::Game(const Unit &player, const Unit &enemy) : player(player), enemy(enemy)
     Combat();
 }
 
-void Game::SimulateTurn(const Unit &attacker, Unit &target) const
+void Game::SimulateTurn(Unit &attacker, Unit &target) const
 {
-    attacker.Attack(target);
+    if(attacker.GetCurrentCooldown() <= target.GetCurrentCooldown()) attacker.Attack(target);
 }
 
 void Game::Combat()
