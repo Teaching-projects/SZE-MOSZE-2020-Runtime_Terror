@@ -31,9 +31,16 @@ int Unit::GetDamage() const
     return damage;
 }
 
-void Unit::Attack(Unit &target) const
+float Unit::GetCurrentCooldown() const 
+{
+    return currentcooldown;
+}
+
+void Unit::Attack(Unit &target)
 {
     target.SufferDamage(damage);
+    target.LowerCooldown(currentcooldown);
+    ResetCooldown();
 }
 
 void Unit::SufferDamage(int damageRecieved)
@@ -42,6 +49,19 @@ void Unit::SufferDamage(int damageRecieved)
     if(health < 0) {
         health = 0;
     }
+}
+
+void Unit::LowerCooldown(float amount)
+{
+    currentcooldown -= amount;
+    if(currentcooldown < 0) {
+        currentcooldown = 0;
+    }
+}
+
+void Unit::ResetCooldown()
+{
+    currentcooldown = atkcooldown;
 }
 
 void Unit::RemoveChar(std::string &text, const char c)
