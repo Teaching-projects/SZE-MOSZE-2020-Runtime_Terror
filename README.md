@@ -4,6 +4,14 @@ Csapat: Runtime_Terror
 
 Tagok: Tömördi Tamás, Jaksics Benedek, Csillag Bence
 
+## 3. feladat
+
+### Levelup
+
+A játék kiegészítésre került egy Player osztállyal, amely abban különbözik a Unit-tól, hogy az áltatala bevitt sebzés értékével megegyező xp-t kap. 100 xp-nként szintet lép, ekkor változik a health és damage értéke. 
+
+Illetve a kódon a test workflow már statikus kódanalízist és memory leak check-et is futtat minden push után.
+
 ## 2. feladat
 
 A program két argumentumként vár két json fájlt, amelyekben a Unit-ok adatai vannak tárolva. Ezt a két Unitot ütközteti a program. Ha valamelyik fájl nem létezik, a program hibaüzenetet ír ki.
