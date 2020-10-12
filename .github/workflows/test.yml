@@ -4,10 +4,25 @@ on:
   push
 
 jobs:
+
+static_code_analysis:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - run: sudo apt-get install cppcheck
+      - run: chmod +x static-code-analysis.sh
+      - run: ./static-code-analysis.sh
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: Static_code_analysis_artifact
+          path: ./static-code-analysis.txt
+
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: g++ -Wall *.cpp
+      - run: g++ -Wall -Wextra -Werror *.cpp
       - run: chmod +x test.sh
       - run: ./test.sh
