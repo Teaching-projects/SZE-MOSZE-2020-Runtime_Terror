@@ -44,7 +44,7 @@ void Game::Combat(Player &a, Player &b)
         {
             endCombat = true;
             std::cout << b.GetName() << " died. " << a.GetName() << " wins." << std::endl;
-            std::cout << a.GetName() << " - " << "HP: " << a.GetHealth() << " DMG: " << b.GetDamage() << " XP: " << a.GetXp() << " LVL: " << a.GetLevel() << std::endl;
+            std::cout << a.GetName() << ": " << "HP: " << a.GetHealth() << " DMG: " << b.GetDamage() << " XP: " << a.GetXp() << " LVL: " << a.GetLevel() << std::endl;
             break;
         }
         SimulateTurn(b, a);
