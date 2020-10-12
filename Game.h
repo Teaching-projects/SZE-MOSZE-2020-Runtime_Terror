@@ -7,7 +7,6 @@
 class Game
 {
 public:
-    Game();
     void Combat(Unit&, Unit&);
     void Combat(Player&, Player&);
 

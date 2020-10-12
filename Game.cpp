@@ -2,11 +2,6 @@
 
 #include "Game.h"
 
-Game::Game()
-{
-    
-}
-
 void Game::SimulateTurn(const Unit &attacker, Unit &target) const
 {
     attacker.Attack(target);
