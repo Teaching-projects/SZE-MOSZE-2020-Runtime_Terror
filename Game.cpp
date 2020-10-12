@@ -33,11 +33,3 @@ void Game::Combat()
         }
     }
 }
-
-void Game::PrintCurrentState() const
-{
-    std::cout << player.GetName() << ": "
-              << "HP: " << player.GetHealth() << ", DMG: " << player.GetDamage() << std::endl;
-    std::cout << enemy.GetName() << ": "
-              << "HP: " << enemy.GetHealth() << ", DMG: " << enemy.GetDamage() << std::endl;
-}
