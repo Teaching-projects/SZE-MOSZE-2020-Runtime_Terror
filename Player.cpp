@@ -1,7 +1,6 @@
 #include "Player.h"
 
-Player::Player(const std::string name, const int health, const int damage) 
-    : Unit{name, health, damage}
+Player::Player(const std::string name, const int health, const int damage) : Unit{name, health, damage}
 {
      maxHealth = health;
 }
@@ -28,7 +27,7 @@ void Player::Attack(Player& target)
 {
     Unit::Attack(target);
     xp += damage;
-    if(level - 1 != (xp / 100))
+    while(level - 1 != (xp / 100))
     {
         LevelUp();
     }
