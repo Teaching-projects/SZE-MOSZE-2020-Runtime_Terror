@@ -12,14 +12,21 @@ int main(int argc, char *argv[])
 {
     try {
 
-        Player a = Player::parsePlayer("unit/"+string(argv[1]));
-        Player b = Player::parsePlayer("unit/"+string(argv[2]));
+        if(argc >= 2) 
+        {
+            Player a = Player::parsePlayer("unit/"+string(argv[1]));
+            Player b = Player::parsePlayer("unit/"+string(argv[2]));
 
-        Game game;
-        game.Combat(a, b);
+            Game game;
+            game.Combat(a, b);
 
-        return 0;
-
+            return 0;
+        }
+        else
+        {
+            throw std::runtime_error("wrong arguments given");
+        }
+        
     } catch(const std::runtime_error& e) {
 
         std::cerr << "exception: " << e.what() << std::endl; 
