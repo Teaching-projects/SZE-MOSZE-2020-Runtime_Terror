@@ -22,14 +22,15 @@ void Game::Combat(Unit &a, Unit &b)
         {
             endCombat = true;
             std::cout << b.GetName() << " died. " << a.GetName() << " wins." << std::endl;
-            break;
         }
-        SimulateTurn(b, a);
-        if (a.IsDead())
+        else
         {
-            endCombat = true;
-            std::cout << a.GetName() << " died. " << b.GetName() << " wins." << std::endl;
-            break;
+            SimulateTurn(b, a);
+            if (a.IsDead())
+            {
+                endCombat = true;
+                std::cout << a.GetName() << " died. " << b.GetName() << " wins." << std::endl;           
+            }
         }
     }
 }
@@ -45,15 +46,16 @@ void Game::Combat(Player &a, Player &b)
             endCombat = true;
             std::cout << b.GetName() << " died. " << a.GetName() << " wins." << std::endl;
             std::cout << a.GetName() << ": " << "HP: " << a.GetHealth() << " DMG: " << b.GetDamage() << " XP: " << a.GetXp() << " LVL: " << a.GetLevel() << std::endl;
-            break;
         }
-        SimulateTurn(b, a);
-        if (a.IsDead())
+        else
         {
-            endCombat = true;
-            std::cout << a.GetName() << " died. " << b.GetName() << " wins." << std::endl;
-            std::cout << b.GetName() << ": " << "HP: " << b.GetHealth() << " DMG: " << b.GetDamage() << " XP: " << b.GetXp() << " LVL: " << b.GetLevel() << std::endl;           
-            break;
-        }
+            SimulateTurn(b, a);
+            if (a.IsDead())
+            {
+                endCombat = true;
+                std::cout << a.GetName() << " died. " << b.GetName() << " wins." << std::endl;
+                std::cout << b.GetName() << ": " << "HP: " << b.GetHealth() << " DMG: " << b.GetDamage() << " XP: " << b.GetXp() << " LVL: " << b.GetLevel() << std::endl;           
+            }
+        }  
     }
 }

@@ -11,7 +11,7 @@ bool Unit::IsDead() const
     return health <= 0;
 }
 
-Unit::Unit(const std::string name, const int health, const int damage) : name(name), health(health), damage(damage)
+Unit::Unit(const std::string& name, const int health, const int damage) : name(name), health(health), damage(damage)
 {
 }
 
@@ -48,7 +48,7 @@ void Unit::RemoveChar(std::string &text, const char c)
     text.erase(remove(text.begin(), text.end(), c), text.end());
 }
 
-Unit Unit::parseUnit(const std::string fileName) 
+Unit Unit::parseUnit(const std::string& fileName) 
 {
     std::vector<std::string> text;
     std::string currentLine;

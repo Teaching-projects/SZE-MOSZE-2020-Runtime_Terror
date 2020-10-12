@@ -1,6 +1,6 @@
 #include "Player.h"
 
-Player::Player(const std::string name, const int health, const int damage) : Unit{name, health, damage}
+Player::Player(const std::string& name, const int health, const int damage) : Unit{name, health, damage}
 {
      maxHealth = health;
 }
@@ -33,7 +33,7 @@ void Player::Attack(Player& target)
     }
 }
 
-Player Player::parsePlayer(const std::string fileName)
+Player Player::parsePlayer(const std::string& fileName)
 {
     Unit parsedUnit = Unit::parseUnit(fileName);
     return Player(parsedUnit.GetName(), parsedUnit.GetHealth(), parsedUnit.GetDamage());

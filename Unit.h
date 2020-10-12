@@ -6,12 +6,12 @@
 class Unit
 {
     public:
-    Unit(const std::string, const int, const int);
+    Unit(const std::string&, const int, const int);
     bool IsDead() const;
     void Attack(Unit &) const;
     void SufferDamage(int);
 
-    static Unit parseUnit(const std::string);
+    static Unit parseUnit(const std::string&);
 
     std::string GetName() const;
     int GetHealth() const;

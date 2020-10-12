@@ -6,13 +6,13 @@
 class Player : public Unit 
 {
     public:
-    Player(const std::string, const int, const int);    
+    Player(const std::string&, const int, const int);    
 
     int GetLevel() const;
     int GetXp() const;
 
     void Attack(Player&);
-    static Player parsePlayer(const std::string);
+    static Player parsePlayer(const std::string&);
 
     private:
     int xp = 0;
