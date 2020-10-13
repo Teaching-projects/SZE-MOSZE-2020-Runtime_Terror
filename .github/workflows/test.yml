@@ -11,8 +11,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - run: sudo apt-get install cppcheck
-      - run: chmod +x static-code-analysis.sh
-      - run: ./static-code-analysis.sh
+      - run: cppcheck --enable=all --error-exitcode=1 *.cpp 2> static-code-analysis.txt
 
       - uses: actions/upload-artifact@v2
         with:
@@ -30,8 +29,7 @@ jobs:
       - run: ./test.sh
 
       - run: sudo apt-get install valgrind
-      - run: chmod +x memory-leak-check.sh
-      - run: ./memory-leak-check.sh
+      - run: valgrind --error-exitcode=1 ./a.out unit1.json unit2.json 2> ./memory-leak-check.txt
 
       - uses: actions/upload-artifact@v2
         with:
