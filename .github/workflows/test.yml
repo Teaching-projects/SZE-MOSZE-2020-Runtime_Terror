@@ -1,13 +1,12 @@
 name: Test workflow
 
-on:
-  push
+on: push
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: g++ -Wall main.cpp Unit.cpp Game.cpp
+      - run: g++ -Wall *.cpp
       - run: chmod +x test.sh
       - run: ./test.sh
