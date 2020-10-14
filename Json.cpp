@@ -43,3 +43,14 @@ std::map<std::string, std::string> Json::ParseStream(std::istream &stream)
     }
     return ParseString(text);
 }
+std::map<std::string, std::string> Json::ParseFile(const std::string &filename)
+{
+    std::ifstream file(filename);
+    if (!file.good())
+        throw std::runtime_error("file " + filename + " doesn't exist");
+
+    std::map<std::string, std::string> data = ParseStream(file);
+
+    file.close();
+    return data;
+}
