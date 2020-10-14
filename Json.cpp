@@ -33,3 +33,13 @@ std::map<std::string, std::string> Json::ParseString(const std::string &input)
     }
     return mapedData;
 }
+std::map<std::string, std::string> Json::ParseStream(std::istream &stream)
+{
+    std::string text, currentLine;
+
+    while (getline(stream, currentLine))
+    {
+        text.append(currentLine);
+    }
+    return ParseString(text);
+}
