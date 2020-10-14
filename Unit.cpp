@@ -1,5 +1,6 @@
 #include "Unit.h"
-  
+#include "Json.h"
+
 #include <iostream>
 #include <string>
 #include <vector>
@@ -15,17 +16,17 @@ Unit::Unit(const std::string name, const int health, const int damage) : name(na
 {
 }
 
-std::string Unit::GetName() const 
+std::string Unit::GetName() const
 {
     return name;
 }
 
-int Unit::GetHealth() const 
+int Unit::GetHealth() const
 {
     return health;
 }
 
-int Unit::GetDamage() const 
+int Unit::GetDamage() const
 {
     return damage;
 }
@@ -38,55 +39,16 @@ void Unit::Attack(Unit &target) const
 void Unit::SufferDamage(int damageRecieved)
 {
     health -= damageRecieved;
-    if(health < 0) {
+    if (health < 0)
+    {
         health = 0;
     }
 }
 
-void Unit::RemoveChar(std::string &text, const char c)
+Unit Unit::parseUnit(const std::string fileName)
 {
-    text.erase(remove(text.begin(), text.end(), c), text.end());
-}
+    std::map<std::string, std::string> data = Json::ParseFile(fileName);
 
-Unit Unit::parseUnit(const std::string fileName) 
-{
-    std::vector<std::string> text;
-    std::string currentLine;
-
-    std::ifstream file;
-
-    file.open(fileName);
-
-    if(file) {
-        while (getline(file, currentLine))
-        {
-            text.push_back(currentLine);
-        }
-
-        text.erase(text.end());
-        text.erase(text.begin());
-
-        for (size_t i = 0; i < text.size(); i++)
-        {
-            RemoveChar(text[i], ' ');
-            RemoveChar(text[i], '"');
-            RemoveChar(text[i], ',');
-            RemoveChar(text[i], '\r');
-        }
-
-        for (size_t i = 0; i < text.size(); i++)
-        {
-            size_t pos = 0;
-            while ((pos = text[i].find(':')) != std::string::npos)
-            {
-                text[i].erase(0, pos + 1);
-            }
-        }
-    
-        return Unit(text[0],std::stoi(text[1]),std::stoi(text[2]));
-    
-    } else {
-        throw std::runtime_error("file " + fileName + " doesn't exist");
-    }    
-
+    Unit u = Unit(data["name"], std::stoi(data["hp"]), std::stoi(data["dmg"]));
+    return u;
 }
