@@ -1,4 +1,4 @@
-#include "../Json.h"
+#include "../Json.cpp"
 #include <gtest/gtest.h>
 
 TEST(JsonTest, Filetest)
@@ -13,6 +13,7 @@ TEST(JsonTest, ParseString)
     ASSERT_EQ(data["hp"], "30000");
     ASSERT_EQ(data["dmg"], "9000");
 }
+
 int main(int argc, char **argv)
 {
     ::testing::InitGoogleTest(&argc, argv);
