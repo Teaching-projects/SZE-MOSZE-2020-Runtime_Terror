@@ -12,6 +12,8 @@ A JSON fájlok bővültek egy új adattaggal, ami egy Unit két ütése között
 
 Emellett minden osztály kibővült DoxyGen dokumentációhoz használt kommentekkel. Ezt a dokumentációt a pushdocs.yml workflow generálja a gh-pages branchre minden push után. 
 
+Dokumentáció: https://teaching-projects.github.io/SZE-MOSZE-2020-Runtime_Terror/
+
 ## 2. feladat
 
 A program két argumentumként vár két json fájlt, amelyekben a Unit-ok adatai vannak tárolva. Ezt a két Unitot ütközteti a program. Ha valamelyik fájl nem létezik, a program hibaüzenetet ír ki.
