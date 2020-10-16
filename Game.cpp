@@ -7,9 +7,9 @@ Game::Game(const Unit &player, const Unit &enemy) : player(player), enemy(enemy)
     Combat();
 }
 
-void Game::SimulateTurn(const Unit &attacker, Unit &target) const
+void Game::SimulateTurn(Unit &attacker, Unit &target) const
 {
-    attacker.Attack(target);
+    if(attacker.GetCurrentCooldown() <= target.GetCurrentCooldown()) attacker.Attack(target);
 }
 
 void Game::Combat()
@@ -32,12 +32,4 @@ void Game::Combat()
             break;
         }
     }
-}
-
-void Game::PrintCurrentState() const
-{
-    std::cout << player.GetName() << ": "
-              << "HP: " << player.GetHealth() << ", DMG: " << player.GetDamage() << std::endl;
-    std::cout << enemy.GetName() << ": "
-              << "HP: " << enemy.GetHealth() << ", DMG: " << enemy.GetDamage() << std::endl;
 }
