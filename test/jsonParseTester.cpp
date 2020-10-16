@@ -1,4 +1,4 @@
-#include "../Json.cpp"
+#include "../Json.h"
 #include <gtest/gtest.h>
 
 TEST(JsonTest, Filetest)
