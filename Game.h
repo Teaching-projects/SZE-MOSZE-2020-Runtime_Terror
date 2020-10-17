@@ -9,14 +9,14 @@ class Game
 
 public:
 
-    Game(Unit&, Unit&);
+    Game(Player&, Player&);
 
 private:   
 
-    Unit unitA;
-    Unit unitB;
+    Player playerA;
+    Player playerB;
 
-    void SimulateTurn(Unit&, Unit&);
+    void SimulateTurn(Player&, Player&);
     void Combat();
 };
 
