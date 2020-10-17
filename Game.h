@@ -5,14 +5,19 @@
 #include "Player.h"
 
 class Game
-{
-public:
-    void Combat(Unit&, Unit&);
-    void Combat(Player&, Player&);
+{ 
 
-private:    
-    void SimulateTurn(const Unit&, Unit&) const;
-    void SimulateTurn(Player&, Player&);
+public:
+
+    Game(Unit&, Unit&);
+
+private:   
+
+    Unit unitA;
+    Unit unitB;
+
+    void SimulateTurn(Unit&, Unit&);
+    void Combat();
 };
 
 #endif

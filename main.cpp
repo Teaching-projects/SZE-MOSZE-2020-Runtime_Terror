@@ -17,8 +17,7 @@ int main(int argc, char *argv[])
             Player a = Player::parsePlayer("unit/"+string(argv[1]));
             Player b = Player::parsePlayer("unit/"+string(argv[2]));
 
-            Game game;
-            game.Combat(a, b);
+            Game game = Game(a, b);
 
             return 0;
         }

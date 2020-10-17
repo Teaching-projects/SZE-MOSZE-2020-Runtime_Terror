@@ -2,60 +2,35 @@
 
 #include "Game.h"
 
-void Game::SimulateTurn(const Unit &attacker, Unit &target) const
+Game::Game(Unit& unitA, Unit& unitB) : unitA(unitA), unitB(unitB)
+{
+    Combat();
+}
+
+void Game::SimulateTurn(Unit &attacker, Unit &target)
 {
     attacker.Attack(target);
 }
 
-void Game::SimulateTurn(Player &attacker, Player &target)
-{
-    attacker.Attack(target);
-}
-
-void Game::Combat(Unit &a, Unit &b)
+void Game::Combat()
 {
     bool endCombat = false;
     while (!endCombat)
     {
-        SimulateTurn(a, b);
-        if (b.IsDead())
+        SimulateTurn(unitA, unitB);
+        if (unitB.IsDead())
         {
             endCombat = true;
-            std::cout << b.GetName() << " died. " << a.GetName() << " wins." << std::endl;
+            std::cout << unitB.GetName() << " died. " << unitA.GetName() << " wins." << std::endl;
         }
         else
         {
-            SimulateTurn(b, a);
-            if (a.IsDead())
+            SimulateTurn(unitB, unitA);
+            if (unitA.IsDead())
             {
                 endCombat = true;
-                std::cout << a.GetName() << " died. " << b.GetName() << " wins." << std::endl;           
+                std::cout << unitA.GetName() << " died. " << unitB.GetName() << " wins." << std::endl;           
             }
         }
-    }
-}
-
-void Game::Combat(Player &a, Player &b)
-{
-    bool endCombat = false;
-    while (!endCombat)
-    {
-        SimulateTurn(a, b);
-        if (b.IsDead())
-        {
-            endCombat = true;
-            std::cout << b.GetName() << " died. " << a.GetName() << " wins." << std::endl;
-            std::cout << a.GetName() << ": " << "HP: " << a.GetHealth() << " DMG: " << b.GetDamage() << " XP: " << a.GetXp() << " LVL: " << a.GetLevel() << std::endl;
-        }
-        else
-        {
-            SimulateTurn(b, a);
-            if (a.IsDead())
-            {
-                endCombat = true;
-                std::cout << a.GetName() << " died. " << b.GetName() << " wins." << std::endl;
-                std::cout << b.GetName() << ": " << "HP: " << b.GetHealth() << " DMG: " << b.GetDamage() << " XP: " << b.GetXp() << " LVL: " << b.GetLevel() << std::endl;           
-            }
-        }  
     }
 }
