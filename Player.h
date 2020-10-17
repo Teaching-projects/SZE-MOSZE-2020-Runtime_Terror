@@ -6,7 +6,7 @@
 class Player : public Unit 
 {
     public:
-    Player(const std::string&, const int, const int);    
+    Player(const std::string&, const int, const int, const float);    
 
     int GetLevel() const;
     int GetXp() const;

@@ -11,8 +11,9 @@ bool Unit::IsDead() const
     return health <= 0;
 }
 
-Unit::Unit(const std::string& name, const int health, const int damage) : name(name), health(health), damage(damage)
+Unit::Unit(const std::string name, const int health, const int damage, const float atkcooldown) : name(name), health(health), damage(damage), atkcooldown(atkcooldown)
 {
+    currentcooldown = atkcooldown;
 }
 
 std::string Unit::GetName() const 
@@ -30,9 +31,16 @@ int Unit::GetDamage() const
     return damage;
 }
 
-void Unit::Attack(Unit &target) const
+float Unit::GetCurrentCooldown() const 
+{
+    return currentcooldown;
+}
+
+void Unit::Attack(Unit &target)
 {
     target.SufferDamage(damage);
+    target.LowerCooldown(currentcooldown);
+    ResetCooldown();
 }
 
 void Unit::SufferDamage(int damageRecieved)
@@ -41,6 +49,19 @@ void Unit::SufferDamage(int damageRecieved)
     if(health < 0) {
         health = 0;
     }
+}
+
+void Unit::LowerCooldown(float amount)
+{
+    currentcooldown -= amount;
+    if(currentcooldown < 0) {
+        currentcooldown = 0;
+    }
+}
+
+void Unit::ResetCooldown()
+{
+    currentcooldown = atkcooldown;
 }
 
 void Unit::RemoveChar(std::string &text, const char c)
@@ -83,7 +104,7 @@ Unit Unit::parseUnit(const std::string& fileName)
             }
         }
     
-        return Unit(text[0],std::stoi(text[1]),std::stoi(text[2]));
+        return Unit(text[0],std::stoi(text[1]),std::stoi(text[2]),std::stof(text[3]));
     
     } else {
         throw std::runtime_error("file " + fileName + " doesn't exist");

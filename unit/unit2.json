@@ -1,5 +1,6 @@
 {
-    "name" : "Ferenc",
-    "hp" : 80,
-    "dmg" : 50
+    "name": "Lajcsi",
+    "hp": 100,
+    "dmg": 40,
+    "attackcooldown": 0.8
 }

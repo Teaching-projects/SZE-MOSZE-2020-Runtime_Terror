@@ -1,12 +1,12 @@
-Kakarott died. Ferenc wins.
-Ferenc: HP: 88 DMG: 55 XP: 100 LVL: 2
-Viktor died. Kakarott wins.
-Kakarott: HP: 111 DMG: 36 XP: 255 LVL: 3
-Kakarott died. Ferenc wins.
-Ferenc: HP: 88 DMG: 55 XP: 100 LVL: 2
-Viktor died. Ferenc wins.
-Ferenc: HP: 86 DMG: 60 XP: 270 LVL: 3
-Viktor died. Kakarott wins.
-Kakarott: HP: 111 DMG: 36 XP: 255 LVL: 3
-Viktor died. Ferenc wins.
-Ferenc: HP: 86 DMG: 60 XP: 270 LVL: 3
+Lajcsi died. Kakarott wins.
+Kakarott: HP: 220 DMG: 99 XP: 180 LVL: 2
+Kakarott died. Viktor wins.
+Viktor: HP: 193 DMG: 96 XP: 248 LVL: 3
+Lajcsi died. Kakarott wins.
+Kakarott: HP: 220 DMG: 99 XP: 180 LVL: 2
+Lajcsi died. Viktor wins.
+Viktor: HP: 176 DMG: 88 XP: 160 LVL: 2
+Kakarott died. Viktor wins.
+Viktor: HP: 193 DMG: 96 XP: 248 LVL: 3
+Lajcsi died. Viktor wins.
+Viktor: HP: 176 DMG: 88 XP: 160 LVL: 2

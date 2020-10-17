@@ -9,7 +9,7 @@ Game::Game(Player& playerA, Player& playerB) : playerA(playerA), playerB(playerB
 
 void Game::SimulateTurn(Player &attacker, Player &target)
 {
-    attacker.Attack(target);
+    if(attacker.GetCurrentCooldown() <= target.GetCurrentCooldown()) attacker.Attack(target);
 }
 
 void Game::Combat()
