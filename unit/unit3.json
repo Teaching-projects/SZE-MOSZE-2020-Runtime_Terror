@@ -1,6 +1,6 @@
 {
     "name": "Viktor",
-    "hp": 20000,
-    "dmg": 1600,
+    "hp": 160,
+    "dmg": 80,
     "attackcooldown": 0.15
-  }
+}

@@ -6,6 +6,12 @@ Tagok: Tömördi Tamás, Jaksics Benedek, Csillag Bence
 
 ## 3. feladat
 
+### Levelup
+
+A játék kiegészítésre került egy Player osztállyal, amely abban különbözik a Unit-tól, hogy az áltatala bevitt sebzés értékével megegyező xp-t kap. 100 xp-nként szintet lép, ekkor változik a health és damage értéke. 
+
+Illetve a kódon a test workflow már statikus kódanalízist és memory leak check-et is futtat minden push után.
+
 ### Attackspeed
 
 A JSON fájlok bővültek egy új adattaggal, ami egy Unit két ütése között eltelt "időt" jelzi. A program most már ezt a tulajdonságot figyelembe véve ütközteti az ellenfeleket.

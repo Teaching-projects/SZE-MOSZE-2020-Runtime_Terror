@@ -69,7 +69,7 @@ void Unit::RemoveChar(std::string &text, const char c)
     text.erase(remove(text.begin(), text.end(), c), text.end());
 }
 
-Unit Unit::parseUnit(const std::string fileName) 
+Unit Unit::parseUnit(const std::string& fileName) 
 {
     std::vector<std::string> text;
     std::string currentLine;

@@ -15,6 +15,7 @@
 
 class Unit
 {
+
 public:
     Unit(const std::string, const int, const int, const float); ///< Constructor of Unit class
 
@@ -22,6 +23,7 @@ public:
      * \brief Checks if the Unit's health value is zero
      * \return True, if the health value is zero, False, if it is not
     */
+
     bool IsDead() const;
 
     /**
@@ -33,7 +35,7 @@ public:
      * \brief Fills Unit data from JSON file
      * \return Unit with values from the specified JSON file
     */
-    static Unit parseUnit(const std::string /** [in] The name of the file to be parsed*/);
+    static Unit parseUnit(const std::string& /** [in] The name of the file to be parsed*/);
 
     /// This is a simple getter function for name
     std::string GetName() const;
@@ -44,17 +46,19 @@ public:
     /// This is a simple getter function for current time until next attack
     float GetCurrentCooldown() const;
 
-private:
+    protected:
     const std::string name; ///< The name of a unit
     int health; ///< The health value of a unit
-    const int damage; ///< The damage value of a unit
+    int damage; ///< The damage value of a unit
     const float atkcooldown; ///< The default time between the unit's attacks
     float currentcooldown; ///< The current time until the unit's next attack
 
+    private:
     static void RemoveChar(std::string & /** [in] The target string the charater(s) need to be removed from */, const char /** [in] The charater to be removed*/); ///< Removes specified characters from a given string. Used by the parseUnit function
     void SufferDamage(int); ///< Lowers a unit's health value by the specified amount
     void LowerCooldown(float); ///< Lowers a unit's cooldown until its next attack by the specified amount
     void ResetCooldown(); ///< Resets a unit's attack cooldown to it's base value
+
 };
 
 #endif
