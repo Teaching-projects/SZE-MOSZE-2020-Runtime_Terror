@@ -4,11 +4,60 @@
 #include <fstream>
 #include <regex>
 
+bool Json::Validator(std::string text)
+{
+
+    int quote = 0;
+    int j = 0;
+    bool valid = 1;
+    int first = text.find('{');
+    int last = text.find('}'); //utolső hasznos karakter
+    std::string trimmedtext = text.substr(first, last - first + 1);
+    int dpont = std::count(trimmedtext.begin(), trimmedtext.end(), ':');
+    int datanumber = std::count(trimmedtext.begin(), trimmedtext.end(), ',');
+
+    if ((trimmedtext.find('{') != std::string::npos && trimmedtext.find('}') != std::string::npos) && (dpont == (datanumber + 1)))
+    {
+        trimmedtext.erase(trimmedtext.end() - 1);
+        trimmedtext.append(",}");
+        for (int i = 0; i < dpont; i++)
+        {
+            do
+            {
+                if (trimmedtext[j] == '\"')
+                    quote++;
+                j++;
+            } while (trimmedtext[j] != ':');
+            if (trimmedtext[j] == ':' && quote != 2)
+                valid = false;
+            quote = 0;
+
+            do
+            {
+                if (trimmedtext[j] == '\"')
+                    quote++;
+                j++;
+            } while (trimmedtext[j] != ',');
+            if (!(trimmedtext[j] == ',' && (quote == 0 || quote == 2)))
+                valid = false;
+            quote = 0;
+        }
+        return valid;
+    }
+    else
+    {
+        return false;
+    }
+}
+
 std::map<std::string, std::string> Json::ParseString(const std::string &input)
 {
     std::string text = input;
     std::vector<std::string> data;
     std::map<std::string, std::string> mapedData;
+
+    bool asd = Validator("  {  \"name\" : \"Kakarott\"  ,    \"hp\" : 30000   , \"hp\" : 30000  } ");
+    std::cout << "final " << asd << "\n";
 
     text.push_back('\"');
     std::string chars = ": {},\r";
