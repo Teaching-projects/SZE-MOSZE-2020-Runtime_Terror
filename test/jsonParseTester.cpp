@@ -13,6 +13,21 @@ TEST(JsonTest, ParseString)
     ASSERT_EQ(data["hp"], "30000");
     ASSERT_EQ(data["dmg"], "9000");
 }
+TEST(JsonTest, Validator)
+{
+    ASSERT_THROW(Json::Validator("{    name\" : \"Kakarott\",    \"hp\" : 30000,    \"dmg\" : 9000 }"), std::runtime_error);
+    ASSERT_THROW(Json::Validator("{    \"name : \"Kakarott\",    \"hp\" : 30000,    \"dmg\" : 9000 }"), std::runtime_error);
+    ASSERT_THROW(Json::Validator("{    \"name\"  \"Kakarott\",    \"hp\" : 30000,    \"dmg\" : 9000 }"), std::runtime_error);
+    ASSERT_THROW(Json::Validator("{    \"name\" : Kakarott\",    \"hp\" : 30000,    \"dmg\" : 9000 }"), std::runtime_error);
+    ASSERT_THROW(Json::Validator("{    \"name\" : \"Kakarott,    \"hp\" : 30000,    \"dmg\" : 9000 }"), std::runtime_error);
+    ASSERT_THROW(Json::Validator("{    \"name\" : \"Kakarott\"    \"hp\" : 30000,    \"dmg\" : 9000 }"), std::runtime_error);
+    ASSERT_THROW(Json::Validator("{    \"name\" : \"Kakarott\",    hp\" : 30000,    \"dmg\" : 9000 }"), std::runtime_error);
+    ASSERT_THROW(Json::Validator("{    \"name\" : \"Kakarott\",    \"hp : 30000,    \"dmg\" : 9000 }"), std::runtime_error);
+    ASSERT_THROW(Json::Validator("{    \"name\" : \"Kakarott\",    \"hp\"  30000,    \"dmg\" : 9000 }"), std::runtime_error);
+    ASSERT_THROW(Json::Validator("{    \"name\" : \"Kakarott\",    \"hp\" : 30000,    \"dmg\" : 9000 "), std::runtime_error);
+    ASSERT_THROW(Json::Validator("{    \"name\" : \"Kakarott\",    \"hp\" : 30000    \"dmg\" : 9000 }"), std::runtime_error);
+    ASSERT_NO_THROW(Json::Validator("{    \"name\" : \"Kakarott\",    \"hp\" : 30000,    \"dmg\" : 9000}"));
+}
 
 int main(int argc, char **argv)
 {

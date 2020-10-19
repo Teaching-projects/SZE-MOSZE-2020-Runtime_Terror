@@ -4,7 +4,7 @@
 class Json
 {
 public:
-    static bool Validator(std::string text);
+    static void Validator(std::string text);
     static std::map<std::string, std::string> ParseString(const std::string &input);
     static std::map<std::string, std::string> ParseStream(std::istream &stream);
     static std::map<std::string, std::string> ParseFile(const std::string &filename);

@@ -4,12 +4,11 @@
 #include <fstream>
 #include <regex>
 
-bool Json::Validator(std::string text)
+void Json::Validator(std::string text)
 {
 
     int quote = 0;
     int j = 0;
-    bool valid = 1;
     int first = text.find('{');
     int last = text.find('}'); //utolső hasznos karakter
     std::string trimmedtext = text.substr(first, last - first + 1);
@@ -29,7 +28,11 @@ bool Json::Validator(std::string text)
                 j++;
             } while (trimmedtext[j] != ':');
             if (trimmedtext[j] == ':' && quote != 2)
-                valid = false;
+            {
+
+                throw std::runtime_error("Invalid Json");
+            }
+
             quote = 0;
 
             do
@@ -39,14 +42,17 @@ bool Json::Validator(std::string text)
                 j++;
             } while (trimmedtext[j] != ',');
             if (!(trimmedtext[j] == ',' && (quote == 0 || quote == 2)))
-                valid = false;
+            {
+
+                throw std::runtime_error("Invalid Json");
+            }
+
             quote = 0;
         }
-        return valid;
     }
     else
     {
-        return false;
+        throw std::runtime_error("Invalid Json");
     }
 }
 
@@ -56,8 +62,7 @@ std::map<std::string, std::string> Json::ParseString(const std::string &input)
     std::vector<std::string> data;
     std::map<std::string, std::string> mapedData;
 
-    bool asd = Validator("  {  \"name\" : \"Kakarott\"  ,    \"hp\" : 30000   , \"hp\" : 30000  } ");
-    std::cout << "final " << asd << "\n";
+    Validator("  {  \"name\" : \"Kakarott\"  ,    \"hp\" : 30000   , \"hp\" : 30000  } ");
 
     text.push_back('\"');
     std::string chars = ": {},\r";
