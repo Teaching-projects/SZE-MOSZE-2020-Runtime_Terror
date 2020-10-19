@@ -55,17 +55,32 @@ void Json::Validator(std::string text)
         throw std::runtime_error("Invalid Json");
     }
 }
+std::string Json::Trim(const std::string &text)
+{
+    auto start = text.begin();
+    while (start != text.end() && std::isspace(*start))
+    {
+        start++;
+    }
 
+    auto end = text.end();
+    do
+    {
+        end--;
+    } while (std::distance(start, end) > 0 && std::isspace(*end));
+
+    return std::string(start, end + 1);
+}
 std::map<std::string, std::string> Json::ParseString(const std::string &input)
 {
     std::string text = input;
     std::vector<std::string> data;
     std::map<std::string, std::string> mapedData;
 
-    Validator("  {  \"name\" : \"Kakarott\"  ,    \"hp\" : 30000   , \"hp\" : 30000  } ");
+    Validator(input);
 
     text.push_back('\"');
-    std::string chars = ": {},\r";
+    std::string chars = " :{},\r";
     for (size_t i = 0; i < chars.size(); i++)
     {
         text.erase(remove(text.begin(), text.end(), chars[i]), text.end());
@@ -78,6 +93,7 @@ std::map<std::string, std::string> Json::ParseString(const std::string &input)
     while ((pos = text.find("\"")) != std::string::npos)
     {
         token = text.substr(0, pos);
+        Trim(token);
         data.push_back(token);
         text.erase(0, pos + 1);
     }
