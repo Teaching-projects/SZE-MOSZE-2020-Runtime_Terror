@@ -80,7 +80,7 @@ std::map<std::string, std::string> Json::ParseString(const std::string &input)
     Validator(input);
 
     text.push_back('\"');
-    std::string chars = " :{},\r";
+    std::string chars = ":{},\r";
     for (size_t i = 0; i < chars.size(); i++)
     {
         text.erase(remove(text.begin(), text.end(), chars[i]), text.end());
