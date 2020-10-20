@@ -2,14 +2,14 @@
 
 #include "Game.h"
 
-Game::Game(const Unit &player, const Unit &enemy) : player(player), enemy(enemy)
+Game::Game(Player& playerA, Player& playerB) : playerA(playerA), playerB(playerB)
 {
     Combat();
 }
 
-void Game::SimulateTurn(const Unit &attacker, Unit &target) const
+void Game::SimulateTurn(Player &attacker, Player &target)
 {
-    attacker.Attack(target);
+    if(attacker.GetCurrentCooldown() <= target.GetCurrentCooldown()) attacker.Attack(target);
 }
 
 void Game::Combat()
@@ -17,27 +17,22 @@ void Game::Combat()
     bool endCombat = false;
     while (!endCombat)
     {
-        SimulateTurn(player, enemy);
-        if (enemy.IsDead())
+        SimulateTurn(playerA, playerB);
+        if (playerB.IsDead())
         {
             endCombat = true;
-            std::cout << enemy.GetName() << " died. " << player.GetName() << " wins." << std::endl;
-            break;
+            std::cout << playerB.GetName() << " died. " << playerA.GetName() << " wins." << std::endl;
+            std::cout << playerA.GetName() << ": HP: " << playerA.GetHealth() << " DMG: " << playerA.GetDamage() << " XP: " << playerA.GetXp() << " LVL: " << playerA.GetLevel() << std::endl;
         }
-        SimulateTurn(enemy, player);
-        if (player.IsDead())
+        else
         {
-            endCombat = true;
-            std::cout << player.GetName() << " died. " << enemy.GetName() << " wins." << std::endl;
-            break;
+            SimulateTurn(playerB, playerA);
+            if (playerA.IsDead())
+            {
+                endCombat = true;
+                std::cout << playerA.GetName() << " died. " << playerB.GetName() << " wins." << std::endl;
+                std::cout << playerB.GetName() << ": HP: " << playerB.GetHealth() << " DMG: " << playerB.GetDamage() << " XP: " << playerB.GetXp() << " LVL: " << playerB.GetLevel() << std::endl;
+            }
         }
     }
-}
-
-void Game::PrintCurrentState() const
-{
-    std::cout << player.GetName() << ": "
-              << "HP: " << player.GetHealth() << ", DMG: " << player.GetDamage() << std::endl;
-    std::cout << enemy.GetName() << ": "
-              << "HP: " << enemy.GetHealth() << ", DMG: " << enemy.GetDamage() << std::endl;
 }

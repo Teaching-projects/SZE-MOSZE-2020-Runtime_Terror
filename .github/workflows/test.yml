@@ -3,10 +3,37 @@ name: Test workflow
 on: push
 
 jobs:
-  build:
+
+  static_code_analysis:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: g++ -Wall *.cpp
+
+
+      - run: sudo apt-get install cppcheck
+      - run: cppcheck --enable=all *.cpp 2> static-code-analysis.txt
+      - run: cppcheck --enable=warning --error-exitcode=1 *.cpp
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: Static_code_analysis_artifact
+          path: ./static-code-analysis.txt
+
+  build_test_and_memory_leak_check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - run: g++ -Wall -Wextra -Werror *.cpp
+
       - run: chmod +x test.sh
       - run: ./test.sh
+
+      - run: sudo apt-get install valgrind
+      - run: valgrind --error-exitcode=1 --leak-check=full ./a.out unit1.json unit2.json 2> ./memory-leak-check.txt
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: Memory_leak_check_artifact
+          path: ./memory-leak-check.txt
+

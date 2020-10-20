@@ -6,3 +6,5 @@ Makefile
 CmakeCache.txt
 runTests
 asd.cppa
+/DOCS
+
