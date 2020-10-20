@@ -43,7 +43,18 @@ void Unit::Attack(Unit &target)
     target.LowerCooldown(currentcooldown);
     ResetCooldown();
 }
-
+void Unit::ResetCooldown()
+{
+    currentcooldown = atkcooldown;
+}
+void Unit::LowerCooldown(float amount)
+{
+    currentcooldown -= amount;
+    if (currentcooldown < 0)
+    {
+        currentcooldown = 0;
+    }
+}
 void Unit::SufferDamage(int damageRecieved)
 {
     health -= damageRecieved;
