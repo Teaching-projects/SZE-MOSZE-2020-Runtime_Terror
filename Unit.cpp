@@ -56,6 +56,6 @@ void Unit::SufferDamage(int damageRecieved)
 Unit Unit::parseUnit(const std::string &fileName)
 {
     std::map<std::string, std::string> data = Json::ParseFile(fileName);
-    Unit u = Unit(data["name"], std::stoi(data["hp"]), std::stoi(data["dmg"]), std::stoi(data["attackcooldown"]));
+    Unit u = Unit(data["name"], std::stoi(data["hp"]), std::stoi(data["dmg"]), std::stof(data["attackcooldown"]));
     return u;
 }
