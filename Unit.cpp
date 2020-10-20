@@ -32,7 +32,7 @@ int Unit::GetDamage() const
     return damage;
 }
 
-float Unit::GetCurrentCooldown() const 
+float Unit::GetCurrentCooldown() const
 {
     return currentcooldown;
 }
@@ -53,9 +53,9 @@ void Unit::SufferDamage(int damageRecieved)
     }
 }
 
-Unit Unit::parseUnit(const std::string fileName)
+Unit Unit::parseUnit(const std::string &fileName)
 {
     std::map<std::string, std::string> data = Json::ParseFile(fileName);
-    Unit u = Unit(data["name"], std::stoi(data["hp"]), std::stoi(data["dmg"]));
+    Unit u = Unit(data["name"], std::stoi(data["hp"]), std::stoi(data["dmg"]), std::stoi(data["attackcooldown"]));
     return u;
 }
