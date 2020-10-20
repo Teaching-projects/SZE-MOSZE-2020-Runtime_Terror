@@ -11,6 +11,8 @@ void Json::Validator(std::string text)
     int j = 0;
     int first = text.find('{');
     int last = text.find('}'); //utolső hasznos karakter
+    if (first == -1)
+        throw std::runtime_error("Invalid Json");
     std::string trimmedtext = text.substr(first, last - first + 1);
     int dpont = std::count(trimmedtext.begin(), trimmedtext.end(), ':');
     int datanumber = std::count(trimmedtext.begin(), trimmedtext.end(), ',');
