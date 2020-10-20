@@ -6,11 +6,27 @@ Tagok: Tömördi Tamás, Jaksics Benedek, Csillag Bence
 
 ## 3. feladat
 
+
 ### JsonParser és Google test
 
 Egy olyan osztály lett létrehozva, ami 3 különböző bemenetről tud adatot beolvasni, és feldolgozni.
 
 Az újonnan létrehozott osztály függvényeit Google teszttel ellenőrizve.
+
+### Levelup
+
+A játék kiegészítésre került egy Player osztállyal, amely abban különbözik a Unit-tól, hogy az áltatala bevitt sebzés értékével megegyező xp-t kap. 100 xp-nként szintet lép, ekkor változik a health és damage értéke. 
+
+Illetve a kódon a test workflow már statikus kódanalízist és memory leak check-et is futtat minden push után.
+
+### Attackspeed
+
+A JSON fájlok bővültek egy új adattaggal, ami egy Unit két ütése között eltelt "időt" jelzi. A program most már ezt a tulajdonságot figyelembe véve ütközteti az ellenfeleket.
+
+Emellett minden osztály kibővült DoxyGen dokumentációhoz használt kommentekkel. Ezt a dokumentációt a pushdocs.yml workflow generálja a gh-pages branchre minden push után. 
+
+Dokumentáció: https://teaching-projects.github.io/SZE-MOSZE-2020-Runtime_Terror/
+
 
 ## 2. feladat
 

@@ -3,7 +3,8 @@
 
 class Json
 {
-    static void Validator(std::string text);
+private:
+    static void Validator(const std::string &text);
     static std::string Trim(const std::string &text);
 
 public:
