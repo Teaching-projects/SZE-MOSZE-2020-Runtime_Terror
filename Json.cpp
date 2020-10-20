@@ -4,9 +4,8 @@
 #include <fstream>
 #include <regex>
 
-void Json::Validator(std::string text)
+void Json::Validator(const std::string &text)
 {
-
     int quote = 0;
     int j = 0;
     int first = text.find('{');
