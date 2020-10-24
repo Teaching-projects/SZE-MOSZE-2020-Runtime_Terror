@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['sze_2dmosze_2d2020_2druntime_5fterror',['SZE-MOSZE-2020-Runtime_Terror',['../autotoc_md0.html',1,'']]]
+  ['parseunit',['parseUnit',['../classUnit.html#a3d362944da10ba7d3bcbf7c98dd20f50',1,'Unit']]],
+  ['player',['Player',['../classPlayer.html',1,'']]]
 ];
