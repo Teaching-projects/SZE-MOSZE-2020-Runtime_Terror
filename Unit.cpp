@@ -1,5 +1,6 @@
 #include "Unit.h"
-  
+#include "Json.h"
+
 #include <iostream>
 #include <string>
 #include <vector>
@@ -16,22 +17,22 @@ Unit::Unit(const std::string name, const int health, const int damage, const flo
     currentcooldown = atkcooldown;
 }
 
-std::string Unit::GetName() const 
+std::string Unit::GetName() const
 {
     return name;
 }
 
-int Unit::GetHealth() const 
+int Unit::GetHealth() const
 {
     return health;
 }
 
-int Unit::GetDamage() const 
+int Unit::GetDamage() const
 {
     return damage;
 }
 
-float Unit::GetCurrentCooldown() const 
+float Unit::GetCurrentCooldown() const
 {
     return currentcooldown;
 }
@@ -42,72 +43,30 @@ void Unit::Attack(Unit &target)
     target.LowerCooldown(currentcooldown);
     ResetCooldown();
 }
-
-void Unit::SufferDamage(int damageRecieved)
-{
-    health -= damageRecieved;
-    if(health < 0) {
-        health = 0;
-    }
-}
-
-void Unit::LowerCooldown(float amount)
-{
-    currentcooldown -= amount;
-    if(currentcooldown < 0) {
-        currentcooldown = 0;
-    }
-}
-
 void Unit::ResetCooldown()
 {
     currentcooldown = atkcooldown;
 }
-
-void Unit::RemoveChar(std::string &text, const char c)
+void Unit::LowerCooldown(float amount)
 {
-    text.erase(remove(text.begin(), text.end(), c), text.end());
+    currentcooldown -= amount;
+    if (currentcooldown < 0)
+    {
+        currentcooldown = 0;
+    }
+}
+void Unit::SufferDamage(int damageRecieved)
+{
+    health -= damageRecieved;
+    if (health < 0)
+    {
+        health = 0;
+    }
 }
 
-Unit Unit::parseUnit(const std::string& fileName) 
+Unit Unit::parseUnit(const std::string &fileName)
 {
-    std::vector<std::string> text;
-    std::string currentLine;
-
-    std::ifstream file;
-
-    file.open(fileName);
-
-    if(file) {
-        while (getline(file, currentLine))
-        {
-            text.push_back(currentLine);
-        }
-
-        text.erase(text.end());
-        text.erase(text.begin());
-
-        for (size_t i = 0; i < text.size(); i++)
-        {
-            RemoveChar(text[i], ' ');
-            RemoveChar(text[i], '"');
-            RemoveChar(text[i], ',');
-            RemoveChar(text[i], '\r');
-        }
-
-        for (size_t i = 0; i < text.size(); i++)
-        {
-            size_t pos = 0;
-            while ((pos = text[i].find(':')) != std::string::npos)
-            {
-                text[i].erase(0, pos + 1);
-            }
-        }
-    
-        return Unit(text[0],std::stoi(text[1]),std::stoi(text[2]),std::stof(text[3]));
-    
-    } else {
-        throw std::runtime_error("file " + fileName + " doesn't exist");
-    }    
-
+    std::map<std::string, std::string> data = Json::ParseFile(fileName);
+    Unit u = Unit(data["name"], std::stoi(data["hp"]), std::stoi(data["dmg"]), std::stof(data["attackcooldown"]));
+    return u;
 }

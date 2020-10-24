@@ -6,6 +6,13 @@ Tagok: Tömördi Tamás, Jaksics Benedek, Csillag Bence
 
 ## 3. feladat
 
+
+### JsonParser és Google test
+
+Egy olyan osztály lett létrehozva, ami 3 különböző bemenetről tud adatot beolvasni, és feldolgozni.
+
+Az újonnan létrehozott osztály függvényeit Google teszttel ellenőrizve.
+
 ### Levelup
 
 A játék kiegészítésre került egy Player osztállyal, amely abban különbözik a Unit-tól, hogy az áltatala bevitt sebzés értékével megegyező xp-t kap. 100 xp-nként szintet lép, ekkor változik a health és damage értéke. 
@@ -20,6 +27,7 @@ Emellett minden osztály kibővült DoxyGen dokumentációhoz használt kommente
 
 Dokumentáció: https://teaching-projects.github.io/SZE-MOSZE-2020-Runtime_Terror/
 
+
 ## 2. feladat
 
 A program két argumentumként vár két json fájlt, amelyekben a Unit-ok adatai vannak tárolva. Ezt a két Unitot ütközteti a program. Ha valamelyik fájl nem létezik, a program hibaüzenetet ír ki.
@@ -32,5 +40,5 @@ A játék alapjai: van két egység, amelyek addig ütögetik egymást, amíg eg
 
 A main.cpp eddig ezeket tartalmazza:
 
-* Unit class az egységeknek (később ebből tervezünk származtatni külön Player-t, Enemy-t vagy amire még szükség lesz)
-* Game class, amely majd a játék mechanizmusát fogja tartalmazni (tehát a tartalma még jelentősen változni fog)
+- Unit class az egységeknek (később ebből tervezünk származtatni külön Player-t, Enemy-t vagy amire még szükség lesz)
+- Game class, amely majd a játék mechanizmusát fogja tartalmazni (tehát a tartalma még jelentősen változni fog)
