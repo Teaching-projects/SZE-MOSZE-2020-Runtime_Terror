@@ -67,19 +67,134 @@ $(function() {
 <div class="title">Json Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><a class="el" href="classJson.html" title="Json Parser class containing static functions. ">Json</a> Parser class containing static functions.  
+ <a href="classJson.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="Json_8h_source.html">Json.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:ab324310036367d24b68814201fffae6a"><td class="memItemLeft" align="right" valign="top"><a id="ab324310036367d24b68814201fffae6a"></a>
-static std::map&lt; std::string, std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>ParseString</b> (const std::string &amp;input)</td></tr>
+<tr class="memitem:ab324310036367d24b68814201fffae6a"><td class="memItemLeft" align="right" valign="top">static std::map&lt; std::string, std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJson.html#ab324310036367d24b68814201fffae6a">ParseString</a> (const std::string &amp;input)</td></tr>
+<tr class="memdesc:ab324310036367d24b68814201fffae6a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses data from string.  <a href="#ab324310036367d24b68814201fffae6a">More...</a><br /></td></tr>
 <tr class="separator:ab324310036367d24b68814201fffae6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a37214223a3672747e113d5e1cf23d3fd"><td class="memItemLeft" align="right" valign="top"><a id="a37214223a3672747e113d5e1cf23d3fd"></a>
-static std::map&lt; std::string, std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>ParseStream</b> (std::istream &amp;stream)</td></tr>
+<tr class="memitem:a37214223a3672747e113d5e1cf23d3fd"><td class="memItemLeft" align="right" valign="top">static std::map&lt; std::string, std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJson.html#a37214223a3672747e113d5e1cf23d3fd">ParseStream</a> (std::istream &amp;stream)</td></tr>
+<tr class="memdesc:a37214223a3672747e113d5e1cf23d3fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses data from stream.  <a href="#a37214223a3672747e113d5e1cf23d3fd">More...</a><br /></td></tr>
 <tr class="separator:a37214223a3672747e113d5e1cf23d3fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a94f9a0b4aae1017646d9973b5dad6374"><td class="memItemLeft" align="right" valign="top"><a id="a94f9a0b4aae1017646d9973b5dad6374"></a>
-static std::map&lt; std::string, std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>ParseFile</b> (const std::string &amp;filename)</td></tr>
+<tr class="memitem:a94f9a0b4aae1017646d9973b5dad6374"><td class="memItemLeft" align="right" valign="top">static std::map&lt; std::string, std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJson.html#a94f9a0b4aae1017646d9973b5dad6374">ParseFile</a> (const std::string &amp;filename)</td></tr>
+<tr class="memdesc:a94f9a0b4aae1017646d9973b5dad6374"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses data from file.  <a href="#a94f9a0b4aae1017646d9973b5dad6374">More...</a><br /></td></tr>
 <tr class="separator:a94f9a0b4aae1017646d9973b5dad6374"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><a class="el" href="classJson.html" title="Json Parser class containing static functions. ">Json</a> Parser class containing static functions. </p>
+<dl class="section author"><dt>Author</dt><dd>Tömördi Tamás</dd></dl>
+<p>Created on: 2020/10/29 10:56 </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a94f9a0b4aae1017646d9973b5dad6374"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a94f9a0b4aae1017646d9973b5dad6374">&#9670;&nbsp;</a></span>ParseFile()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::map&lt; std::string, std::string &gt; Json::ParseFile </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>filename</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Parses data from file. </p>
+<dl class="section return"><dt>Returns</dt><dd>A map of the data: key and value pairs </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">filename</td><td>The name of the file to be parsed </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a37214223a3672747e113d5e1cf23d3fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a37214223a3672747e113d5e1cf23d3fd">&#9670;&nbsp;</a></span>ParseStream()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::map&lt; std::string, std::string &gt; Json::ParseStream </td>
+          <td>(</td>
+          <td class="paramtype">std::istream &amp;&#160;</td>
+          <td class="paramname"><em>stream</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Parses data from stream. </p>
+<dl class="section return"><dt>Returns</dt><dd>A map of the data: key and value pairs </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">stream</td><td>The stream to be parsed </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ab324310036367d24b68814201fffae6a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab324310036367d24b68814201fffae6a">&#9670;&nbsp;</a></span>ParseString()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::map&lt; std::string, std::string &gt; Json::ParseString </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>input</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Parses data from string. </p>
+<dl class="section return"><dt>Returns</dt><dd>A map of the data: key and value pairs </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>The string to be parsed </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="Json_8h_source.html">Json.h</a></li>
 <li>Json.cpp</li>
