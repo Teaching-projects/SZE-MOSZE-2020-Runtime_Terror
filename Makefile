@@ -1,29 +1,14 @@
 SHELL=/bin/bash
 
-OBJS = player.o game.o main.o unit.o json.o
+OBJS = unit.o player.o game.o main.o json.o
 OUT = a.out
 CFLAGS = -Wall -std=c++17
 CC = g++
 
 default: build
 
-build: $(OBJS)
-	$(CC) $(CFLAGS) -o $(OUT) $(OBJS)
-
-json.o: Json.cpp
-	$(CC) $(CFLAGS) -c Json.cpp
-
-player.o: Player.cpp
-	$(CC) $(CFLAGS) -c Player.cpp
-
-unit.o: Unit.cpp
-	$(CC) $(CFLAGS) -c Unit.cpp
-
-game.o: Game.cpp
-	$(CC) $(CFLAGS) -c Game.cpp
-
-main.o: main.cpp
-	$(CC) $(CFLAGS) -c main.cpp
+build:
+	$(CC) $(CFLAGS) *.cpp
 
 buildtest:
 	bash -c "chmod +x test.sh"
