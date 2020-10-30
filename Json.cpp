@@ -91,10 +91,19 @@ std::map<std::string, std::string> Json::ParseString(const std::string &input)
 
     size_t pos = 0;
     std::string token;
+
     while ((pos = text.find("\"")) != std::string::npos)
     {
         token = text.substr(0, pos);
         token = Trim(token);
+        if (isdigit(token[1]))
+        {
+            if (std::stof(token) <= 0)
+            {
+                throw std::runtime_error("Invalid value");
+            }
+        }
+
         data.push_back(token);
         text.erase(0, pos + 1);
     }
@@ -102,8 +111,13 @@ std::map<std::string, std::string> Json::ParseString(const std::string &input)
     {
         mapedData[data[2 * i]] = data[2 * i + 1];
     }
+    if (mapedData.size() != 4)
+    {
+        throw std::runtime_error("Invalid Json");
+    }
     return mapedData;
 }
+
 std::map<std::string, std::string> Json::ParseStream(std::istream &stream)
 {
     std::string text, currentLine;
