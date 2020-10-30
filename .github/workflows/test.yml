@@ -24,13 +24,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - run: g++ -Wall -Wextra -Werror *.cpp
+      - run: g++ -Wall -Wextra -Werror -std=c++17 *.cpp
 
       - run: chmod +x test.sh
       - run: ./test.sh
 
       - run: sudo apt-get install valgrind
-      - run: valgrind --error-exitcode=1 --leak-check=full ./a.out unit1.json unit2.json 2> ./memory-leak-check.txt
+      - run: valgrind --error-exitcode=1 --leak-check=full ./a.out scenario1.json 2> ./memory-leak-check.txt
 
       - uses: actions/upload-artifact@v2
         with:
