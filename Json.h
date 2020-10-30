@@ -1,14 +1,33 @@
 #include <map>
 #include <string>
+#include <any>
+#include <iostream>
 
-class Json
+class JSON
 {
+    std::map<std::string, std::any> data;
+
 private:
-    static void Validator(const std::string &text);
-    static std::string Trim(const std::string &text);
+    static void Validator(const std::string&);
+    static std::string Trim(const std::string&);
 
 public:
-    static std::map<std::string, std::string> ParseString(const std::string &input);
-    static std::map<std::string, std::string> ParseStream(std::istream &stream);
-    static std::map<std::string, std::string> ParseFile(const std::string &filename);
+    JSON(std::map<std::string, std::any>);
+    int count(const std::string&);
+    static JSON parseFromString(const std::string&);
+    static JSON parseFromStream(std::istream&);
+    static JSON parseFromFile(const std::string&);
+
+    template <typename T>
+    T get(const std::string &key)
+    {
+        return std::any_cast<T>(data[key]);
+    }
+
+    class ParseException : virtual public std::runtime_error
+    {
+    public:
+        explicit ParseException(const std::string &description) : std::runtime_error("Parsing error: " + description) {}
+    };
+
 };

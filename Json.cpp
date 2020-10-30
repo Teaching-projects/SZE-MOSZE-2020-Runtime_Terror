@@ -4,7 +4,11 @@
 #include <fstream>
 #include <regex>
 
-void Json::Validator(const std::string &text)
+JSON::JSON(std::map<std::string, std::any> data) : data(data)
+{
+}
+
+void JSON::Validator(const std::string &text)
 {
     int quote = 0;
     int j = 0;
@@ -56,7 +60,8 @@ void Json::Validator(const std::string &text)
         throw std::runtime_error("Invalid Json");
     }
 }
-std::string Json::Trim(const std::string &text)
+
+std::string JSON::Trim(const std::string &text)
 {
     auto start = text.begin();
     while (start != text.end() && std::isspace(*start))
@@ -72,11 +77,17 @@ std::string Json::Trim(const std::string &text)
 
     return std::string(start, end + 1);
 }
-std::map<std::string, std::string> Json::ParseString(const std::string &input)
+
+int JSON::count(const std::string &key)
+{
+    return data.count(key);
+}
+
+JSON JSON::parseFromString(const std::string &input)
 {
     std::string text = input;
     std::vector<std::string> data;
-    std::map<std::string, std::string> mapedData;
+    std::map<std::string, std::any> mapedData;
 
     Validator(input);
 
@@ -100,11 +111,12 @@ std::map<std::string, std::string> Json::ParseString(const std::string &input)
     }
     for (size_t i = 0; i < data.size() / 2; i++)
     {
-        mapedData[data[2 * i]] = data[2 * i + 1];
+        mapedData[data[2 * i]] = data[2 * i + 1];       
     }
-    return mapedData;
+    return JSON(mapedData);
 }
-std::map<std::string, std::string> Json::ParseStream(std::istream &stream)
+
+JSON JSON::parseFromStream(std::istream &stream)
 {
     std::string text, currentLine;
 
@@ -112,16 +124,14 @@ std::map<std::string, std::string> Json::ParseStream(std::istream &stream)
     {
         text.append(currentLine);
     }
-    return ParseString(text);
+    return parseFromString(text);
 }
-std::map<std::string, std::string> Json::ParseFile(const std::string &filename)
+
+JSON JSON::parseFromFile(const std::string &filename)
 {
     std::ifstream file(filename);
     if (!file.good())
         throw std::runtime_error("file " + filename + " doesn't exist");
 
-    std::map<std::string, std::string> data = ParseStream(file);
-
-    file.close();
-    return data;
+    return  parseFromStream(file);
 }
