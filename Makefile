@@ -1,6 +1,6 @@
 SHELL=/bin/bash
 
-OBJS = json.o player.o game.o main.o unit.o
+OBJS = player.o game.o main.o unit.o json.o
 OUT = a.out
 CFLAGS = -Wall -std=c++17
 CC = g++
@@ -10,17 +10,17 @@ default: build
 build: $(OBJS)
 	$(CC) $(CFLAGS) -o $(OUT) $(OBJS)
 
-json.o: json.cpp
-	$(CC) $(CFLAGS) -c json.cpp
+json.o: Json.cpp
+	$(CC) $(CFLAGS) -c Json.cpp
 
-unit.o: unit.cpp
-	$(CC) $(CFLAGS) -c unit.cpp
+player.o: Player.cpp
+	$(CC) $(CFLAGS) -c Player.cpp
 
-player.o: player.cpp
-	$(CC) $(CFLAGS) -c player.cpp
+unit.o: Unit.cpp
+	$(CC) $(CFLAGS) -c Unit.cpp
 
-game.o: game.cpp
-	$(CC) $(CFLAGS) -c game.cpp
+game.o: Game.cpp
+	$(CC) $(CFLAGS) -c Game.cpp
 
 main.o: main.cpp
 	$(CC) $(CFLAGS) -c main.cpp
