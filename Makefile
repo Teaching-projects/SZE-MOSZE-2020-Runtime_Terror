@@ -10,19 +10,19 @@ default: build
 build: $(OBJS)
 	$(CC) $(CFLAGS) -o $(OUT) $(OBJS)
 
-Json.o: Json.cpp
+Json.o: Json.cpp Json.h
 	$(CC) $(CFLAGS) -c Json.cpp
 
-Player.o: Player.cpp
+Player.o: Player.cpp Player.h
 	$(CC) $(CFLAGS) -c Player.cpp
 
-Unit.o: Unit.cpp
+Unit.o: Unit.cpp Unit.h Json.h
 	$(CC) $(CFLAGS) -c Unit.cpp
 
-Game.o: Game.cpp
+Game.o: Game.cpp Game.h Player.h
 	$(CC) $(CFLAGS) -c Game.cpp
 
-main.o: main.cpp
+main.o: main.cpp Player.h Game.h
 	$(CC) $(CFLAGS) -c main.cpp
 
 buildtest:
