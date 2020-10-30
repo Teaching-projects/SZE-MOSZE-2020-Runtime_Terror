@@ -1,12 +1,19 @@
-Lajcsi died. Kakarott wins.
-Kakarott: HP: 220 DMG: 99 XP: 180 LVL: 2
-Kakarott died. Viktor wins.
-Viktor: HP: 193 DMG: 96 XP: 248 LVL: 3
-Lajcsi died. Kakarott wins.
-Kakarott: HP: 220 DMG: 99 XP: 180 LVL: 2
-Lajcsi died. Viktor wins.
-Viktor: HP: 176 DMG: 88 XP: 160 LVL: 2
-Kakarott died. Viktor wins.
-Viktor: HP: 193 DMG: 96 XP: 248 LVL: 3
-Lajcsi died. Viktor wins.
-Viktor: HP: 176 DMG: 88 XP: 160 LVL: 2
+Prince Aidan of Khanduras(1) vs Fallen
+Prince Aidan of Khanduras(1) vs Fallen
+Prince Aidan of Khanduras(1) vs Zombie
+Prince Aidan of Khanduras(1) vs Fallen
+Prince Aidan of Khanduras(2) vs Fallen
+Prince Aidan of Khanduras(2) vs Zombie
+Prince Aidan of Khanduras(2) vs Fallen
+Prince Aidan of Khanduras(3) vs Blood Raven
+The hero won.
+Prince Aidan of Khanduras: LVL8
+   HP: 57/65
+  DMG: 10
+  ACD: 0.526127
+Prince Aidan of Khanduras(1) vs Blood Raven
+The hero died.
+Prince Aidan of Khanduras: LVL1
+   HP: 0/30
+  DMG: 3
+  ACD: 1.1
