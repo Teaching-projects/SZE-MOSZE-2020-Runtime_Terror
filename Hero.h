@@ -6,7 +6,7 @@
 class Hero : public Monster 
 {
     public:
-    Hero(const std::string&, const int, const int, const float);    
+    Hero(const std::string&, const int, const int, const float, const int, const int, const int, const float);    
 
     int getLevel() const;
     int getXp() const;
@@ -19,6 +19,10 @@ class Hero : public Monster
     int xp = 0;
     int level = 1;
     int maxHealth;
+    const int ExperiencePerLevel; 
+    const int HealthPointBonusPerLevel;
+    const int DamageBonusPerLevel;
+    const float ColdownMultiplierPerLevel;
 
     void LevelUp();
 };
