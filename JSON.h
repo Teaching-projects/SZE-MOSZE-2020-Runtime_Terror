@@ -1,3 +1,6 @@
+#ifndef JSON_HEADER
+#define JSON_HEADER
+
 #include <map>
 #include <string>
 #include <any>
@@ -31,3 +34,5 @@ public:
     };
 
 };
+
+#endif
