@@ -13,6 +13,7 @@ class JSON
 private:
     static void Validator(const std::string&);
     static std::string Trim(const std::string&);
+    static bool isNumber(const std::string&);
 
 public:
     JSON(std::map<std::string, std::any>);

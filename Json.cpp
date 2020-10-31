@@ -109,9 +109,27 @@ JSON JSON::parseFromString(const std::string &input)
         data.push_back(token);
         text.erase(0, pos + 1);
     }
+
     for (size_t i = 0; i < data.size() / 2; i++)
     {
-        mapedData[data[2 * i]] = data[2 * i + 1];       
+        std::string key = data[2 * i];
+        std::string value = data[2 * i + 1];
+
+        if(isNumber(std::string(value)))
+        {
+            if(value.find(".") != std::string::npos)
+            {
+                mapedData[key] = stof(value);    
+            }
+            else
+            {
+                mapedData[key] = stoi(value);  
+            }
+        }
+        else 
+        {
+            mapedData[key] = value;
+        }
     }
     return JSON(mapedData);
 }
@@ -134,4 +152,11 @@ JSON JSON::parseFromFile(const std::string &filename)
         throw std::runtime_error("file " + filename + " doesn't exist");
 
     return  parseFromStream(file);
+}
+
+bool JSON::isNumber(const std::string &x)
+{
+    std::regex e ("^[0-9.]*$");
+    if (std::regex_match (x,e)) return true;
+    else return false;
 }
