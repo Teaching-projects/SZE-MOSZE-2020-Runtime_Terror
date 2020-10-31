@@ -3,7 +3,7 @@ on:
   push:
     branches:
       - master
-      - attackspeed
+      - makefile
       - gh-pages
 
 jobs:
