@@ -24,7 +24,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - run: g++ -Wall -Wextra -Werror -std=c++17 *.cpp
+      - run: g++-9 -Wall -Wextra -Werror -std=c++17 *.cpp
 
       - run: chmod +x test.sh
       - run: ./test.sh
