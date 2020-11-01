@@ -12,7 +12,7 @@ class Hero : public Monster
     int getXp() const;
     int getMaxHealthPoints() const;
 
-    void fightTilDeath(Monster&);
+    void Attack(Monster&);
     static Hero parse(const std::string&);
 
     private:

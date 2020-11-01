@@ -27,19 +27,25 @@ int Hero::getMaxHealthPoints() const
 void Hero::LevelUp() 
 {
     level += 1;
-    damage += damage * 0.1;
-    maxHealth += maxHealth * 0.1;
+    damage += DamageBonusPerLevel;
+    atkcooldown *= ColdownMultiplierPerLevel;
+    maxHealth += HealthPointBonusPerLevel;
     health = maxHealth;
 }
 
-void Hero::fightTilDeath(Monster& target) 
-{
-    Monster::fightTilDeath(target);
-    xp += damage;
-    while(level - 1 != (xp / 100))
+void Hero::Attack(Monster& enemy) 
+{    
+    Monster::Attack(enemy);
+    
+    if(enemy.isAlive())
     {
-        LevelUp();
-    }
+        while(level - 1 != (xp / ExperiencePerLevel))
+        {
+            LevelUp();
+        }
+    }    
+
+    xp += damage;
 }
 
 Hero Hero::parse(const std::string& fileName)
