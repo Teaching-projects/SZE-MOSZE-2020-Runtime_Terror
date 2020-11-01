@@ -2,6 +2,8 @@
  * \class Player
  * 
  * \brief Player class inherited from Unit class
+ * The Player is a Unit, but it has experience points and level value.
+ * In case of a level up, the damage, health and max health values are changing.
  * 
  * \author Tömördi Tamás
  * 

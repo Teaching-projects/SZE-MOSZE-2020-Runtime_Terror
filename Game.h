@@ -1,7 +1,9 @@
 /**
  * \class Game
  * 
- * \brief Game class
+ * \brief The Game class is the most important logic of the code.
+ * It simulates the turns and combats.
+ * It is very likely that this class will change or will be removed in the future. 
  * 
  * \author Jaksics Benedek & Tömördi Tamás
  * 

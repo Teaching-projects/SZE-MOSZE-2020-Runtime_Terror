@@ -2,6 +2,8 @@
  * \class Json
  * 
  * \brief Json Parser class containing static functions
+ * The class is able to parse datas from different sources: from files, streams and srings.
+ * It contains three static parse functions, and a Trim and Validator function to check wether a Json is valid or not.
  * 
  * \author Tömördi Tamás
  * 
