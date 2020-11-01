@@ -14,7 +14,6 @@ bool Monster::isAlive() const
 
 Monster::Monster(const std::string name, const int health, const int damage, const float atkcooldown) : name(name), health(health), damage(damage), atkcooldown(atkcooldown)
 {
-    currentcooldown = atkcooldown;
 }
 
 std::string Monster::getName() const
@@ -34,27 +33,42 @@ int Monster::getDamage() const
 
 float Monster::getAttackCoolDown() const
 {
-    return currentcooldown;
+    return atkcooldown;
 }
 
-void Monster::fightTilDeath(Monster &target)
+void Monster::fightTilDeath(Monster &enemy)
 {
-    target.SufferDamage(damage);
-    target.LowerCooldown(currentcooldown);
-    ResetCooldown();
-}
-void Monster::ResetCooldown()
-{
-    currentcooldown = atkcooldown;
-}
-void Monster::LowerCooldown(float amount)
-{
-    currentcooldown -= amount;
-    if (currentcooldown < 0)
+    float attackerTime = 0;
+    float enemyTime = 0;
+
+    while(this->isAlive() && enemy.isAlive())
     {
-        currentcooldown = 0;
+        if(attackerTime < enemyTime)
+        {
+            this->Attack(enemy);
+            enemyTime -= attackerTime;
+            attackerTime = this->getAttackCoolDown();
+        } 
+        else if(attackerTime > enemyTime)
+        {   
+            enemy.Attack(*this);
+            attackerTime -= enemyTime;
+            enemyTime = enemy.getAttackCoolDown();
+        } 
+        else 
+        {
+            this->Attack(enemy);
+            attackerTime = this->getAttackCoolDown();
+            enemyTime = 0;
+        }
     }
 }
+
+void Monster::Attack(Monster &enemy)
+{
+    enemy.SufferDamage(this->damage);
+}
+
 void Monster::SufferDamage(int damageRecieved)
 {
     health -= damageRecieved;
