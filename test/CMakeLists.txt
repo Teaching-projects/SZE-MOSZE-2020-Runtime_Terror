@@ -10,12 +10,13 @@ macro(use_cxx11)
   endif ()
 endmacro(use_cxx11)
 use_cxx11()
- 
 # Locate GTest
 find_package(GTest REQUIRED)
 include_directories(${GTEST_INCLUDE_DIRS})
- 
 # Link runTests with what we want to test 
 # and the GTest and pthread library
-add_executable(runTests Tester.cpp ../Json.cpp ../Unit.cpp ../Player.cpp)
+file(GLOB TEST_SOURCES ./*.cpp)
+file(GLOB SOURCES ../*.cpp)
+list(REMOVE_ITEM SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/../main.cpp")
+add_executable(runTests ${TEST_SOURCES} ${SOURCES})
 target_link_libraries(runTests ${GTEST_LIBRARIES} pthread)

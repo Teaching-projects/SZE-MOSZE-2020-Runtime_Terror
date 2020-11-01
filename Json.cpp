@@ -96,24 +96,12 @@ std::map<std::string, std::string> Json::ParseString(const std::string &input)
     {
         token = text.substr(0, pos);
         token = Trim(token);
-        if (isdigit(token[1]))
-        {
-            if (std::stof(token) <= 0)
-            {
-                throw std::runtime_error("Invalid value");
-            }
-        }
-
         data.push_back(token);
         text.erase(0, pos + 1);
     }
     for (size_t i = 0; i < data.size() / 2; i++)
     {
         mapedData[data[2 * i]] = data[2 * i + 1];
-    }
-    if (mapedData.size() != 4)
-    {
-        throw std::runtime_error("Invalid Json");
     }
     return mapedData;
 }
