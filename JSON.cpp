@@ -26,7 +26,7 @@ int JSON::count(const std::string &key)
 JSON JSON::parseFromString(const std::string &input)
 {
     std::string text = input;
-    std::map<std::string, std::any> mapedData;
+    std::map<std::string, std::any> mappedData;
 
     Validator(text);
 
@@ -47,21 +47,21 @@ JSON JSON::parseFromString(const std::string &input)
             {
                 if(value.find(".") != std::string::npos)
                 {
-                    mapedData[key] = stof(value);    
+                    mappedData[key] = stof(value);    
                 }
                 else
                 {
-                    mapedData[key] = stoi(value);  
+                    mappedData[key] = stoi(value);  
                 }
             }
             else 
             {
-                mapedData[key] = value;
+                mappedData[key] = value;
             }
         }
         text = match.suffix();
     }    
-    return JSON(mapedData);
+    return JSON(mappedData);
 }
 
 JSON JSON::parseFromStream(std::istream &stream)

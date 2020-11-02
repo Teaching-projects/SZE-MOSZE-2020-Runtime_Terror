@@ -20,7 +20,7 @@
 
 class JSON
 {
-    std::map<std::string, std::any> data;
+    std::map<std::string, std::any> data; ///< The parsed data in a map
 
 private:
 
@@ -28,11 +28,21 @@ private:
      * \brief Checks whether a string is a valid json or not
     */
     static void Validator(const std::string& /** [in] The text to be validated*/);
-    static bool isNumber(const std::string&);
+
+    /**
+     * \brief Checks whether the given string is a valid number
+     * \return A bool: true = the string is a valid number, false = the string is not a valid number
+    */
+    static bool isNumber(const std::string& /** [in] The string to be checked*/);
 
 public:
     JSON(std::map<std::string, std::any>);
-    int count(const std::string&);
+
+    /**
+     * \brief It tells wether a key is in the map or not
+     * \return A bool: true = the key exsists, false = the key does not exsist
+    */
+    int count(const std::string& /** [in] The given key*/);
 
     /**
      * \brief Parses data from string
@@ -52,6 +62,10 @@ public:
     */
     static JSON parseFromFile(const std::string& /** [in] The name of the file to be parsed*/);
 
+    /**
+     * \brief A get function to get data from the map
+     * \return A type T data
+    */
     template <typename T>
     T get(const std::string &key)
     {
