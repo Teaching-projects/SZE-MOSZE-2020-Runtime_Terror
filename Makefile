@@ -3,7 +3,7 @@ SHELL=/bin/bash
 OBJS = Monster.o Hero.o main.o JSON.o
 OUT = a.out
 CFLAGS = -Wall -std=c++17
-CC = g++
+CC = g++-9
 
 default: build
 
@@ -19,7 +19,7 @@ Hero.o: Hero.cpp Hero.h Monster.h JSON.h
 Monster.o: Monster.cpp Monster.h JSON.h
 	$(CC) $(CFLAGS) -c Monster.cpp
 
-main.o: main.cpp Hero.h
+main.o: main.cpp Hero.h Monster.h JSON.h
 	$(CC) $(CFLAGS) -c main.cpp
 
 buildtest:
