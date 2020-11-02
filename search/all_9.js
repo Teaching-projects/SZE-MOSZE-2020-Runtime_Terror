@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['parse',['parse',['../classMonster.html#a0b04445ff85b508acd45fa24732e4096',1,'Monster']]],
-  ['parseexception',['ParseException',['../classJSON_1_1ParseException.html',1,'JSON']]]
+  ['name',['name',['../classMonster.html#a4ce38cc9d6af5a37f54f90d2d7ab8ee0',1,'Monster']]]
 ];

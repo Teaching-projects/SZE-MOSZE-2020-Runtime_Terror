@@ -70,7 +70,7 @@ $(function() {
 <p>Az újonnan létrehozott osztály függvényeit Google teszttel ellenőrizve.</p>
 <p>A játék kiegészítésre került egy Player osztállyal, amely abban különbözik a Unit-tól, hogy az áltatala bevitt sebzés értékével megegyező xp-t kap. 100 xp-nként szintet lép, ekkor változik a health és damage értéke.</p>
 <p>Illetve a kódon a test workflow már statikus kódanalízist és memory leak check-et is futtat minden push után.</p>
-<p>A <a class="el" href="classJSON.html">JSON</a> fájlok bővültek egy új adattaggal, ami egy Unit két ütése között eltelt "időt" jelzi. A program most már ezt a tulajdonságot figyelembe véve ütközteti az ellenfeleket.</p>
+<p>A <a class="el" href="classJSON.html" title="JSON Parser class containing static functions The class is able to parse datas from different sources...">JSON</a> fájlok bővültek egy új adattaggal, ami egy Unit két ütése között eltelt "időt" jelzi. A program most már ezt a tulajdonságot figyelembe véve ütközteti az ellenfeleket.</p>
 <p>Emellett minden osztály kibővült DoxyGen dokumentációhoz használt kommentekkel. Ezt a dokumentációt a pushdocs.yml workflow generálja a gh-pages branchre minden push után.</p>
 <p>Dokumentáció: <a href="https://teaching-projects.github.io/SZE-MOSZE-2020-Runtime_Terror/">https://teaching-projects.github.io/SZE-MOSZE-2020-Runtime_Terror/</a></p>
 <p>A program két argumentumként vár két json fájlt, amelyekben a Unit-ok adatai vannak tárolva. Ezt a két Unitot ütközteti a program. Ha valamelyik fájl nem létezik, a program hibaüzenetet ír ki.</p>
