@@ -9,13 +9,11 @@ on:
 jobs:
   UnitTester:
     runs-on: ubuntu-latest
-    steps: 
-        - uses: actions/checkout@v2
-        - name: Installing 
-            run: sudo apt install libgtest-dev && cd /usr/src/gtest && sudo cmake . && sudo make && sudo cp *.a /usr/lib && sudo ln -s /usr/lib/libgtest.a /usr/local/lib/libgtest.a && sudo ln -s /usr/lib/libgtest_main.a /usr/local/lib/libgtest_main.a
-          
-        - run: cd test
-        - name: Test
-            run: sudo cmake CMakeLists.txt && sudo make && ./runTests
+    steps:
+      - uses: actions/checkout@v2
+      - name: Installing
+        run: sudo apt install libgtest-dev && cd /usr/src/gtest && sudo cmake . && sudo make && sudo cp *.a /usr/lib && sudo ln -s /usr/lib/libgtest.a /usr/local/lib/libgtest.a && sudo ln -s /usr/lib/libgtest_main.a /usr/local/lib/libgtest_main.a
 
-      
+      - run: cd test
+      - name: Test
+        run: sudo cmake CMakeLists.txt && sudo make && ./runTests
