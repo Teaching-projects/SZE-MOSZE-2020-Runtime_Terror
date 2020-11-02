@@ -1,10 +1,6 @@
 name: Testerautorun
 
-on:
-  push:
-    branches:
-      - master
-      - unittests
+on: push
 
 jobs:
   UnitTester:
