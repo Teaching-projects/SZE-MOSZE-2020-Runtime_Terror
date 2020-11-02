@@ -24,7 +24,7 @@ jobs:
 
       - run: make build
 
-      - run: make test
+      - run: make buildtest
 
       - run: sudo apt-get install valgrind
       - run: make memory_leak_check
