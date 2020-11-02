@@ -2,8 +2,9 @@
  * \class Monster
  * 
  * \brief Monster class
+ * A Monster can attack, suffer damage and we can also get it's values and wether it is alive or not
  * 
- * \author Jaksics Benedek
+ * \author Jaksics Benedek & Tömördi Tamás
  * 
  * Created on: 2020/10/12 12:04
 */
