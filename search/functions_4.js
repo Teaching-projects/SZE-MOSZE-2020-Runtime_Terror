@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['unit',['Unit',['../classUnit.html#a74b76e9d6123546b44a13d6c930db520',1,'Unit']]]
+  ['monster',['Monster',['../classMonster.html#a82a5f7b04a54e5f478be62aab9b1db3c',1,'Monster']]]
 ];
