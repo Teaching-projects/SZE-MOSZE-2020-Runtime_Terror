@@ -1,6 +1,6 @@
 SHELL=/bin/bash
 
-OBJS = Unit.o Player.o Game.o main.o Json.o
+OBJS = Monster.o Hero.o main.o JSON.o
 OUT = a.out
 CFLAGS = -Wall -std=c++17
 CC = g++
@@ -10,19 +10,16 @@ default: build
 build: $(OBJS)
 	$(CC) $(CFLAGS) -o $(OUT) $(OBJS)
 
-Json.o: Json.cpp Json.h
-	$(CC) $(CFLAGS) -c Json.cpp
+JSON.o: JSON.cpp JSON.h
+	$(CC) $(CFLAGS) -c JSON.cpp
 
-Player.o: Player.cpp Player.h Unit.h Json.h
-	$(CC) $(CFLAGS) -c Player.cpp
+Hero.o: Hero.cpp Hero.h Monster.h JSON.h
+	$(CC) $(CFLAGS) -c Hero.cpp
 
-Unit.o: Unit.cpp Unit.h Json.h
-	$(CC) $(CFLAGS) -c Unit.cpp
+Monster.o: Monster.cpp Monster.h JSON.h
+	$(CC) $(CFLAGS) -c Monster.cpp
 
-Game.o: Game.cpp Game.h Player.h
-	$(CC) $(CFLAGS) -c Game.cpp
-
-main.o: main.cpp Player.h Game.h
+main.o: main.cpp Hero.h
 	$(CC) $(CFLAGS) -c main.cpp
 
 buildtest:
@@ -30,7 +27,7 @@ buildtest:
 	./test.sh
 
 memory_leak_check:
-	valgrind --error-exitcode=1 --leak-check=full ./a.out unit1.json unit2.json 2> ./memory-leak-check.txt
+	valgrind --error-exitcode=1 --leak-check=full ./a.out scenario/scenario1.json 2> ./memory-leak-check.txt
 
 static_code_analysis:
 	cppcheck --enable=all *.cpp 2> static-code-analysis.txt
