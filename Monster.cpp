@@ -41,21 +41,21 @@ void Monster::fightTilDeath(Monster &enemy)
     float attackerTime = 0;
     float enemyTime = 0;
 
-    while(this->isAlive() && enemy.isAlive())
+    while (this->isAlive() && enemy.isAlive())
     {
-        if(attackerTime < enemyTime)
+        if (attackerTime < enemyTime)
         {
             this->Attack(enemy);
             enemyTime -= attackerTime;
             attackerTime = this->getAttackCoolDown();
-        } 
-        else if(attackerTime > enemyTime)
-        {   
+        }
+        else if (attackerTime > enemyTime)
+        {
             enemy.Attack(*this);
             attackerTime -= enemyTime;
             enemyTime = enemy.getAttackCoolDown();
-        } 
-        else 
+        }
+        else
         {
             this->Attack(enemy);
             attackerTime = this->getAttackCoolDown();

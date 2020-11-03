@@ -15,28 +15,28 @@
 
 #include "Monster.h"
 
-class Hero : public Monster 
+class Hero : public Monster
 {
-    public:
-    Hero(const std::string&, const int, const int, const float, const int, const int, const int, const float); ///< Constructor of Hero class
+public:
+    Hero(const std::string &, const int, const int, const float, const int, const int, const int, const float); ///< Constructor of Hero class
 
-    int getLevel() const; ///< This is a simple getter function for level value
-    int getXp() const; ///< This is a simple getter function for xp value
+    int getLevel() const;           ///< This is a simple getter function for level value
+    int getXp() const;              ///< This is a simple getter function for xp value
     int getMaxHealthPoints() const; ///< This is a simple getter function for the maxHealth value
 
     /**
      * \brief Damages target Moster using the Moster's SufferDamage function, increasing the xp and calling the LevelUp() function in case of level up
     */
-    void Attack(Monster& /** [in] The Monster the attack is targeting*/);
-    static Hero parse(const std::string&);
+    void Attack(Monster & /** [in] The Monster the attack is targeting*/);
+    static Hero parse(const std::string &);
 
-    private:
-    int xp = 0; ///< The experience points of a Hero
-    int level = 1; ///< The level of a Hero 
-    int maxHealth; ///< The maximum health value of a Hero
-    const int ExperiencePerLevel; ///< The experience points needed to level up
-    const int HealthPointBonusPerLevel; ///< The bonus health points in case of a level up
-    const int DamageBonusPerLevel; ///< The damage bonus in case of a level up
+private:
+    int xp = 0;                            ///< The experience points of a Hero
+    int level = 1;                         ///< The level of a Hero
+    int maxHealth;                         ///< The maximum health value of a Hero
+    const int ExperiencePerLevel;          ///< The experience points needed to level up
+    const int HealthPointBonusPerLevel;    ///< The bonus health points in case of a level up
+    const int DamageBonusPerLevel;         ///< The damage bonus in case of a level up
     const float ColdownMultiplierPerLevel; ///< The cooldown multiplier in case of a level up
 
     /**
