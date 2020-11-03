@@ -1,57 +1,57 @@
-#include "../Json.h"
+#include "../JSON.h"
 
 #include <gtest/gtest.h>
 
-TEST(JsonTest, ParseString)
+TEST(JsonTest, exist)
 {
-    std::map<std::string, std::string> data = Json::ParseString("{   \"hp\" : 200  ,   \"name\" : \"Kakarott\"  ,   \"attackcooldown\": 1.0  ,   \"dmg\" : 90   }");
-    ASSERT_EQ(data["name"], "Kakarott");
-    ASSERT_EQ(data["hp"], "200");
-    ASSERT_EQ(data["dmg"], "90");
-    ASSERT_EQ(data["attackcooldown"], "1.0");
-}
-TEST(JsonTest, doesnotexistFile)
-{
-    ASSERT_THROW(Json::ParseFile("../unit/doesnotexist.json"), std::runtime_error);
-}
-TEST(JsonTest, existFile)
-{
-    ASSERT_NO_THROW(Json::ParseFile("../unit/unit1.json"));
-}
-TEST(JsonTest, ValidatorMissingChars)
-{
-    ASSERT_THROW(Json::ParseString("    \"name\" : \"Kakarott\",    \"hp\" : 200,    \"dmg\" : 90, \"attackcooldown\": 1.0 }"), std::runtime_error);
-    ASSERT_THROW(Json::ParseString("{    name\" : \"Kakarott\",    \"hp\" : 200,    \"dmg\" : 90, \"attackcooldown\": 1.0  }"), std::runtime_error);
-    ASSERT_THROW(Json::ParseString("{    \"name : \"Kakarott\",    \"hp\" : 200,    \"dmg\" : 90, \"attackcooldown\": 1.0  }"), std::runtime_error);
-    ASSERT_THROW(Json::ParseString("{    \"name\"  \"Kakarott\",    \"hp\" : 200,    \"dmg\" : 90, \"attackcooldown\": 1.0  }"), std::runtime_error);
-    ASSERT_THROW(Json::ParseString("{    \"name\" : Kakarott\",    \"hp\" : 200,    \"dmg\" : 90, \"attackcooldown\": 1.0  }"), std::runtime_error);
-    ASSERT_THROW(Json::ParseString("{    \"name\" : \"Kakarott,    \"hp\" : 200,    \"dmg\" : 90, \"attackcooldown\": 1.0  }"), std::runtime_error);
-    ASSERT_THROW(Json::ParseString("{    \"name\" : \"Kakarott\"    \"hp\" : 200,    \"dmg\" : 90, \"attackcooldown\": 1.0  }"), std::runtime_error);
-    ASSERT_THROW(Json::ParseString("{    \"name\" : \"Kakarott\",    hp\" : 200,    \"dmg\" : 90, \"attackcooldown\": 1.0  }"), std::runtime_error);
-    ASSERT_THROW(Json::ParseString("{    \"name\" : \"Kakarott\",    \"hp : 200,    \"dmg\" : 90, \"attackcooldown\": 1.0  }"), std::runtime_error);
-    ASSERT_THROW(Json::ParseString("{    \"name\" : \"Kakarott\",    \"hp\"  200,    \"dmg\" : 90, \"attackcooldown\": 1.0  }"), std::runtime_error);
-    ASSERT_THROW(Json::ParseString("{    \"name\" : \"Kakarott\",    \"hp\" : 200    \"dmg\" : 90, \"attackcooldown\": 1.0  "), std::runtime_error);
-    ASSERT_THROW(Json::ParseString("{    \"name\" : \"Kakarott\",    \"hp\" : 200    dmg\" : 90, \"attackcooldown\": 1.0  }"), std::runtime_error);
-
-    ASSERT_THROW(Json::ParseString("{    name : \"Kakarott\",    \"hp\" : 200,    \"dmg\" : 90, \"attackcooldown\": 1.0 }"), std::runtime_error);
-    ASSERT_THROW(Json::ParseString("    \"name\" : \"Kakarott\",    \"hp\" : 200,    \"dmg\" : 90, \"attackcooldown\": 1.0 "), std::runtime_error);
-    ASSERT_THROW(Json::ParseString("{    \"name\"  \"Kakarott\",    \"hp\" : 200,    \"dmg\"  90, \"attackcooldown\": 1.0 }"), std::runtime_error);
-    ASSERT_THROW(Json::ParseString("{    \"name\"  \"Kakarott\"    \"hp\" : 200    \"dmg\" : 90, \"attackcooldown\": 1.0 }"), std::runtime_error);
-    ASSERT_THROW(Json::ParseString("{    \"name\" : \"Kakarott    \"hp\" : 200,    \"dmg\" : 90, \"attackcooldown\": 1.0 }"), std::runtime_error);
-    ASSERT_THROW(Json::ParseString("{    \"name\" : \"Kakarott\",    \"hp\" : 200,    \"dmg\" : 90, \"attackcooldown 1.0 }"), std::runtime_error);
-    ASSERT_THROW(Json::ParseString("{    name\" : \"Kakarott\",    \"hp\"  200,    \"dmg\" : 90, \"attackcooldown 1.0 }"), std::runtime_error);
+    JSON parsed = JSON::parseFromString("{\"name\":\"Kakarott\",\"hp\": 200}");
+    ASSERT_EQ(parsed.count("name"), 1);
+    ASSERT_EQ(parsed.count("hp"), 1);
+    ASSERT_EQ(parsed.count("dmg"), 0);
 }
 
-TEST(JsonTest, ValidatorPlusSpace)
+TEST(JSONTest, doesnotexistFile)
 {
-    ASSERT_NO_THROW(Json::ParseString("{\"name\":\"Kakarott\",\"hp\": 200,\"dmg\":90, \"attackcooldown\": 1.0 }"));
-    ASSERT_NO_THROW(Json::ParseString("{   \"name\"   :   \"Kakarott\"   ,    \"hp\"   : 200  ,    \"dmg\"   :    90  , \"attackcooldown\": 1.0   }"));
-    ASSERT_NO_THROW(Json::ParseString("{  \"hp\"   : 200,   \"name\"   :   \"Kakarott\",        \"dmg\"   :    90  , \"attackcooldown\": 1.0   }"));
-    ASSERT_NO_THROW(Json::ParseString("{  \"hp\"   : 200,       \"dmg\"   :    90,  \"name\"   :   \"Kakarott\" , \"attackcooldown\": 1.0  }"));
-    ASSERT_NO_THROW(Json::ParseString("{    \"name\" : \"Kakarott\",    \"hp\" : 200,    \"dmg\" : 90, \"attackcooldown\": 1.0 }"));
+    ASSERT_THROW(JSON::parseFromFile("../unit/doesnotexist.json"), std::runtime_error);
 }
-TEST(JsonTest, ValidatorMixedKeys)
+
+TEST(JSONTest, existFile)
 {
-    ASSERT_NO_THROW(Json::ParseString("{  \"hp\"   : 200,   \"name\"   :   \"Kakarott\",        \"dmg\"   :    90  , \"attackcooldown\": 1.0   }"));
-    ASSERT_NO_THROW(Json::ParseString("{  \"hp\"   : 200,       \"dmg\"   :    90,  \"name\"   :   \"Kakarott\" , \"attackcooldown\": 1.0  }"));
+    ASSERT_NO_THROW(JSON::parseFromFile("../unit/Dark_Wanderer.json"));
+}
+TEST(JSONTest, ValidatorMissingChars)
+{
+    ASSERT_THROW(JSON::parseFromString("    \"name\" : \"Kakarott\",    \"hp\" : 200,    \"dmg\" : 90, \"attackcooldown\": 1.0 }"), std::runtime_error);
+    ASSERT_THROW(JSON::parseFromString("{    name\" : \"Kakarott\",    \"hp\" : 200,    \"dmg\" : 90, \"attackcooldown\": 1.0  }"), std::runtime_error);
+    ASSERT_THROW(JSON::parseFromString("{    \"name : \"Kakarott\",    \"hp\" : 200,    \"dmg\" : 90, \"attackcooldown\": 1.0  }"), std::runtime_error);
+    ASSERT_THROW(JSON::parseFromString("{    \"name\"  \"Kakarott\",    \"hp\" : 200,    \"dmg\" : 90, \"attackcooldown\": 1.0  }"), std::runtime_error);
+    ASSERT_THROW(JSON::parseFromString("{    \"name\" : Kakarott\",    \"hp\" : 200,    \"dmg\" : 90, \"attackcooldown\": 1.0  }"), std::runtime_error);
+    ASSERT_THROW(JSON::parseFromString("{    \"name\" : \"Kakarott,    \"hp\" : 200,    \"dmg\" : 90, \"attackcooldown\": 1.0  }"), std::runtime_error);
+    ASSERT_THROW(JSON::parseFromString("{    \"name\" : \"Kakarott\",    hp\" : 200,    \"dmg\" : 90, \"attackcooldown\": 1.0  }"), std::runtime_error);
+    ASSERT_THROW(JSON::parseFromString("{    \"name\" : \"Kakarott\",    \"hp : 200,    \"dmg\" : 90, \"attackcooldown\": 1.0  }"), std::runtime_error);
+    ASSERT_THROW(JSON::parseFromString("{    \"name\" : \"Kakarott\",    \"hp\"  200,    \"dmg\" : 90, \"attackcooldown\": 1.0  }"), std::runtime_error);
+    ASSERT_THROW(JSON::parseFromString("{    \"name\" : \"Kakarott\",    \"hp\" : 200    \"dmg\" : 90, \"attackcooldown\": 1.0  "), std::runtime_error);
+    ASSERT_THROW(JSON::parseFromString("{    \"name\" : \"Kakarott\",    \"hp\" : 200    dmg\" : 90, \"attackcooldown\": 1.0  }"), std::runtime_error);
+
+    ASSERT_THROW(JSON::parseFromString("{    name : \"Kakarott\",    \"hp\" : 200,    \"dmg\" : 90, \"attackcooldown\": 1.0 }"), std::runtime_error);
+    ASSERT_THROW(JSON::parseFromString("    \"name\" : \"Kakarott\",    \"hp\" : 200,    \"dmg\" : 90, \"attackcooldown\": 1.0 "), std::runtime_error);
+    ASSERT_THROW(JSON::parseFromString("{    \"name\"  \"Kakarott\",    \"hp\" : 200,    \"dmg\"  90, \"attackcooldown\": 1.0 }"), std::runtime_error);
+    ASSERT_THROW(JSON::parseFromString("{    \"name\"  \"Kakarott\"    \"hp\" : 200    \"dmg\" : 90, \"attackcooldown\": 1.0 }"), std::runtime_error);
+    ASSERT_THROW(JSON::parseFromString("{    \"name\" : \"Kakarott    \"hp\" : 200,    \"dmg\" : 90, \"attackcooldown\": 1.0 }"), std::runtime_error);
+    ASSERT_THROW(JSON::parseFromString("{    \"name\" : \"Kakarott\",    \"hp\" : 200,    \"dmg\" : 90, \"attackcooldown 1.0 }"), std::runtime_error);
+    ASSERT_THROW(JSON::parseFromString("{    name\" : \"Kakarott\",    \"hp\"  200,    \"dmg\" : 90, \"attackcooldown 1.0 }"), std::runtime_error);
+}
+
+TEST(JSONTest, ValidatorPlusSpace)
+{
+    ASSERT_NO_THROW(JSON::parseFromString("{\"name\":\"Kakarott\",\"hp\": 200,\"dmg\":90, \"attackcooldown\": 1.0 }"));
+    ASSERT_NO_THROW(JSON::parseFromString("{   \"name\"   :   \"Kakarott\"   ,    \"hp\"   : 200  ,    \"dmg\"   :    90  , \"attackcooldown\": 1.0   }"));
+    ASSERT_NO_THROW(JSON::parseFromString("{  \"hp\"   : 200,   \"name\"   :   \"Kakarott\",        \"dmg\"   :    90  , \"attackcooldown\": 1.0   }"));
+    ASSERT_NO_THROW(JSON::parseFromString("{  \"hp\"   : 200,       \"dmg\"   :    90,  \"name\"   :   \"Kakarott\" , \"attackcooldown\": 1.0  }"));
+    ASSERT_NO_THROW(JSON::parseFromString("{    \"name\" : \"Kakarott\",    \"hp\" : 200,    \"dmg\" : 90, \"attackcooldown\": 1.0 }"));
+}
+TEST(JSONTest, ValidatorMixedKeys)
+{
+    ASSERT_NO_THROW(JSON::parseFromString("{  \"hp\"   : 200,   \"name\"   :   \"Kakarott\",        \"dmg\"   :    90  , \"attackcooldown\": 1.0   }"));
+    ASSERT_NO_THROW(JSON::parseFromString("{  \"hp\"   : 200,       \"dmg\"   :    90,  \"name\"   :   \"Kakarott\" , \"attackcooldown\": 1.0  }"));
 }

@@ -1,20 +1,21 @@
-#include "../Unit.h"
+#include "../Monster.h"
+#include "../Hero.h"
 
 #include <gtest/gtest.h>
 
 TEST(UnitTest, ParseUnit)
 {
-    Unit expected("Kakarott", 200, 90, 1.0);
-    Unit result = Unit::parseUnit("../unit/unit1.json");
-    EXPECT_EQ(expected.GetName(), result.GetName());
-    EXPECT_EQ(expected.GetDamage(), result.GetDamage());
-    EXPECT_EQ(expected.GetHealth(), result.GetHealth());
-    EXPECT_EQ(expected.GetCurrentCooldown(), result.GetCurrentCooldown());
+    Monster expected("Blood Raven", 113, 8, 1.2);
+    Monster result = Monster::parse("../unit/Blood_Raven.json");
+    EXPECT_EQ(expected.getName(), result.getName());
+    EXPECT_EQ(expected.getHealthPoints(), result.getHealthPoints());
+    EXPECT_EQ(expected.getDamage(), result.getDamage());
+    EXPECT_EQ(expected.getAttackCoolDown(), result.getAttackCoolDown());
 }
 TEST(UnitTest, Minusheal)
 {
-    Unit alive("Kakarott", 200, 90, 1.0);
-    EXPECT_EQ(alive.IsDead(), false);
-    Unit dead("Kakarott", -1, 90, 1.0);
-    EXPECT_EQ(dead.IsDead(), true);
+    Monster alive("Blood Raven", 113, 8, 1.2);
+    EXPECT_EQ(alive.isAlive(), true);
+    Monster dead("Blood Raven", -1, 8, 1.2);
+    EXPECT_EQ(dead.isAlive(), false);
 }

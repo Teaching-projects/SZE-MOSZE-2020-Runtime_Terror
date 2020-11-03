@@ -2,29 +2,29 @@
 #include "JSON.h"
 #include <iostream>
 
-Hero::Hero(const std::string& name, const int health, const int damage, const float atkcooldown, 
-    const int ExperiencePerLevel, const int HealthPointBonusPerLevel, const int DamageBonusPerLevel, const float ColdownMultiplierPerLevel) 
-    : Monster{name, health, damage, atkcooldown}, maxHealth(health), ExperiencePerLevel(ExperiencePerLevel), HealthPointBonusPerLevel(HealthPointBonusPerLevel), 
-    DamageBonusPerLevel(DamageBonusPerLevel), ColdownMultiplierPerLevel(ColdownMultiplierPerLevel)
+Hero::Hero(const std::string &name, const int health, const int damage, const float atkcooldown,
+           const int ExperiencePerLevel, const int HealthPointBonusPerLevel, const int DamageBonusPerLevel, const float ColdownMultiplierPerLevel)
+    : Monster{name, health, damage, atkcooldown}, maxHealth(health), ExperiencePerLevel(ExperiencePerLevel), HealthPointBonusPerLevel(HealthPointBonusPerLevel),
+      DamageBonusPerLevel(DamageBonusPerLevel), ColdownMultiplierPerLevel(ColdownMultiplierPerLevel)
 {
 }
 
-int Hero::getLevel() const 
+int Hero::getLevel() const
 {
     return level;
 }
 
-int Hero::getXp() const 
+int Hero::getXp() const
 {
     return xp;
 }
 
-int Hero::getMaxHealthPoints() const 
+int Hero::getMaxHealthPoints() const
 {
     return maxHealth;
 }
 
-void Hero::LevelUp() 
+void Hero::LevelUp()
 {
     level += 1;
     damage += DamageBonusPerLevel;
@@ -33,25 +33,25 @@ void Hero::LevelUp()
     health = maxHealth;
 }
 
-void Hero::Attack(Monster& enemy) 
-{    
+void Hero::Attack(Monster &enemy)
+{
     Monster::Attack(enemy);
-    
-    if(enemy.isAlive())
+
+    if (enemy.isAlive())
     {
-        while(level - 1 != (xp / ExperiencePerLevel))
+        while (level - 1 != (xp / ExperiencePerLevel))
         {
             LevelUp();
         }
-    }    
+    }
 
     xp += damage;
 }
 
-Hero Hero::parse(const std::string& fileName)
+Hero Hero::parse(const std::string &fileName)
 {
-   JSON data = JSON::parseFromFile(fileName);
-    
+    JSON data = JSON::parseFromFile(fileName);
+
     return Hero(
         data.get<std::string>("name"),
         data.get<int>("base_health_points"),
@@ -60,6 +60,5 @@ Hero Hero::parse(const std::string& fileName)
         data.get<int>("experience_per_level"),
         data.get<int>("health_point_bonus_per_level"),
         data.get<int>("damage_bonus_per_level"),
-        data.get<float>("cooldown_multiplier_per_level")
-    );
+        data.get<float>("cooldown_multiplier_per_level"));
 }
