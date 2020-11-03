@@ -2,9 +2,7 @@
 .vscode
 test/CMakeFiles/
 cmake_install.cmake
-Makefile
 CmakeCache.txt
 runTests
 asd.cppa
 /DOCS
-

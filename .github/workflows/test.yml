@@ -9,10 +9,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-
       - run: sudo apt-get install cppcheck
-      - run: cppcheck --enable=all *.cpp 2> static-code-analysis.txt
-      - run: cppcheck --enable=warning --error-exitcode=1 *.cpp
+      - run: make static_code_analysis
 
       - uses: actions/upload-artifact@v2
         with:
@@ -24,13 +22,12 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - run: g++ -Wall -Wextra -Werror *.cpp
+      - run: make build
 
-      - run: chmod +x test.sh
-      - run: ./test.sh
+      - run: make buildtest
 
       - run: sudo apt-get install valgrind
-      - run: valgrind --error-exitcode=1 --leak-check=full ./a.out unit1.json unit2.json 2> ./memory-leak-check.txt
+      - run: make memory_leak_check
 
       - uses: actions/upload-artifact@v2
         with:
