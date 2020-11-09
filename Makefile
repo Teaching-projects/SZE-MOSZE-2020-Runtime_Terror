@@ -37,8 +37,8 @@ documentation:
 	doxygen doxconf
 
 unittest:
-	cd /usr/src/gtest && sudo cmake CMakeLists.txt && sudo make
-	sudo ln -st /usr/lib/ /usr/src/gtest/libgtest.a && sudo ln -st /usr/lib/ /usr/src/gtest/libgtest_main.a
+	cd /usr/src/gtest && cmake CMakeLists.txt && make
+	ln -st /usr/lib/ /usr/src/gtest/libgtest.a && ln -st /usr/lib/ /usr/src/gtest/libgtest_main.a
 	cd test && cmake CMakeLists.txt
 	cd test && make
 	cd test && ./runTests
