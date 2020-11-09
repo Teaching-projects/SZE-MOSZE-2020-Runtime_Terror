@@ -36,5 +36,8 @@ static_code_analysis:
 documentation:
 	doxygen doxconf
 
+unittest:
+	cd test && cmake CMakeLists.txt && make && ./runTests
+
 clean:
 	rm -rf $(OBJS) $(OUT)

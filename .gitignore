@@ -1,8 +1,9 @@
 *.out
+*.o
 .vscode
-test/CMakeFiles/
+test
 cmake_install.cmake
 CmakeCache.txt
 runTests
-asd.cppa
 /DOCS
+
