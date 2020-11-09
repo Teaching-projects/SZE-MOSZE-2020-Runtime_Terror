@@ -8,8 +8,6 @@ jobs:
     container: csibe1999/mosze:latest
     steps:
       - uses: actions/checkout@v2
-      
-      - run: cd /usr/src/gtest && cmake . && make && cp *.a /usr/lib && ln -s /usr/lib/libgtest.a /usr/local/lib/libgtest.a && ln -s /usr/lib/libgtest_main.a /usr/local/lib/libgtest_main.a
-      
+            
       - name: Running
         run: make unittest

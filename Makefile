@@ -37,7 +37,11 @@ documentation:
 	doxygen doxconf
 
 unittest:
-	cd test && cmake CMakeLists.txt && make && ./runTests
+	cd /usr/src/gtest && sudo cmake CMakeLists.txt && sudo make
+	sudo ln -st /usr/lib/ /usr/src/gtest/libgtest.a && sudo ln -st /usr/lib/ /usr/src/gtest/libgtest_main.a
+	cd test && cmake CMakeLists.txt
+	cd test && make
+	cd test && ./runTests
 
 clean:
 	rm -rf $(OBJS) $(OUT)
