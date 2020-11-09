@@ -6,4 +6,6 @@ cmake_install.cmake
 CmakeCache.txt
 runTests
 /DOCS
-
+output.txt
+test.sh
+memory-leak-check.txt
