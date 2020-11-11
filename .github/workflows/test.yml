@@ -19,17 +19,18 @@ jobs:
 
   build_test_and_memory_leak_check:
     runs-on: ubuntu-latest
+    container: csibe1999/mosze:latest
     steps:
       - uses: actions/checkout@v2
 
       - run: make build
-      - run: make memory_leak_check
 
       - run: make buildtest
 
-
+      - run: make memory_leak_check
       - uses: actions/upload-artifact@v2
         with:
           name: Memory_leak_check_artifact
           path: ./memory-leak-check.txt
+
 
