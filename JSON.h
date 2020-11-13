@@ -36,7 +36,7 @@ private:
 
 public:
 
-    typedef std::list<std::variant<std::string, int, float>> list;
+    typedef std::list<std::variant<std::string, int, float>> list; ///< Type definition for the lists
 
     JSON(std::map<std::string, std::any>);
 
@@ -66,13 +66,16 @@ public:
     */
     static JSON parseFromFile(const std::string & /** [in] The name of the file to be parsed*/);
 
+    /**
+     * \brief A static function to parse the values and make a list
+     * \return A list of values
+    */
     static JSON::list parseList(std::string&);
 
     /**
      * \brief A get function to get data from the map
      * \return A type T data
-    */
-    
+    */    
     template <typename T>
     T get(const std::string &key)
     {
