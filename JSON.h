@@ -15,7 +15,6 @@
 
 #include <map>
 #include <string>
-#include <any>
 #include <variant>
 #include <iostream>
 #include <list>
@@ -38,9 +37,9 @@ public:
 
     typedef std::list<std::variant<std::string, int, float>> list; ///< Type definition for the lists
 
-    JSON(std::map<std::string, std::any>);
+    JSON(std::map<std::string, std::variant<std::string, int, float, list>>);
 
-    std::map<std::string, std::any> data; ///< The parsed data in a map   
+    std::map<std::string, std::variant<std::string, int, float, list>> data; ///< The parsed data in a map   
 
     /**
      * \brief It tells wether a key is in the map or not
@@ -79,7 +78,7 @@ public:
     template <typename T>
     T get(const std::string &key)
     {
-        return std::any_cast<T>(data[key]);
+        return std::get<T>(data[key]);
     }
 
     class ParseException : virtual public std::runtime_error
