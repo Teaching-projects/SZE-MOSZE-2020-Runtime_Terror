@@ -27,7 +27,7 @@ buildtest:
 	./test.sh
 
 memory_leak_check:
-	valgrind --error-exitcode=1 --leak-check=full ./a.out scenario/scenario1.json 2> ./memory-leak-check.txt
+	valgrind --error-exitcode=1 --leak-check=full ./$(OUT) scenario/scenario1.json 2> ./memory-leak-check.txt
 
 static_code_analysis:
 	cppcheck --enable=all *.cpp 2> static-code-analysis.txt
@@ -35,6 +35,13 @@ static_code_analysis:
 
 documentation:
 	doxygen doxconf
+
+unittest:
+	cd /usr/src/gtest && cmake CMakeLists.txt && make
+	ln -st /usr/lib/ /usr/src/gtest/libgtest.a && ln -st /usr/lib/ /usr/src/gtest/libgtest_main.a
+	cd test && cmake CMakeLists.txt
+	cd test && make
+	cd test && ./runTests
 
 clean:
 	rm -rf $(OBJS) $(OUT)

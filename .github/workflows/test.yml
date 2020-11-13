@@ -6,10 +6,10 @@ jobs:
 
   static_code_analysis:
     runs-on: ubuntu-latest
+    container: csibe1999/mosze:latest
     steps:
       - uses: actions/checkout@v2
 
-      - run: sudo apt-get install cppcheck
       - run: make static_code_analysis
 
       - uses: actions/upload-artifact@v2
@@ -19,6 +19,7 @@ jobs:
 
   build_test_and_memory_leak_check:
     runs-on: ubuntu-latest
+    container: csibe1999/mosze:latest
     steps:
       - uses: actions/checkout@v2
 
@@ -26,11 +27,10 @@ jobs:
 
       - run: make buildtest
 
-      - run: sudo apt-get install valgrind
       - run: make memory_leak_check
-
       - uses: actions/upload-artifact@v2
         with:
           name: Memory_leak_check_artifact
           path: ./memory-leak-check.txt
+
 
