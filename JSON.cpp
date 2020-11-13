@@ -4,7 +4,7 @@
 #include <regex>
 #include <variant>
 
-JSON::JSON(std::map<std::string, std::variant<std::string, int, float, list>> data) : data(data)
+JSON::JSON(std::map<std::string, std::variant<std::string, int, double, list>> data) : data(data)
 {
 }
 
@@ -26,7 +26,7 @@ int JSON::count(const std::string &key)
 JSON JSON::parseFromString(const std::string &input)
 {
     std::string text = input;
-    std::map<std::string, std::variant<std::string, int, float, list>> mappedData;
+    std::map<std::string, std::variant<std::string, int, double, list>> mappedData;
 
     Validator(text);
 
@@ -55,7 +55,7 @@ JSON JSON::parseFromString(const std::string &input)
             {
                 if (value.find(".") != std::string::npos)
                 {
-                    mappedData[key] = stof(value);
+                    mappedData[key] = stod(value);
                 }
                 else
                 {

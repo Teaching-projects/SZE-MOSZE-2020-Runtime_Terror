@@ -35,11 +35,11 @@ private:
 
 public:
 
-    typedef std::list<std::variant<std::string, int, float>> list; ///< Type definition for the lists
+    typedef std::list<std::variant<std::string, int, double>> list; ///< Type definition for the lists
 
-    JSON(std::map<std::string, std::variant<std::string, int, float, list>>);
+    JSON(std::map<std::string, std::variant<std::string, int, double, list>>);
 
-    std::map<std::string, std::variant<std::string, int, float, list>> data; ///< The parsed data in a map   
+    std::map<std::string, std::variant<std::string, int, double, list>> data; ///< The parsed data in a map   
 
     /**
      * \brief It tells wether a key is in the map or not
