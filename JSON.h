@@ -16,12 +16,12 @@
 #include <map>
 #include <string>
 #include <any>
+#include <variant>
 #include <iostream>
+#include <list>
 
 class JSON
 {
-    std::map<std::string, std::any> data; ///< The parsed data in a map
-
 private:
     /**
      * \brief Checks whether a string is a valid json or not
@@ -35,7 +35,12 @@ private:
     static bool isNumber(const std::string & /** [in] The string to be checked*/);
 
 public:
+
+    typedef std::list<std::variant<std::string, int, float>> list;
+
     JSON(std::map<std::string, std::any>);
+
+    std::map<std::string, std::any> data; ///< The parsed data in a map   
 
     /**
      * \brief It tells wether a key is in the map or not
@@ -61,10 +66,13 @@ public:
     */
     static JSON parseFromFile(const std::string & /** [in] The name of the file to be parsed*/);
 
+    static JSON::list parseList(std::string&);
+
     /**
      * \brief A get function to get data from the map
      * \return A type T data
     */
+    
     template <typename T>
     T get(const std::string &key)
     {

@@ -10,7 +10,7 @@ JSON::JSON(std::map<std::string, std::any> data) : data(data)
 
 void JSON::Validator(const std::string &text)
 {
-    static const std::regex JSONvalidator("^\\s*\\{(\\s*(\"[a-zA-Z0-9_]+\")\\s*:\\s*(\"[^\"]+\"|\\d+.\\d+|\\d+)\\s*,*)*\\s*\\}\\s*$");
+    static const std::regex JSONvalidator("^\\s*\\{(\\s*(\"[a-zA-Z0-9_]+\")\\s*:\\s*((\"[^\"]+\"|\\d+.\\d+|\\d+)|(\\[(\\s*\"[^\"]*\",*\\s*)*\\]))\\s*,*)*\\s*\\}\\s*$");
 
     if (!std::regex_match(text, JSONvalidator))
     {
@@ -30,17 +30,25 @@ JSON JSON::parseFromString(const std::string &input)
 
     Validator(text);
 
-    static const std::regex JSONparser("\\s*(\"[a-zA-Z0-9_]+\")\\s*:\\s*(\"[^\"]+\"|\\d+.\\d+|\\d+)\\s*[,}]\\s*");
+    text.erase(remove(text.begin(), text.end(), '\r'), text.end());
+
+    static const std::regex JSONparser("\\s*(\"[a-zA-Z0-9_]+\")\\s*:\\s*((\"[^\"]+\"|\\d+.\\d+|\\d+)|(\\[[^]*\\]))\\s*[,}]\\s*");
     std::smatch match;
 
     while (std::regex_search(text, match, JSONparser))
-    {
-        if (match.size() == 3)
-        {
-            std::string key = match[1].str();
-            std::string value = match[2].str();
+    {     
+        std::string key = match[1].str();
+        std::string value = match[2].str();
 
-            key.erase(remove(key.begin(), key.end(), '\"'), key.end());
+        key.erase(remove(key.begin(), key.end(), '\"'), key.end());  
+
+        if(value.find("[") != std::string::npos)
+        {            
+            JSON::list list = JSON::parseList(value);
+            mappedData[key] = list;
+        }
+        else 
+        {            
             value.erase(remove(value.begin(), value.end(), '\"'), value.end());
 
             if (isNumber(value))
@@ -53,12 +61,13 @@ JSON JSON::parseFromString(const std::string &input)
                 {
                     mappedData[key] = stoi(value);
                 }
-            }
-            else
+            }        
+            else 
             {
                 mappedData[key] = value;
             }
         }
+
         text = match.suffix();
     }
     return JSON(mappedData);
@@ -91,4 +100,20 @@ bool JSON::isNumber(const std::string &x)
         return true;
     else
         return false;
+}
+
+JSON::list JSON::parseList(std::string &text)
+{
+    static const std::regex listParser("\\s*\"([^\"]*)\",*\\s*");
+    std::smatch match;
+
+    JSON::list list;
+
+    while (std::regex_search(text, match, listParser))
+    {
+        list.push_back(match[1]);
+        text = match.suffix();
+    }
+
+    return list;
 }
