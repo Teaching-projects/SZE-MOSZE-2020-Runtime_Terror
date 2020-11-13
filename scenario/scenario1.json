@@ -1,4 +1,13 @@
 {
     "hero" : "unit/Dark_Wanderer.json",
-    "monsters" : "unit/Fallen.json  unit/Fallen.json  unit/Zombie.json  unit/Fallen.json  unit/Fallen.json  unit/Zombie.json  unit/Fallen.json  unit/Blood_Raven.json"
+    "monsters" : [
+        "unit/Fallen.json",
+        "unit/Fallen.json",
+        "unit/Zombie.json",
+        "unit/Fallen.json",
+        "unit/Fallen.json",
+        "unit/Zombie.json",
+        "unit/Fallen.json",
+        "unit/Blood_Raven.json"
+    ]
 }
