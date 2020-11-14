@@ -1,4 +1,7 @@
-FROM ubuntu:20.04
+FROM ubuntu:20.04 
+
+ENV TZ=Europe/Budapest
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 RUN apt-get update && apt-get install --no-install-recommends -y \
     gcc g++ \
@@ -9,4 +12,4 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     doxygen \
     graphviz\
     libgtest-dev \
-    && rm -rf /var/lib/apt/lists/*
+    && apt-get install -y git && rm -rf /var/lib/apt/lists/*
