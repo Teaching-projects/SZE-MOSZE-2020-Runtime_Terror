@@ -1,8 +1,10 @@
 FROM ubuntu:20.04 
-ARG DEBIAN_FRONTEND=noninteractive
+
+ENV TZ=Europe/Budapest
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
 RUN apt-get update && apt-get install --no-install-recommends -y \
     gcc g++ \
-    git \
     make \
     cmake \
     cppcheck \
@@ -10,4 +12,4 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     doxygen \
     graphviz\
     libgtest-dev \
-    && rm -rf /var/lib/apt/lists/*
+    && apt-get install -y git && rm -rf /var/lib/apt/lists/*

@@ -9,7 +9,7 @@ jobs:
   deploy:
     name: Deploy to GitHub Pages
     runs-on: ubuntu-latest
-    container: csibe1999/mosze:latest
+    container: csibe1999/mosze2:latest
     steps:
       - uses: actions/checkout@v2
 
