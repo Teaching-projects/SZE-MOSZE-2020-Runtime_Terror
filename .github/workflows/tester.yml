@@ -5,7 +5,7 @@ on: push
 jobs:
   UnitTester:
     runs-on: ubuntu-latest
-    container: csibe1999/mosze:latest
+    container: csibe1999/mosze_image:latest
     steps:
       - uses: actions/checkout@v2
             
