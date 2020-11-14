@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">SZE-MOSZE-2020-Runtime_Terror
-   &#160;<span id="projectnumber">0.3</span>
+   &#160;<span id="projectnumber">0.5</span>
    </div>
    <div id="projectbrief">Small RPG running in console. Units of various strength hit each other until only one remains.</div>
   </td>
@@ -76,7 +76,7 @@ $(function() {
 <div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="classHero.html">   18</a></span>&#160;<span class="keyword">class </span><a class="code" href="classHero.html">Hero</a> : <span class="keyword">public</span> <a class="code" href="classMonster.html">Monster</a></div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;{</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <a class="code" href="classHero.html#afac620346f74e8037406d38fef582695">Hero</a>(<span class="keyword">const</span> std::string &amp;, <span class="keyword">const</span> <span class="keywordtype">int</span>, <span class="keyword">const</span> <span class="keywordtype">int</span>, <span class="keyword">const</span> <span class="keywordtype">float</span>, <span class="keyword">const</span> <span class="keywordtype">int</span>, <span class="keyword">const</span> <span class="keywordtype">int</span>, <span class="keyword">const</span> <span class="keywordtype">int</span>, <span class="keyword">const</span> <span class="keywordtype">float</span>); </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <a class="code" href="classHero.html#abc493cbea0390628aa8eefb1b8bcba39">Hero</a>(<span class="keyword">const</span> std::string &amp;, <span class="keyword">const</span> <span class="keywordtype">int</span>, <span class="keyword">const</span> <span class="keywordtype">int</span>, <span class="keyword">const</span> <span class="keywordtype">double</span>, <span class="keyword">const</span> <span class="keywordtype">int</span>, <span class="keyword">const</span> <span class="keywordtype">int</span>, <span class="keyword">const</span> <span class="keywordtype">int</span>, <span class="keyword">const</span> <span class="keywordtype">double</span>); </div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classHero.html#a17e77f3769e62aeb4e1807bbfc720f47">getLevel</a>() <span class="keyword">const</span>;           </div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classHero.html#a2477a58e24f6cd1e330c694d68594a94">getXp</a>() <span class="keyword">const</span>;              </div>
@@ -92,7 +92,7 @@ $(function() {
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">int</span> ExperiencePerLevel;          </div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">int</span> HealthPointBonusPerLevel;    </div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">int</span> DamageBonusPerLevel;         </div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">float</span> ColdownMultiplierPerLevel; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">double</span> ColdownMultiplierPerLevel; </div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordtype">void</span> LevelUp();</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;};</div>
@@ -100,12 +100,12 @@ $(function() {
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aclassHero_html_a2477a58e24f6cd1e330c694d68594a94"><div class="ttname"><a href="classHero.html#a2477a58e24f6cd1e330c694d68594a94">Hero::getXp</a></div><div class="ttdeci">int getXp() const</div><div class="ttdoc">This is a simple getter function for xp value.</div><div class="ttdef"><b>Definition:</b> Hero.cpp:17</div></div>
-<div class="ttc" id="aclassHero_html_afac620346f74e8037406d38fef582695"><div class="ttname"><a href="classHero.html#afac620346f74e8037406d38fef582695">Hero::Hero</a></div><div class="ttdeci">Hero(const std::string &amp;, const int, const int, const float, const int, const int, const int, const float)</div><div class="ttdoc">Constructor of Hero class.</div><div class="ttdef"><b>Definition:</b> Hero.cpp:5</div></div>
 <div class="ttc" id="aclassHero_html_ac6a7deeb6e390a23536d622042f4c48e"><div class="ttname"><a href="classHero.html#ac6a7deeb6e390a23536d622042f4c48e">Hero::getMaxHealthPoints</a></div><div class="ttdeci">int getMaxHealthPoints() const</div><div class="ttdoc">This is a simple getter function for the maxHealth value.</div><div class="ttdef"><b>Definition:</b> Hero.cpp:22</div></div>
 <div class="ttc" id="aclassHero_html_a17e77f3769e62aeb4e1807bbfc720f47"><div class="ttname"><a href="classHero.html#a17e77f3769e62aeb4e1807bbfc720f47">Hero::getLevel</a></div><div class="ttdeci">int getLevel() const</div><div class="ttdoc">This is a simple getter function for level value.</div><div class="ttdef"><b>Definition:</b> Hero.cpp:12</div></div>
 <div class="ttc" id="aclassHero_html"><div class="ttname"><a href="classHero.html">Hero</a></div><div class="ttdoc">Hero class inherited from Monster class The Hero is a Monster, but it has experience points and level...</div><div class="ttdef"><b>Definition:</b> Hero.h:18</div></div>
 <div class="ttc" id="aclassMonster_html"><div class="ttname"><a href="classMonster.html">Monster</a></div><div class="ttdoc">Monster class A Monster can attack, suffer damage and we can also get it's values and wether it is al...</div><div class="ttdef"><b>Definition:</b> Monster.h:17</div></div>
 <div class="ttc" id="aclassHero_html_aef5c268a20b4953ea1cde84167403aed"><div class="ttname"><a href="classHero.html#aef5c268a20b4953ea1cde84167403aed">Hero::Attack</a></div><div class="ttdeci">void Attack(Monster &amp;)</div><div class="ttdoc">Damages target Moster using the Moster's SufferDamage function, increasing the xp and calling the Lev...</div><div class="ttdef"><b>Definition:</b> Hero.cpp:36</div></div>
+<div class="ttc" id="aclassHero_html_abc493cbea0390628aa8eefb1b8bcba39"><div class="ttname"><a href="classHero.html#abc493cbea0390628aa8eefb1b8bcba39">Hero::Hero</a></div><div class="ttdeci">Hero(const std::string &amp;, const int, const int, const double, const int, const int, const int, const double)</div><div class="ttdoc">Constructor of Hero class.</div><div class="ttdef"><b>Definition:</b> Hero.cpp:5</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">
