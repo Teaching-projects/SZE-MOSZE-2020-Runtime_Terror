@@ -6,7 +6,7 @@ jobs:
 
   static_code_analysis:
     runs-on: ubuntu-latest
-    container: csibe1999/mosze2:latest
+    container: csibe1999/mosze:latest
     steps:
       - uses: actions/checkout@v2
 
@@ -19,7 +19,7 @@ jobs:
 
   build_test_and_memory_leak_check:
     runs-on: ubuntu-latest
-    container: csibe1999/mosze2:latest
+    container: csibe1999/mosze:latest
     steps:
       - uses: actions/checkout@v2
 
