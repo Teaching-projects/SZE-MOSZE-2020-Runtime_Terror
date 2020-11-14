@@ -12,7 +12,7 @@ bool Monster::isAlive() const
     return health > 0;
 }
 
-Monster::Monster(const std::string name, const int health, const int damage, const float atkcooldown) : name(name), health(health), damage(damage), atkcooldown(atkcooldown)
+Monster::Monster(const std::string name, const int health, const int damage, const double atkcooldown) : name(name), health(health), damage(damage), atkcooldown(atkcooldown)
 {
 }
 
@@ -31,15 +31,15 @@ int Monster::getDamage() const
     return damage;
 }
 
-float Monster::getAttackCoolDown() const
+double Monster::getAttackCoolDown() const
 {
     return atkcooldown;
 }
 
 void Monster::fightTilDeath(Monster &enemy)
 {
-    float attackerTime = 0;
-    float enemyTime = 0;
+    double attackerTime = 0;
+    double enemyTime = 0;
 
     while (this->isAlive() && enemy.isAlive())
     {
@@ -81,5 +81,5 @@ void Monster::SufferDamage(int damageRecieved)
 Monster Monster::parse(const std::string &fileName)
 {
     JSON data = JSON::parseFromFile(fileName);
-    return Monster(data.get<std::string>("name"), data.get<int>("health_points"), data.get<int>("damage"), data.get<float>("attack_cooldown"));
+    return Monster(data.get<std::string>("name"), data.get<int>("health_points"), data.get<int>("damage"), data.get<double>("attack_cooldown"));
 }

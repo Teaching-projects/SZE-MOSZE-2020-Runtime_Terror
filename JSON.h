@@ -7,7 +7,7 @@
  * 
  * \author Tömördi Tamás
  * 
- * Created on: 2020/10/29 10:56
+ * Created on: 2020/11/14 11:14
 */
 
 #ifndef JSON_HEADER
@@ -15,13 +15,12 @@
 
 #include <map>
 #include <string>
-#include <any>
+#include <variant>
 #include <iostream>
+#include <list>
 
 class JSON
 {
-    std::map<std::string, std::any> data; ///< The parsed data in a map
-
 private:
     /**
      * \brief Checks whether a string is a valid json or not
@@ -35,7 +34,12 @@ private:
     static bool isNumber(const std::string & /** [in] The string to be checked*/);
 
 public:
-    JSON(std::map<std::string, std::any>);
+
+    typedef std::list<std::variant<std::string, int, double>> list; ///< Type definition for the lists
+
+    JSON(std::map<std::string, std::variant<std::string, int, double, list>>);
+
+    std::map<std::string, std::variant<std::string, int, double, list>> data; ///< The parsed data in a map   
 
     /**
      * \brief It tells wether a key is in the map or not
@@ -62,13 +66,19 @@ public:
     static JSON parseFromFile(const std::string & /** [in] The name of the file to be parsed*/);
 
     /**
+     * \brief A static function to parse the values and make a list
+     * \return A list of values
+    */
+    static JSON::list parseList(std::string&);
+
+    /**
      * \brief A get function to get data from the map
      * \return A type T data
-    */
+    */    
     template <typename T>
     T get(const std::string &key)
     {
-        return std::any_cast<T>(data[key]);
+        return std::get<T>(data[key]);
     }
 
     class ParseException : virtual public std::runtime_error
