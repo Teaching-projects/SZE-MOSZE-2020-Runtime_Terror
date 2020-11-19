@@ -6,7 +6,7 @@ Map::Map(std::string &filename)
 {
     std::ifstream file(filename);
     if (!file.good())
-        throw WrongIndexException("doesn't exist file");
+        throw std::runtime_error("doesn't exist file");
 
     std::string line;
     while (getline(file, line))
