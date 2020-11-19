@@ -34,13 +34,16 @@ int main(int argc, char **argv)
 
     std::string hero_file;
     std::list<std::string> monster_files;
-    try {
-        JSON scenario = JSON::parseFromFile(argv[1]); 
-        if (!(scenario.count("hero")&&scenario.count("monsters"))) bad_exit(3);
-        else {
-            hero_file=scenario.get<std::string>("hero");
-            JSON::list monster_file_list=scenario.get<JSON::list>("monsters");
-            for(auto monster_file : monster_file_list)
+    try
+    {
+        JSON scenario = JSON::parseFromFile(argv[1]);
+        if (!(scenario.count("hero") && scenario.count("monsters")))
+            bad_exit(3);
+        else
+        {
+            hero_file = scenario.get<std::string>("hero");
+            JSON::list monster_file_list = scenario.get<JSON::list>("monsters");
+            for (auto monster_file : monster_file_list)
                 monster_files.push_back(std::get<std::string>(monster_file));
         }
     }
