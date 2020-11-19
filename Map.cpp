@@ -18,10 +18,10 @@ Map::Map(std::string &filename)
 
 Map::type Map::get(size_t x, size_t y) const
 {
-    if (y >= map.size())
+    if (y >= map.size() || y < 0)
         throw WrongIndexException("y coordinate is out of range");
-    if (x >= map[y].length())
-        throw WrongIndexException("x coorfinate is out of range");
+    if (x >= map[y].length() x < 0)
+        throw WrongIndexException("x coordinate is out of range");
 
     return map[y][x] == '#' ? Map::type::Wall : Map::type::Free; // wall = 0 free = 1
 }
