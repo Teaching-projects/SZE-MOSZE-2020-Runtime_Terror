@@ -4,5 +4,7 @@
     "health_points": 10,
     "damage": 1,
     "attack_cooldown": 2.8,
+    "defense" : 0.7,
+    "defense_bonus_per_level" : 0,
     "race": "undead"
 }
