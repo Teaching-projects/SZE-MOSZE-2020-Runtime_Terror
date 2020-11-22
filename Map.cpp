@@ -2,6 +2,8 @@
 #include <fstream>
 #include <iostream>
 
+Map::Map() {};
+
 Map::Map(std::string &filename)
 {
     std::ifstream file(filename);
@@ -18,10 +20,20 @@ Map::Map(std::string &filename)
 
 Map::type Map::get(size_t x, size_t y) const
 {
-    if (y >= map.size() || y < 0)
+    if (y >= map.size())
         throw WrongIndexException("y coordinate is out of range");
-    if (x >= map[y].length() || x < 0)
+    if (x >= map[y].length())
         throw WrongIndexException("x coordinate is out of range");
 
-    return map[y][x] == '#' ? Map::type::Wall : Map::type::Free; // wall = 0 free = 1
+    return map[y][x] == '#' ? Map::type::Wall : Map::type::Free;
+}
+
+int Map::getHeight() const
+{
+    return map.size();
+}
+
+int Map::getWidth(int line) const
+{
+    return map[line].length();
 }
