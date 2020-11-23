@@ -17,22 +17,13 @@ class Game
     Game();
     Game(std::string);  
 
-    void putHero(Hero, int, int);
+    void putHero(Hero&, int, int);
     void putMonster(Monster, int, int);  
 
     void run();
     void print();
 
     private:   
-
-    struct HeroPlace
-    {
-        int x;
-        int y;
-        Hero hero;
-
-        HeroPlace(int x, int y, Hero& hero) : x(x), y(y), hero(hero) {}
-    };
 
     struct MonsterPlace
     {
@@ -44,8 +35,10 @@ class Game
     };
 
     Map map;
-    std::vector<HeroPlace> heroPlaces;
     std::vector<MonsterPlace> monsterPlaces;
+
+    Hero* hero;
+    int heroX, heroY;
 
     void setMap(Map&);
 
