@@ -7,7 +7,7 @@
 #include <iostream>
 #include <algorithm>
 
-Game::Game(std::string mapfilename)
+Game::Game(std::string mapfilename) : hero(NULL), heroX(-1), heroY(-1)
 {
     Map map = Map(mapfilename);
     setMap(map);
