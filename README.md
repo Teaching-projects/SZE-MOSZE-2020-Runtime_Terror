@@ -23,7 +23,7 @@ A Map osztály egy fájlból képes beolvasni egy pályát, amin a játék tört
 
 ### Game class
 
-A Game osztály lehetőséget ad egy Map beállítására, Hero-k és Monster-ek pályára helyezésére, illetve egy loop-ot futtat, amely különböző irányokat vár bemenetként, ezzel irányítható a Hero. Ha a hős a pályán Monster-ekkel találkozik, azokkal harcba száll. Ha játék akkor ér véget, ha a Hero meghal vagy az összes Monster legyőzésre kerül.
+A Game osztály lehetőséget ad egy Map beállítására, Hero-k és Monster-ek pályára helyezésére, illetve egy loop-ot futtat, amely különböző irányokat vár bemenetként, ezzel irányítható a Hero. Ha a hős a pályán Monster-ekkel találkozik, azokkal harcba száll. A játék akkor ér véget, ha a Hero meghal vagy az összes Monster legyőzésre kerül.
 
 ### Defense
 
