@@ -89,6 +89,7 @@ void Game::run()
             std::cout << "Direction: ";
             std::cin >> direction; 
             move(direction);  
+            std::cout << std::endl;
         }
     }
 
