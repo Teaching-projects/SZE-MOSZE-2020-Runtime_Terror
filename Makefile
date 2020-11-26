@@ -1,6 +1,6 @@
 SHELL=/bin/bash
 
-OBJS = Monster.o Hero.o main.o JSON.o
+OBJS = Monster.o Hero.o main.o JSON.o Map.o Game.o
 OUT = a.out
 CFLAGS = -Wall -std=c++17
 CC = g++-9
@@ -19,6 +19,12 @@ Hero.o: Hero.cpp Hero.h Monster.h JSON.h
 Monster.o: Monster.cpp Monster.h JSON.h
 	$(CC) $(CFLAGS) -c Monster.cpp
 
+Map.o: Map.cpp
+	$(CC) $(CFLAGS) -c Map.cpp
+
+Game.o: Game.cpp Monster.h Hero.h Map.h
+	$(CC) $(CFLAGS) -c Game.cpp
+
 main.o: main.cpp Hero.h Monster.h JSON.h
 	$(CC) $(CFLAGS) -c main.cpp
 
@@ -27,7 +33,7 @@ buildtest:
 	./test.sh
 
 memory_leak_check:
-	valgrind --error-exitcode=1 --leak-check=full ./$(OUT) scenario/scenario1.json 2> ./memory-leak-check.txt
+	echo "east" | valgrind --error-exitcode=1 --leak-check=full ./$(OUT) scenario/scenario1.json 2> ./memory-leak-check.txt
 
 static_code_analysis:
 	cppcheck --enable=all *.cpp 2> static-code-analysis.txt
