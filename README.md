@@ -4,6 +4,31 @@ Csapat: Runtime_Terror
 
 Tagok: Tömördi Tamás, Jaksics Benedek, Csillag Bence
 
+
+## Összegzés
+
+Az első három feladat óta az alábbi feature-ök kerültek be a programba:
+
+### JSON parser fejlesztése
+
+A JSON parser annyi plusz funkciót kapott, hogy képes az egyszintű JSON-ökből adat listát is beolvasni. Például, ha valahol több Monster kerül átadásra.
+
+### Osztály átnevezések
+
+A korábbi Unit új neve Monster, a korábbi Player új neve Hero.
+
+### Map class
+
+A Map osztály egy fájlból képes beolvasni egy pályát, amin a játék történik majd.
+
+### Game class
+
+A Game osztály lehetőséget ad egy Map beállítására, Hero-k és Monster-ek pályára helyezésére, illetve egy loop-ot futtat, amely különböző irányokat vár bemenetként, ezzel irányítható a Hero. Ha a hős a pályán Monster-ekkel találkozik, azokkal harcba száll. Ha játék akkor ér véget, ha a Hero meghal vagy az összes Monster legyőzésre kerül.
+
+### Defense
+
+Az egységek már védekező erővel is rendelkeznek. Csak akkor vihető be sebzés, ha a damage nagyobb mint a defense.
+
 ## 3. feladat
 
 
