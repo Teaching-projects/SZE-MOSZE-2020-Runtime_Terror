@@ -15,14 +15,29 @@ Game::Game(std::string mapfilename) : hero(NULL), heroX(-1), heroY(-1)
 
 void Game::setMap(Map &map)
 {
-    this->map = map;
+    if(getLivingMonsterCount() > 0 || hero != NULL)
+    {
+        throw AlreadyHasUnitsException("You can't set the map, because there are living units on it.");
+    }
+    else
+    {
+        this->map = map;
+    }
 }
 
 void Game::putHero(Hero& hero, int x, int y)
 {
-    if(map.get(x, y) == map.type::Wall)
+    if(!isMapSet())
     {
-        // TODO: throw exception
+        throw Map::WrongIndexException("The map isn't set.");
+    }
+    else if(this->hero != NULL)
+    {
+        throw AlreadyHasHeroException("You have already set a hero.");
+    }
+    else if(map.get(x, y) == map.type::Wall)
+    {
+        throw OccupiedException("You can't place the hero on the wall.");
     }
     else if(map.get(x, y) == map.type::Free)
     { 
@@ -34,9 +49,13 @@ void Game::putHero(Hero& hero, int x, int y)
 
 void Game::putMonster(Monster monster, int x, int y)
 { 
-    if(map.get(x, y) == map.type::Wall)
+    if(!isMapSet())
     {
-        // TODO: throw exception
+        throw Map::WrongIndexException("The map isn't set.");
+    }     
+    else if(map.get(x, y) == map.type::Wall)
+    {
+        throw OccupiedException("You can't place a monster on the wall.");
     }
     else if(map.get(x, y) == map.type::Free)
     {
@@ -50,58 +69,80 @@ void Game::run()
     int remainingMonsters  = monsterPlaces.size();
 
     while(hero->isAlive() && remainingMonsters > 0)
-    {
+    {     
         print();
-        std::cout << "Direction: ";
-        std::cin >> direction; 
-
-        if(direction == "north") 
-        {
-            if(map.get(heroX, heroY - 1) != map.type::Wall) 
-            {
-                heroY -= 1;
-            }
-        } 
-        else if(direction == "south")
-        {
-            if(map.get(heroX, heroY + 1) != map.type::Wall) 
-            {
-                heroY += 1;
-            }
-        } 
-        else if(direction == "east")
-        {
-            if(map.get(heroX + 1, heroY) != map.type::Wall) 
-            {
-                heroX += 1;
-            }
-        } 
-        else if(direction == "west")
-        {
-            if(map.get(heroX - 1, heroY) != map.type::Wall) 
-            {
-                heroX -= 1;
-            }
-        }
-        else
-        {
-            std::cout << "Wrong direction!" << std::endl;
-        }
 
         for (size_t i = 0; i < monsterPlaces.size(); i++) 
         {
             if(monsterPlaces[i].x == heroX && monsterPlaces[i].y == heroY && monsterPlaces[i].monster.isAlive())
             {
-                std::cout << "ATTACK -> " << monsterPlaces[i].monster.getName() << std::endl;
-                hero->fightTilDeath(monsterPlaces[i].monster);
-                if(!monsterPlaces[i].monster.isAlive()) remainingMonsters--;
+                fight(monsterPlaces[i].monster);
+                if(!monsterPlaces[i].monster.isAlive())
+                {
+                    remainingMonsters--;
+                }
             }            
-        }     
+        }
+
+        if(remainingMonsters > 0)
+        {
+            std::cout << "Direction: ";
+            std::cin >> direction; 
+            move(direction);  
+        }
     }
 
-    if(hero->isAlive()) std::cout << "The hero has won the game!" << std::endl;
-    else std::cout << "The hero has lost the game!" << std::endl;
+    if(hero->isAlive()) 
+    {
+        std::cout << "The hero won." << std::endl;
+    }
+    else 
+    {
+        std::cout << "The hero died." << std::endl;
+    }
+    hero = NULL;
+}
 
+void Game::move(std::string &direction)
+{
+    if(direction == "north") 
+    {
+        if(map.get(heroX, heroY - 1) != map.type::Wall) 
+        {
+            heroY -= 1;
+        }
+    } 
+    else if(direction == "south")
+    {
+        if(map.get(heroX, heroY + 1) != map.type::Wall) 
+        {
+            heroY += 1;
+        }
+    } 
+    else if(direction == "east")
+    {
+        if(map.get(heroX + 1, heroY) != map.type::Wall) 
+        {
+            heroX += 1;
+        }
+    } 
+    else if(direction == "west")
+    {
+        if(map.get(heroX - 1, heroY) != map.type::Wall) 
+        {
+            heroX -= 1;
+        }
+    }
+    else
+    {
+        std::cout << "Wrong direction!" << std::endl;
+    }
+}
+
+void Game::fight(Monster &enemy)
+{
+    std::cout << "ATTACK -> " << enemy.getName() << std::endl;
+    hero->fightTilDeath(enemy);
 }
 
 void Game::print()
@@ -128,4 +169,22 @@ void Game::print()
         }
         std::cout << std::endl;
     }
+}
+
+bool Game::isMapSet()
+{
+    return map.getHeight();
+}
+
+int Game::getLivingMonsterCount()
+{
+    int monsterCount = 0;
+    for (size_t i = 0; i < monsterPlaces.size(); i++) 
+    {
+        if(monsterPlaces[i].monster.isAlive())
+        {
+            monsterCount++;
+        }
+    }
+    return monsterCount;
 }

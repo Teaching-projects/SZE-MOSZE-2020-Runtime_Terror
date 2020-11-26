@@ -17,11 +17,11 @@ class Game
     Game();
     Game(std::string);  
 
+    void setMap(Map&);
     void putHero(Hero&, int, int);
     void putMonster(Monster, int, int);  
 
-    void run();
-    void print();
+    void run();    
 
     private:   
 
@@ -39,8 +39,12 @@ class Game
 
     Hero* hero;
     int heroX, heroY;
-
-    void setMap(Map&);
+ 
+    void move(std::string&);
+    void fight(Monster&);
+    void print();
+    bool isMapSet();
+    int getLivingMonsterCount();
 
     class OccupiedException : public std::runtime_error
     {
