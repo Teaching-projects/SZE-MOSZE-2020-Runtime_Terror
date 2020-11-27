@@ -5,7 +5,7 @@
 
 TEST(UnitTest, ParseUnit)
 {
-    Monster expected("Fallen", 4, 2, 1.6, 1.5);
+    Monster expected("Fallen", 4, 2, 1.6, 1);
     Monster result = Monster::parse("../unit/Fallen.json");
     EXPECT_EQ(expected.getName(), result.getName());
     EXPECT_EQ(expected.getHealthPoints(), result.getHealthPoints());
@@ -15,8 +15,8 @@ TEST(UnitTest, ParseUnit)
 }
 TEST(UnitTest, Minusheal)
 {
-    Monster alive("Blood Raven", 113, 8, 1.2, 1.0);
+    Monster alive("Blood Raven", 113, 8, 1.2, 1);
     EXPECT_EQ(alive.isAlive(), true);
-    Monster dead("Blood Raven", -1, 8, 1.2, 1.0);
+    Monster dead("Blood Raven", -1, 8, 1.2, 1);
     EXPECT_EQ(dead.isAlive(), false);
 }
