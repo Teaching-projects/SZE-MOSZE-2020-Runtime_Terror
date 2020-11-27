@@ -2,10 +2,10 @@
 #include "JSON.h"
 #include <iostream>
 
-Hero::Hero(const std::string &name, const int health, const int damage, const double atkcooldown,
-           const int ExperiencePerLevel, const int HealthPointBonusPerLevel, const int DamageBonusPerLevel, const double ColdownMultiplierPerLevel)
-    : Monster{name, health, damage, atkcooldown}, maxHealth(health), ExperiencePerLevel(ExperiencePerLevel), HealthPointBonusPerLevel(HealthPointBonusPerLevel),
-      DamageBonusPerLevel(DamageBonusPerLevel), ColdownMultiplierPerLevel(ColdownMultiplierPerLevel)
+Hero::Hero(const std::string &name, const int health, const int damage, const double atkcooldown, const int defense,
+           const int ExperiencePerLevel, const int HealthPointBonusPerLevel, const int DamageBonusPerLevel, const double ColdownMultiplierPerLevel, const int DefenseBonusPerLevel)
+    : Monster{name, health, damage, atkcooldown, defense}, maxHealth(health), ExperiencePerLevel(ExperiencePerLevel), HealthPointBonusPerLevel(HealthPointBonusPerLevel),
+      DamageBonusPerLevel(DamageBonusPerLevel), ColdownMultiplierPerLevel(ColdownMultiplierPerLevel), DefenseBonusPerLevel(DefenseBonusPerLevel)
 {
 }
 
@@ -31,6 +31,7 @@ void Hero::LevelUp()
     atkcooldown *= ColdownMultiplierPerLevel;
     maxHealth += HealthPointBonusPerLevel;
     health = maxHealth;
+    defense += DefenseBonusPerLevel;
 }
 
 void Hero::Attack(Monster &enemy)
@@ -44,8 +45,10 @@ void Hero::Attack(Monster &enemy)
             LevelUp();
         }
     }
-
-    xp += damage;
+    if (damage - enemy.getDefense() > 0)
+    {
+        xp += (damage - enemy.getDefense());
+    }
 }
 
 Hero Hero::parse(const std::string &fileName)
@@ -57,8 +60,10 @@ Hero Hero::parse(const std::string &fileName)
         data.get<int>("base_health_points"),
         data.get<int>("base_damage"),
         data.get<double>("base_attack_cooldown"),
+        data.get<int>("defense"),
         data.get<int>("experience_per_level"),
         data.get<int>("health_point_bonus_per_level"),
         data.get<int>("damage_bonus_per_level"),
-        data.get<double>("cooldown_multiplier_per_level"));
+        data.get<double>("cooldown_multiplier_per_level"),
+        data.get<int>("defense_bonus_per_level"));
 }
