@@ -10,13 +10,14 @@ TEST(PlayerTest, GoodValues)
     EXPECT_EQ(player.getHealthPoints(), 30);
     EXPECT_EQ(player.getDamage(), 3);
     EXPECT_FLOAT_EQ(player.getAttackCoolDown(), 1.1);
+    EXPECT_EQ(player.getDefense(), 4);
     EXPECT_EQ(player.getLevel(), 1);
     EXPECT_EQ(player.getXp(), 0);
 }
 
 TEST(PlayerTest, Player)
 {
-    Hero expected = Hero("Kakarott", 200, 90, 1.0, 1, 1, 1, 1.0);
+    Hero expected = Hero("Kakarott", 200, 90, 1.0, 1.0, 1, 1, 1, 1.0, 1.0);
     EXPECT_EQ(expected.getLevel(), 1);
     EXPECT_EQ(expected.getXp(), 0);
 }
@@ -25,7 +26,7 @@ TEST(PlayerTest, PlayerAttack)
 
     Hero A = Hero::parse("../unit/Dark_Wanderer.json");
     Monster B = Monster::parse("../unit/Fallen.json");
-    int heal = B.getHealthPoints() - A.getDamage();
+    int heal = B.getHealthPoints() - (A.getDamage() - B.getDefense());
     A.Attack(B);
     EXPECT_EQ(B.getHealthPoints(), heal);
 }
@@ -33,10 +34,10 @@ TEST(PlayerTest, PlayerAttack)
 TEST(PlayerTest, PlayerXPAfterAttack)
 {
     Hero A = Hero::parse("../unit/Dark_Wanderer.json");
-    Monster B = Monster::parse("../unit/Blood_Raven.json");
-    A.Attack(B);
-    A.Attack(B);
-    A.Attack(B);
-    A.Attack(B);
+    Monster B = Monster::parse("../unit/Zombie.json");
+    for (size_t i = 0; i < 6; i++)
+    {
+        A.Attack(B);
+    }
     EXPECT_EQ(A.getXp(), 12);
 }

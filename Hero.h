@@ -3,7 +3,7 @@
  * 
  * \brief Hero class inherited from Monster class
  * The Hero is a Monster, but it has experience points and level value.
- * In case of a level up, the damage, cooldown, health and max health values are changing.
+ * In case of a level up, the damage, cooldown, defense, health and max health values are changing.
  * 
  * \author Tömördi Tamás
  * 
@@ -18,7 +18,7 @@
 class Hero : public Monster
 {
 public:
-    Hero(const std::string &, const int, const int, const double, const int, const int, const int, const double); ///< Constructor of Hero class
+    Hero(const std::string &, const int, const int, const double, const int, const int, const int, const int, const double, const int); ///< Constructor of Hero class
 
     int getLevel() const;           ///< This is a simple getter function for level value
     int getXp() const;              ///< This is a simple getter function for xp value
@@ -38,9 +38,10 @@ private:
     const int HealthPointBonusPerLevel;    ///< The bonus health points in case of a level up
     const int DamageBonusPerLevel;         ///< The damage bonus in case of a level up
     const double ColdownMultiplierPerLevel; ///< The cooldown multiplier in case of a level up
+    const int DefenseBonusPerLevel;     ///< The defense value increment after level up
 
     /**
-     * \brief Increasing the Hero's level, maxHealth and damage, multipling the cooldown; and setting the health value to maxHealth
+     * \brief Increasing the Hero's level, maxHealth, damage and defense, multiplying the cooldown; and setting the health value to maxHealth
     */
     void LevelUp();
 };
