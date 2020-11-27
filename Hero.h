@@ -3,7 +3,7 @@
  * 
  * \brief Hero class inherited from Monster class
  * The Hero is a Monster, but it has experience points and level value.
- * In case of a level up, the damage, cooldown, health and max health values are changing.
+ * In case of a level up, the damage, cooldown, defense, health and max health values are changing.
  * 
  * \author Tömördi Tamás
  * 
@@ -41,7 +41,7 @@ private:
     const int DefenseBonusPerLevel;     ///< The defense value increment after level up
 
     /**
-     * \brief Increasing the Hero's level, maxHealth and damage, multiplying the cooldown; and setting the health value to maxHealth
+     * \brief Increasing the Hero's level, maxHealth, damage and defense, multiplying the cooldown; and setting the health value to maxHealth
     */
     void LevelUp();
 };
