@@ -45,8 +45,10 @@ void Hero::Attack(Monster &enemy)
             LevelUp();
         }
     }
-
-    xp += damage;
+    if (damage - enemy.getDefense() > 0)
+    {
+        xp += (damage - enemy.getDefense());
+    }
 }
 
 Hero Hero::parse(const std::string &fileName)
