@@ -72,29 +72,54 @@ $(function() {
 <div class="title">Map Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><a class="el" href="classMap.html" title="Map class can read a game map from text file.">Map</a> class can read a game map from text file.  
+ <a href="classMap.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="Map_8h_source.html">Map.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMap_1_1WrongIndexException.html">WrongIndexException</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">&lt; <a class="el" href="classMap.html" title="Map class can read a game map from text file.">Map</a> class Exception function  <a href="classMap_1_1WrongIndexException.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:a41697b848ea9a5aad1910714e0196b7b"><td class="memItemLeft" align="right" valign="top"><a id="a41697b848ea9a5aad1910714e0196b7b"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>type</b> { <b>Wall</b>, 
+<tr class="memitem:a41697b848ea9a5aad1910714e0196b7b"><td class="memItemLeft" align="right" valign="top"><a id="a41697b848ea9a5aad1910714e0196b7b"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMap.html#a41697b848ea9a5aad1910714e0196b7b">type</a> { <b>Wall</b>, 
 <b>Free</b>
  }</td></tr>
+<tr class="memdesc:a41697b848ea9a5aad1910714e0196b7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">&lt; Enum for 2 types of map element <br /></td></tr>
 <tr class="separator:a41697b848ea9a5aad1910714e0196b7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:a0f5ad0fd4563497b4214038cbca8b582"><td class="memItemLeft" align="right" valign="top"><a id="a0f5ad0fd4563497b4214038cbca8b582"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMap.html#a0f5ad0fd4563497b4214038cbca8b582">Map</a> ()</td></tr>
+<tr class="memdesc:a0f5ad0fd4563497b4214038cbca8b582"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor of <a class="el" href="classMap.html" title="Map class can read a game map from text file.">Map</a> class. <br /></td></tr>
+<tr class="separator:a0f5ad0fd4563497b4214038cbca8b582"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3842cce4038d894438115eaa8f6df1e5"><td class="memItemLeft" align="right" valign="top"><a id="a3842cce4038d894438115eaa8f6df1e5"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Map</b> (std::string &amp;filename)</td></tr>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMap.html#a3842cce4038d894438115eaa8f6df1e5">Map</a> (std::string &amp;filename)</td></tr>
+<tr class="memdesc:a3842cce4038d894438115eaa8f6df1e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor of <a class="el" href="classMap.html" title="Map class can read a game map from text file.">Map</a> class, which read map from file. <br /></td></tr>
 <tr class="separator:a3842cce4038d894438115eaa8f6df1e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2295e8511e76f1c81c2f95907fca4cb9"><td class="memItemLeft" align="right" valign="top"><a id="a2295e8511e76f1c81c2f95907fca4cb9"></a>
-Map::type&#160;</td><td class="memItemRight" valign="bottom"><b>get</b> (size_t x, size_t y) const</td></tr>
+<a class="el" href="classMap.html#a41697b848ea9a5aad1910714e0196b7b">Map::type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMap.html#a2295e8511e76f1c81c2f95907fca4cb9">get</a> (size_t x, size_t y) const</td></tr>
+<tr class="memdesc:a2295e8511e76f1c81c2f95907fca4cb9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a map field type. <br /></td></tr>
 <tr class="separator:a2295e8511e76f1c81c2f95907fca4cb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a53609fccd117a5a069bf33ef1e0c65c2"><td class="memItemLeft" align="right" valign="top"><a id="a53609fccd117a5a069bf33ef1e0c65c2"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMap.html#a53609fccd117a5a069bf33ef1e0c65c2">getWidth</a> (int line) const</td></tr>
+<tr class="memdesc:a53609fccd117a5a069bf33ef1e0c65c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">This getter function return with width of map. <br /></td></tr>
+<tr class="separator:a53609fccd117a5a069bf33ef1e0c65c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a67113f1ffac80d9a20b15fa18a58edc2"><td class="memItemLeft" align="right" valign="top"><a id="a67113f1ffac80d9a20b15fa18a58edc2"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMap.html#a67113f1ffac80d9a20b15fa18a58edc2">getHeight</a> () const</td></tr>
+<tr class="memdesc:a67113f1ffac80d9a20b15fa18a58edc2"><td class="mdescLeft">&#160;</td><td class="mdescRight">This getter function return with height of map. <br /></td></tr>
+<tr class="separator:a67113f1ffac80d9a20b15fa18a58edc2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<hr/>The documentation for this class was generated from the following files:<ul>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><a class="el" href="classMap.html" title="Map class can read a game map from text file.">Map</a> class can read a game map from text file. </p>
+<dl class="section author"><dt>Author</dt><dd>Csillag Bence</dd></dl>
+<p>Created on: 2020/11/26 18:21 </p>
+</div><hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="Map_8h_source.html">Map.h</a></li>
 <li>Map.cpp</li>
 </ul>

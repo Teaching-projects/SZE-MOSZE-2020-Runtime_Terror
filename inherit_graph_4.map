@@ -1,0 +1,4 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classMonster.html" title="Monster class A Monster can attack, suffer damage and we can also get its values and wether it is ali..." alt="" coords="5,5,80,32"/>
+<area shape="rect" id="node2" href="$classHero.html" title="Hero class inherited from Monster class The Hero is a Monster, but it has experience points and level..." alt="" coords="128,5,181,32"/>
+</map>
