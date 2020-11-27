@@ -5,7 +5,7 @@ IFS=$'\n\r'
 > output.txt
 
 for i in `cat input.txt`; do
-    echo $i | xargs ./a.out >> output.txt
+    echo "east" | ./a.out $i >> output.txt
 done
 
 different="$(diff output.txt expected-output.txt)"

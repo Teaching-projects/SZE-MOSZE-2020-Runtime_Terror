@@ -10,6 +10,7 @@
 #include "JSON.h"
 #include "Hero.h"
 #include "Monster.h"
+#include "Game.h"
 
 const std::map<int, std::string> error_messages = {
     {1, "Bad number of arguments. Only a single scenario file should be provided."},
@@ -55,26 +56,17 @@ int main(int argc, char **argv)
     try
     {
         Hero hero{Hero::parse(hero_file)};
-        std::list<Monster> monsters;
+        std::vector<Monster> monsters;
         for (const auto &monster_file : monster_files)
             monsters.push_back(Monster::parse(monster_file));
 
-        while (hero.isAlive() && !monsters.empty())
+        Game game = Game("map.txt");
+        game.putHero(hero, 2, 5);
+        for (const auto& monster : monsters) 
         {
-            std::cout
-                << hero.getName() << "(" << hero.getLevel() << ")"
-                << " vs "
-                << monsters.front().getName()
-                << std::endl;
-            hero.fightTilDeath(monsters.front());
-            if (!monsters.front().isAlive())
-                monsters.pop_front();
+            game.putMonster(monster, 3,5);
         }
-        std::cout << (hero.isAlive() ? "The hero won." : "The hero died.") << std::endl;
-        std::cout << hero.getName() << ": LVL" << hero.getLevel() << std::endl
-                  << "   HP: " << hero.getHealthPoints() << "/" << hero.getMaxHealthPoints() << std::endl
-                  << "  DMG: " << hero.getDamage() << std::endl
-                  << "  ACD: " << hero.getAttackCoolDown() << std::endl;
+        game.run();
     }
     catch (const JSON::ParseException &e)
     {
