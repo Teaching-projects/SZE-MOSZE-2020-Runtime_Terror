@@ -1,7 +1,7 @@
 /**
- * \class MAP
+ * \class Map
  * 
- * \brief MAP class can read a game map from text file
+ * \brief Map class can read a game map from text file
  * 
  * \author Csillag Bence
  * 
