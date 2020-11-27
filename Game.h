@@ -43,7 +43,7 @@ class Game
         int y; ///< Location of the Monster
         Monster monster; ///< A Monster in the game
 
-        MonsterPlace(int x, int y, Monster& monster) : x(x), y(y), monster(monster) {}
+        MonsterPlace(int x, int y, Monster monster) : x(x), y(y), monster(monster) {}
     };
 
     Map map; ///< It stores the map: walls and empty fields
@@ -57,6 +57,7 @@ class Game
     void print(); ///< Function to print the current state of the game
     bool isMapSet(); ///< Function to decide wether the map is set or not
     int getLivingMonsterCount(); ///< A getter function to get the number of living Monsters
+    bool isValidDirection(std::string&); ///< Returns whether the given direction is valid or not
 
     class OccupiedException : public std::runtime_error
     {

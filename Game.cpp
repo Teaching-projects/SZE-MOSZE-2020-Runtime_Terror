@@ -86,9 +86,13 @@ void Game::run()
 
         if(remainingMonsters > 0)
         {
-            std::cout << "Direction: ";
-            std::cin >> direction; 
-            move(direction);  
+            do
+            {
+                std::cout << "Direction: ";
+                std::cin >> direction; 
+            }
+            while(!isValidDirection(direction));
+            move(direction);
             std::cout << std::endl;
         }
     }
@@ -134,10 +138,12 @@ void Game::move(std::string &direction)
             heroX -= 1;
         }
     }
-    else
-    {
-        std::cout << "Wrong direction!" << std::endl;
-    }
+}
+
+bool Game::isValidDirection(std::string &direction)
+{
+    if(direction == "north" || direction == "south" || direction == "west" || direction == "east") return true;
+    else return false;
 }
 
 void Game::fight(Monster &enemy)
@@ -151,22 +157,25 @@ void Game::print()
     for (int y = 0; y < map.getHeight(); y++) 
     {  
         for (int x = 0; x < map.getWidth(y); x++) 
-        {            
-            int monsterCount = 0;
-
-            for (size_t i = 0; i < monsterPlaces.size(); i++) 
-            {
-                if(monsterPlaces[i].x == x && monsterPlaces[i].y == y && monsterPlaces[i].monster.isAlive())
-                {
-                    monsterCount++;
-                }
-            }
-
+        {    
             if(map.get(x, y) == map.type::Wall) std::cout << "██";
             else if (heroX == x && heroY == y) std::cout << "┣┫";
-            else if (monsterCount == 1) std::cout << "M░";
-            else if (monsterCount > 1) std::cout << "MM";
-            else std::cout << "░░";
+            else
+            {
+                int monsterCount = 0;
+
+                for (size_t i = 0; i < monsterPlaces.size(); i++) 
+                {
+                    if(monsterPlaces[i].x == x && monsterPlaces[i].y == y && monsterPlaces[i].monster.isAlive())
+                    {
+                        monsterCount++;
+                    }
+                }
+
+                if (monsterCount == 1) std::cout << "M░";
+                else if (monsterCount > 1) std::cout << "MM";
+                else std::cout << "░░";
+            }                                         
         }
         std::cout << std::endl;
     }
