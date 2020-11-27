@@ -76,7 +76,12 @@ void Monster::Attack(Monster &enemy)
 
 void Monster::SufferDamage(int damageRecieved)
 {
-    health -= damageRecieved;
+    int damage = damageRecieved - getDefense();
+    if(damage<0)
+	{
+		 damage=0;
+	}
+    health -= damage;
     if (health < 0)
     {
         health = 0;
