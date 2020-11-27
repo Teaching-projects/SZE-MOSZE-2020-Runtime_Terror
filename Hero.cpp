@@ -31,6 +31,7 @@ void Hero::LevelUp()
     atkcooldown *= ColdownMultiplierPerLevel;
     maxHealth += HealthPointBonusPerLevel;
     health = maxHealth;
+    defense += DefenseBonusPerLevel;
 }
 
 void Hero::Attack(Monster &enemy)
