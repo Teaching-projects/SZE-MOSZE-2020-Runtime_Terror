@@ -45,5 +45,5 @@ TEST(PlayerTest, PlayerXPAfterAttack)
     {
         A.Attack(B);
     }
-    EXPECT_EQ(A.getXp(), 12);
+    EXPECT_EQ(A.getXp(), 24);
 }
