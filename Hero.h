@@ -18,7 +18,7 @@
 class Hero : public Monster
 {
 public:
-    Hero(const std::string &, const int, const int, const double, const int, const int, const int, const int, const double, const int); ///< Constructor of Hero class
+    Hero(const std::string &, const int, const int, const int, const double, const int, const int, const int, const int, const int, const double, const int); ///< Constructor of Hero class
 
     int getLevel() const;           ///< This is a simple getter function for level value
     int getXp() const;              ///< This is a simple getter function for xp value
@@ -37,6 +37,7 @@ private:
     const int ExperiencePerLevel;          ///< The experience points needed to level up
     const int HealthPointBonusPerLevel;    ///< The bonus health points in case of a level up
     const int DamageBonusPerLevel;         ///< The damage bonus in case of a level up
+    const int MagicalDamageBonusPerLevel;         ///< The damage bonus in case of a level up
     const double ColdownMultiplierPerLevel; ///< The cooldown multiplier in case of a level up
     const int DefenseBonusPerLevel;     ///< The defense value increment after level up
 
