@@ -62,7 +62,30 @@ public:
         int physical;
         int magical;
 
+        Damage() : physical(0), magical(0) {}
         Damage(int physical, int magical) : physical(physical), magical(magical) {}
+
+        Damage operator+(const Damage& d) 
+        {
+            Damage damage;
+            damage.physical = this->physical + d.physical;
+            damage.magical = this->magical + d.magical;
+            return damage;
+        }
+
+        Damage& operator+=(const Damage& d)
+        {
+            this->physical += d.physical;
+            this->magical += d.magical;
+            return *this;
+        }
+
+        Damage& operator*=(const Damage& d)
+        {
+            this->physical *= d.physical;
+            this->magical *= d.magical;
+            return *this;
+        }
     };
 
     const std::string name; ///< The name of a unit
