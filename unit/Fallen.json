@@ -1,7 +1,8 @@
 {
     "name": "Fallen",
     "health_points": 4,
-    "damage": 2,
+    "damage": 1,
+    "magical_damage": 1,
     "attack_cooldown": 1.6,
     "defense": 2,
     "lore": "The Fallen Ones (a.k.a. the Fallen), and formally known as Namus Improbus are a race of demons.",
