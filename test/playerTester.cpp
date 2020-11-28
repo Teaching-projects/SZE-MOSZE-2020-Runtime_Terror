@@ -31,7 +31,7 @@ TEST(PlayerTest, PlayerAttack)
     int physicalDamage = A.getPhysicalDamage() - B.getDefense();
     if(physicalDamage < 0) physicalDamage = 0;
 
-    int health = B.getHealthPoints() - physicalDamage - A.getMagicalDamage;
+    int health = B.getHealthPoints() - physicalDamage - A.getMagicalDamage();
 
     A.Attack(B);
     EXPECT_EQ(B.getHealthPoints(), health);
