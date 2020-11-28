@@ -18,7 +18,7 @@ TEST(PlayerTest, GoodValues)
 
 TEST(PlayerTest, Player)
 {
-    Hero expected = Hero("Kakarott", 200, 90, 1.0, 1.0, 1, 1, 1, 1.0, 1.0);
+    Hero expected = Hero("Kakarott", 200, 90, 1, 1, 1, 1, 1, 1, 1, 1, 1);
     EXPECT_EQ(expected.getLevel(), 1);
     EXPECT_EQ(expected.getXp(), 0);
 }
