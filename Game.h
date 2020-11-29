@@ -53,7 +53,7 @@ class Game
     int heroX, heroY; ///< The location of the Hero
  
     void move(std::string&); ///< It moves the Hero, paramter: direction string
-    void fight(Monster&); ///< Function when the Hero attacks a Monster
+    void attackMonsters(int&); ///< Function to attack Monsters
     void print(); ///< Function to print the current state of the game
     bool isMapSet(); ///< Function to decide wether the map is set or not
     int getLivingMonsterCount(); ///< A getter function to get the number of living Monsters

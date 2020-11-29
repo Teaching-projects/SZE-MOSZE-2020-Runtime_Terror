@@ -68,21 +68,11 @@ void Game::run()
     std::string direction;
     int remainingMonsters  = monsterPlaces.size();
 
+    attackMonsters(remainingMonsters);
+
     while(hero->isAlive() && remainingMonsters > 0)
     {     
         print();
-
-        for (size_t i = 0; i < monsterPlaces.size(); i++) 
-        {
-            if(monsterPlaces[i].x == heroX && monsterPlaces[i].y == heroY && monsterPlaces[i].monster.isAlive())
-            {
-                fight(monsterPlaces[i].monster);
-                if(!monsterPlaces[i].monster.isAlive())
-                {
-                    remainingMonsters--;
-                }
-            }            
-        }
 
         if(remainingMonsters > 0)
         {
@@ -95,6 +85,7 @@ void Game::run()
             move(direction);
             std::cout << std::endl;
         }
+        attackMonsters(remainingMonsters);
     }
 
     if(hero->isAlive()) 
@@ -146,10 +137,21 @@ bool Game::isValidDirection(std::string &direction)
     else return false;
 }
 
-void Game::fight(Monster &enemy)
+void Game::attackMonsters(int &remainingMonsters)
 {
-    std::cout << "ATTACK -> " << enemy.getName() << std::endl;
-    hero->fightTilDeath(enemy);
+    for (size_t i = 0; i < monsterPlaces.size(); i++) 
+    {
+        if(monsterPlaces[i].x == heroX && monsterPlaces[i].y == heroY && monsterPlaces[i].monster.isAlive())
+        {
+            std::cout << "ATTACK -> " << monsterPlaces[i].monster.getName() << std::endl;
+            hero->fightTilDeath(monsterPlaces[i].monster);
+
+            if(!monsterPlaces[i].monster.isAlive())
+            {
+                remainingMonsters--;
+            }
+        }            
+    }    
 }
 
 void Game::print()
