@@ -31,15 +31,15 @@ public:
     static Hero parse(const std::string &);
 
 private:
-    int xp = 0;                            ///< The experience points of a Hero
-    int level = 1;                         ///< The level of a Hero
-    int maxHealth;                         ///< The maximum health value of a Hero
-    const int ExperiencePerLevel;          ///< The experience points needed to level up
-    const int HealthPointBonusPerLevel;    ///< The bonus health points in case of a level up
-    const int DamageBonusPerLevel;         ///< The damage bonus in case of a level up
-    const int MagicalDamageBonusPerLevel;         ///< The damage bonus in case of a level up
+    int xp = 0;                             ///< The experience points of a Hero
+    int level = 1;                          ///< The level of a Hero
+    int maxHealth;                          ///< The maximum health value of a Hero
+    const int ExperiencePerLevel;           ///< The experience points needed to level up
+    const int HealthPointBonusPerLevel;     ///< The bonus health points in case of a level up
+    const int PhysicalDamageBonusPerLevel;  ///< The damage bonus in case of a level up
+    const int MagicalDamageBonusPerLevel;   ///< The damage bonus in case of a level up
     const double ColdownMultiplierPerLevel; ///< The cooldown multiplier in case of a level up
-    const int DefenseBonusPerLevel;     ///< The defense value increment after level up
+    const int DefenseBonusPerLevel;         ///< The defense value increment after level up
 
     /**
      * \brief Increasing the Hero's level, maxHealth, damage and defense, multiplying the cooldown; and setting the health value to maxHealth

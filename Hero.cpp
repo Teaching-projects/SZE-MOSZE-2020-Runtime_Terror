@@ -3,9 +3,9 @@
 #include <iostream>
 
 Hero::Hero(const std::string &name, const int health, const int physicalDamage, const int magicalDamage, const double atkcooldown, const int defense,
-           const int ExperiencePerLevel, const int HealthPointBonusPerLevel, const int DamageBonusPerLevel, const int MagicalDamageBonusPerLevel, const double ColdownMultiplierPerLevel, const int DefenseBonusPerLevel)
+           const int ExperiencePerLevel, const int HealthPointBonusPerLevel, const int PhysicalDamageBonusPerLevel, const int MagicalDamageBonusPerLevel, const double ColdownMultiplierPerLevel, const int DefenseBonusPerLevel)
     : Monster{name, health, physicalDamage, magicalDamage, atkcooldown, defense}, maxHealth(health), ExperiencePerLevel(ExperiencePerLevel), HealthPointBonusPerLevel(HealthPointBonusPerLevel),
-      DamageBonusPerLevel(DamageBonusPerLevel), MagicalDamageBonusPerLevel(MagicalDamageBonusPerLevel), ColdownMultiplierPerLevel(ColdownMultiplierPerLevel), DefenseBonusPerLevel(DefenseBonusPerLevel)
+      PhysicalDamageBonusPerLevel(PhysicalDamageBonusPerLevel), MagicalDamageBonusPerLevel(MagicalDamageBonusPerLevel), ColdownMultiplierPerLevel(ColdownMultiplierPerLevel), DefenseBonusPerLevel(DefenseBonusPerLevel)
 {
 }
 
@@ -27,7 +27,7 @@ int Hero::getMaxHealthPoints() const
 void Hero::LevelUp()
 {
     level += 1;
-    damage.physical += DamageBonusPerLevel;
+    damage.physical += PhysicalDamageBonusPerLevel;
     damage.magical += MagicalDamageBonusPerLevel;
     atkcooldown *= ColdownMultiplierPerLevel;
     maxHealth += HealthPointBonusPerLevel;
