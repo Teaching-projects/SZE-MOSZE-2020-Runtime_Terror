@@ -37,20 +37,29 @@ void Hero::LevelUp()
 
 void Hero::Attack(Monster &enemy)
 {
+    int enemyHealth = enemy.getHealthPoints();    
     Monster::Attack(enemy);
 
-    if (enemy.isAlive())
-    {
-        while (level - 1 != (xp / ExperiencePerLevel))
-        {
-            LevelUp();
-        }
-    }
+    int xp = 0;
     if (damage.physical - enemy.getDefense() > 0)
     {
         xp += (damage.physical - enemy.getDefense());
     }
     xp += damage.magical;
+
+    if (xp > enemyHealth) 
+    {
+        this->xp += enemyHealth;
+    }
+    else
+    {
+        this->xp += xp;
+    }    
+
+    while (level - 1 != (xp / ExperiencePerLevel))
+    {
+        LevelUp();
+    }
 }
 
 Hero Hero::parse(const std::string &fileName)
