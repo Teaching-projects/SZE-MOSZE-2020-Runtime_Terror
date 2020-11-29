@@ -95,5 +95,11 @@ void Monster::SufferDamage(Damage damageRecieved)
 Monster Monster::parse(const std::string &fileName)
 {
     JSON data = JSON::parseFromFile(fileName);
-    return Monster(data.get<std::string>("name"), data.get<int>("health_points"), data.get<int>("damage"), data.get<int>("magical_damage"), data.get<double>("attack_cooldown"), data.get<int>("defense"));
+    return Monster(
+        data.get<std::string>("name"), 
+        data.get<int>("health_points"), 
+        data.get<int>("damage", 0), 
+        data.get<int>("magical_damage", 0), 
+        data.get<double>("attack_cooldown"), 
+        data.get<int>("defense"));
 }
