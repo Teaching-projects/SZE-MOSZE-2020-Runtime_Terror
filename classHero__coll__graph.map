@@ -1,4 +1,5 @@
 <map id="Hero" name="Hero">
-<area shape="rect" id="node1" title="Hero class inherited from Monster class The Hero is a Monster, but it has experience points and level..." alt="" coords="16,80,69,107"/>
-<area shape="rect" id="node2" href="$classMonster.html" title="Monster class A Monster can attack, suffer damage and we can also get its values and wether it is ali..." alt="" coords="5,5,80,32"/>
+<area shape="rect" id="node1" title="Hero class inherited from Monster class The Hero is a Monster, but it has experience points and level..." alt="" coords="48,171,101,197"/>
+<area shape="rect" id="node2" href="$classMonster.html" title="Monster class A Monster can attack, suffer damage and we can also get its values and wether it is ali..." alt="" coords="37,95,112,121"/>
+<area shape="rect" id="node3" href="$structMonster_1_1Damage.html" title=" " alt="" coords="5,5,144,32"/>
 </map>
