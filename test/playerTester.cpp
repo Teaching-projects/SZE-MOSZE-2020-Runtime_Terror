@@ -8,7 +8,8 @@ TEST(PlayerTest, GoodValues)
     Hero player = Hero::parse("../unit/Dark_Wanderer.json");
     EXPECT_EQ(player.getName(), "Prince Aidan of Khanduras");
     EXPECT_EQ(player.getHealthPoints(), 30);
-    EXPECT_EQ(player.getDamage(), 3);
+    EXPECT_EQ(player.getPhysicalDamage(), 3);
+    EXPECT_EQ(player.getMagicalDamage(), 2);
     EXPECT_FLOAT_EQ(player.getAttackCoolDown(), 1.1);
     EXPECT_EQ(player.getDefense(), 4);
     EXPECT_EQ(player.getLevel(), 1);
@@ -17,7 +18,7 @@ TEST(PlayerTest, GoodValues)
 
 TEST(PlayerTest, Player)
 {
-    Hero expected = Hero("Kakarott", 200, 90, 1.0, 1.0, 1, 1, 1, 1.0, 1.0);
+    Hero expected = Hero("Kakarott", 200, 90, 1, 1, 1, 1, 1, 1, 1, 1, 1);
     EXPECT_EQ(expected.getLevel(), 1);
     EXPECT_EQ(expected.getXp(), 0);
 }
@@ -26,9 +27,14 @@ TEST(PlayerTest, PlayerAttack)
 
     Hero A = Hero::parse("../unit/Dark_Wanderer.json");
     Monster B = Monster::parse("../unit/Fallen.json");
-    int heal = B.getHealthPoints() - (A.getDamage() - B.getDefense());
+
+    int physicalDamage = A.getPhysicalDamage() - B.getDefense();
+    if(physicalDamage < 0) physicalDamage = 0;
+
+    int health = B.getHealthPoints() - physicalDamage - A.getMagicalDamage();
+
     A.Attack(B);
-    EXPECT_EQ(B.getHealthPoints(), heal);
+    EXPECT_EQ(B.getHealthPoints(), health);
 }
 
 TEST(PlayerTest, PlayerXPAfterAttack)
@@ -39,5 +45,5 @@ TEST(PlayerTest, PlayerXPAfterAttack)
     {
         A.Attack(B);
     }
-    EXPECT_EQ(A.getXp(), 12);
+    EXPECT_EQ(A.getXp(), 10);
 }

@@ -2,10 +2,10 @@
 #include "JSON.h"
 #include <iostream>
 
-Hero::Hero(const std::string &name, const int health, const int damage, const double atkcooldown, const int defense,
-           const int ExperiencePerLevel, const int HealthPointBonusPerLevel, const int DamageBonusPerLevel, const double ColdownMultiplierPerLevel, const int DefenseBonusPerLevel)
-    : Monster{name, health, damage, atkcooldown, defense}, maxHealth(health), ExperiencePerLevel(ExperiencePerLevel), HealthPointBonusPerLevel(HealthPointBonusPerLevel),
-      DamageBonusPerLevel(DamageBonusPerLevel), ColdownMultiplierPerLevel(ColdownMultiplierPerLevel), DefenseBonusPerLevel(DefenseBonusPerLevel)
+Hero::Hero(const std::string &name, const int health, const int physicalDamage, const int magicalDamage, const double atkcooldown, const int defense,
+           const int ExperiencePerLevel, const int HealthPointBonusPerLevel, const int PhysicalDamageBonusPerLevel, const int MagicalDamageBonusPerLevel, const double ColdownMultiplierPerLevel, const int DefenseBonusPerLevel)
+    : Monster{name, health, physicalDamage, magicalDamage, atkcooldown, defense}, maxHealth(health), ExperiencePerLevel(ExperiencePerLevel), HealthPointBonusPerLevel(HealthPointBonusPerLevel),
+      PhysicalDamageBonusPerLevel(PhysicalDamageBonusPerLevel), MagicalDamageBonusPerLevel(MagicalDamageBonusPerLevel), ColdownMultiplierPerLevel(ColdownMultiplierPerLevel), DefenseBonusPerLevel(DefenseBonusPerLevel)
 {
 }
 
@@ -27,7 +27,8 @@ int Hero::getMaxHealthPoints() const
 void Hero::LevelUp()
 {
     level += 1;
-    damage += DamageBonusPerLevel;
+    damage.physical += PhysicalDamageBonusPerLevel;
+    damage.magical += MagicalDamageBonusPerLevel;
     atkcooldown *= ColdownMultiplierPerLevel;
     maxHealth += HealthPointBonusPerLevel;
     health = maxHealth;
@@ -36,18 +37,28 @@ void Hero::LevelUp()
 
 void Hero::Attack(Monster &enemy)
 {
+    int enemyHealth = enemy.getHealthPoints();    
     Monster::Attack(enemy);
 
-    if (enemy.isAlive())
+    int xp = 0;
+    if (damage.physical - enemy.getDefense() > 0)
     {
-        while (level - 1 != (xp / ExperiencePerLevel))
-        {
-            LevelUp();
-        }
+        xp += (damage.physical - enemy.getDefense());
     }
-    if (damage - enemy.getDefense() > 0)
+    xp += damage.magical;
+
+    if (xp > enemyHealth) 
     {
-        xp += (damage - enemy.getDefense());
+        this->xp += enemyHealth;
+    }
+    else
+    {
+        this->xp += xp;
+    }    
+
+    while (level - 1 != (xp / ExperiencePerLevel))
+    {
+        LevelUp();
     }
 }
 
@@ -58,12 +69,14 @@ Hero Hero::parse(const std::string &fileName)
     return Hero(
         data.get<std::string>("name"),
         data.get<int>("base_health_points"),
-        data.get<int>("base_damage"),
+        data.get<int>("base_damage", 0),
+        data.get<int>("magical_damage", 0),
         data.get<double>("base_attack_cooldown"),
         data.get<int>("defense"),
         data.get<int>("experience_per_level"),
         data.get<int>("health_point_bonus_per_level"),
-        data.get<int>("damage_bonus_per_level"),
+        data.get<int>("damage_bonus_per_level", 0),
+        data.get<int>("magical_damage_bonus_per_level", 0),
         data.get<double>("cooldown_multiplier_per_level"),
         data.get<int>("defense_bonus_per_level"));
 }

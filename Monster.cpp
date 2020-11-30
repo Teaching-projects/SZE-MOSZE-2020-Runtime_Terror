@@ -12,7 +12,8 @@ bool Monster::isAlive() const
     return health > 0;
 }
 
-Monster::Monster(const std::string name, const int health, const int damage, const double atkcooldown, const int defense) : name(name), health(health), damage(damage), atkcooldown(atkcooldown), defense(defense)
+Monster::Monster(const std::string name, const int health, const int physicalDamage, const int magicalDamage, const double atkcooldown, const int defense) 
+    : name(name), health(health), damage(Damage(physicalDamage, magicalDamage)), atkcooldown(atkcooldown), defense(defense)
 {
 }
 
@@ -26,9 +27,14 @@ int Monster::getHealthPoints() const
     return health;
 }
 
-int Monster::getDamage() const
+int Monster::getPhysicalDamage() const
 {
-    return damage;
+    return damage.physical;
+}
+
+int Monster::getMagicalDamage() const
+{
+    return damage.magical;
 }
 
 double Monster::getAttackCoolDown() const
@@ -74,22 +80,26 @@ void Monster::Attack(Monster &enemy)
     enemy.SufferDamage(this->damage);
 }
 
-void Monster::SufferDamage(int damageRecieved)
+void Monster::SufferDamage(Damage damageRecieved)
 {
-    int damage = damageRecieved - getDefense();
-    if(damage<0)
-	{
-		 damage=0;
-	}
-    health -= damage;
-    if (health < 0)
-    {
-        health = 0;
-    }
+    int physicalDamage = damageRecieved.physical - getDefense();
+    
+    if (physicalDamage < 0) physicalDamage = 0;
+
+    health -= physicalDamage;
+    health -= damageRecieved.magical;
+
+    if (health < 0) health = 0;
 }
 
 Monster Monster::parse(const std::string &fileName)
 {
     JSON data = JSON::parseFromFile(fileName);
-    return Monster(data.get<std::string>("name"), data.get<int>("health_points"), data.get<int>("damage"), data.get<double>("attack_cooldown"), data.get<int>("defense"));
+    return Monster(
+        data.get<std::string>("name"), 
+        data.get<int>("health_points"), 
+        data.get<int>("damage", 0), 
+        data.get<int>("magical_damage", 0), 
+        data.get<double>("attack_cooldown"), 
+        data.get<int>("defense"));
 }

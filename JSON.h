@@ -81,6 +81,17 @@ public:
         return std::get<T>(data[key]);
     }
 
+    /**
+     * \brief A get function to get data from the map, if there is no such data, it gives back a default value
+     * \return A type T data
+    */    
+    template <typename T>
+    T get(const std::string &key, T defaultValue)
+    {
+        if(count(key)) return std::get<T>(data[key]);
+        else return defaultValue;
+    }
+
     class ParseException : virtual public std::runtime_error
     {
     public:
