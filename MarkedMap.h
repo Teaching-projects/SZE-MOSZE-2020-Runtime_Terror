@@ -1,7 +1,7 @@
 /**
- * \class Map
+ * \class MarkedMap
  * 
- * \brief Map class can read a game map from text file
+ * \brief MarkedMap class can read a game map with specific positions from text file
  * 
  * \author Csillag Bence
  * 
@@ -12,7 +12,7 @@
 #include <fstream>
 #include <vector>
 #include "Map.h"
-struct coordinate ///< Enum for 2 types of map element
+struct coordinate ///< Enum for a coordinates
 {
     int x;
     int y;
@@ -23,11 +23,11 @@ struct coordinate ///< Enum for 2 types of map element
     }
 };
 
-class MarkedMap : public Map
+class MarkedMap : public Map ///< Inheritance from Map class
 {
-public:                               ///< Constructor of Map class
-    MarkedMap(std::string &filename); ///< Constructor of Map class, which read map from file
+public:                               ///< Constructor of MarkedMap class
+    MarkedMap(std::string &filename); ///< Constructor of MarkedMap class, which read map from file
 
-    coordinate getHeroPosition() const;                        ///< Get a map field type
-    std::vector<coordinate> getMonstarPositions(char c) const; ///< Get a map field type
+    coordinate getHeroPosition() const;                        ///< Return with hero position
+    std::vector<coordinate> getMonstarPositions(char c) const; ///< Retrun with monster positions
 };
