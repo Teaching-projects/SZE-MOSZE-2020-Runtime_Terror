@@ -14,7 +14,7 @@
 
 class Map
 {
-private:
+protected:
     std::vector<std::string> map; ///< This vector store a map
 
 public:
@@ -27,8 +27,8 @@ public:
     };
     Map::type get(size_t x, size_t y) const; ///< Get a map field type
 
-    int getWidth(int line) const; ///< This getter function return with width of map
-    int getHeight() const;        ///< This getter function return with height of map
+    virtual int getWidth(int line) const; ///< This getter function return with width of map
+    virtual int getHeight() const;        ///< This getter function return with height of map
 
     class WrongIndexException : public std::runtime_error ///< Map class Exception function
     {
