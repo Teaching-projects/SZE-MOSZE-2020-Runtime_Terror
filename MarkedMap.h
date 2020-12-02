@@ -29,5 +29,5 @@ public:                               ///< Constructor of MarkedMap class
     MarkedMap(std::string &filename); ///< Constructor of MarkedMap class, which read map from file
 
     coordinate getHeroPosition() const;                        ///< Return with hero position
-    std::vector<coordinate> getMonstarPositions(char c) const; ///< Retrun with monster positions
+    std::vector<coordinate> getMonsterPositions(char c) const; ///< Return with monster positions
 };
