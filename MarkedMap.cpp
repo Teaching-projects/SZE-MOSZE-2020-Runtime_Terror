@@ -9,7 +9,7 @@ coordinate MarkedMap::getHeroPosition() const
 {
     for (int i = 0; i < getHeight(); i++)
     {
-        for (int j = 0; j < getWidth(); j++)
+        for (int j = 0; j < getWidth(j); j++)
         {
             if (map[i][j] == 'H')
             {
@@ -18,13 +18,14 @@ coordinate MarkedMap::getHeroPosition() const
             }
         }
     }
+    throw Herodoenstexist("Hero doesn't exist");
 }
 std::vector<coordinate> MarkedMap::getMonstarPositions(char c) const
 {
     std::vector<coordinate> coord;
     for (int i = 0; i < getHeight(); i++)
     {
-        for (int j = 0; j < getWidth(); j++)
+        for (int j = 0; j < getWidth(j); j++)
         {
             if (map[i][j] == c)
             {

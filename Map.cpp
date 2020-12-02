@@ -2,7 +2,7 @@
 #include <fstream>
 #include <iostream>
 
-Map::Map() {};
+Map::Map(){};
 
 Map::Map(std::string &filename)
 {

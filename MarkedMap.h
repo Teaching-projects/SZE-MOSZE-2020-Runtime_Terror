@@ -29,5 +29,10 @@ public:                               ///< Constructor of MarkedMap class
     MarkedMap(std::string &filename); ///< Constructor of MarkedMap class, which read map from file
 
     coordinate getHeroPosition() const;                        ///< Return with hero position
-    std::vector<coordinate> getMonsterPositions(char c) const; ///< Return with monster positions
+    std::vector<coordinate> getMonstarPositions(char c) const; ///< Retrun with monster positions
+    class Herodoenstexist : public std::runtime_error          ///< MarkedMap class Exception function
+    {
+    public:
+        explicit Herodoenstexist(const std::string &Error) : std::runtime_error(Error) {}
+    };
 };
