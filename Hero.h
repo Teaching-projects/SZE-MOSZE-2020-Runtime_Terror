@@ -18,11 +18,12 @@
 class Hero : public Monster
 {
 public:
-    Hero(const std::string &, const int, const int, const int, const double, const int, const int, const int, const int, const int, const double, const int); ///< Constructor of Hero class
+    Hero(const std::string &, const int, const int, const int, const double, const int, const int, const int, const int, const int, const double, const int, const int, const int); ///< Constructor of Hero class
 
     int getLevel() const;           ///< This is a simple getter function for level value
     int getXp() const;              ///< This is a simple getter function for xp value
     int getMaxHealthPoints() const; ///< This is a simple getter function for the maxHealth value
+    int getLightRadius() const;
 
     /**
      * \brief Damages target Moster using the Moster's SufferDamage function, increasing the xp and calling the LevelUp() function in case of level up
@@ -40,6 +41,9 @@ private:
     const int MagicalDamageBonusPerLevel;   ///< The damage bonus in case of a level up
     const double ColdownMultiplierPerLevel; ///< The cooldown multiplier in case of a level up
     const int DefenseBonusPerLevel;         ///< The defense value increment after level up
+
+    int lightRadius;
+    const int LightRadiusBonusPerLevel;
 
     /**
      * \brief Increasing the Hero's level, maxHealth, damage and defense, multiplying the cooldown; and setting the health value to maxHealth
