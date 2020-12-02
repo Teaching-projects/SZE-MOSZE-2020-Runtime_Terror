@@ -164,8 +164,16 @@ void Game::print()
         const int startX = heroX - hero->getLightRadius() > 0 ? heroX - hero->getLightRadius() : 0;
         const int endX = heroX + hero->getLightRadius() + 1 < map.getWidth(y) ? heroX + hero->getLightRadius() + 1 : map.getWidth(y);   
 
+        if(y == startY)
+        {
+            std::cout << "╔";
+            for(int i = 0; i < 2*hero->getLightRadius()+1; i++) std::cout << "══";
+            std::cout << "╗" << std::endl;
+        }  
+        std::cout << "║";
+
         for (int x = startX; x < endX; x++) 
-        {    
+        {   
             if(map.get(x, y) == map.type::Wall) std::cout << "██";
             else if (heroX == x && heroY == y) std::cout << "┣┫";
             else
@@ -183,10 +191,18 @@ void Game::print()
                 if (monsterCount == 1) std::cout << "M░";
                 else if (monsterCount > 1) std::cout << "MM";
                 else std::cout << "░░";
-            }                                         
+            }                                                    
         }
+        if(endX == map.getWidth(y)) 
+        {
+            for(int i = endX; i < heroX + hero->getLightRadius() + 1; i++) std::cout << "██";
+        } 
+        std::cout << "║";
         std::cout << std::endl;
     }
+    std::cout << "╚";
+    for(int i = 0; i < 2*hero->getLightRadius()+1; i++) std::cout << "══";
+    std::cout << "╝" << std::endl;
 }
 
 bool Game::isMapSet()
