@@ -156,9 +156,15 @@ void Game::attackMonsters(int &remainingMonsters)
 
 void Game::print()
 {
-    for (int y = 0; y < map.getHeight(); y++) 
+    const int startY = heroY - hero->getLightRadius() > 0 ? heroY - hero->getLightRadius() : 0;
+    const int endY = heroY + hero->getLightRadius() + 1 < map.getHeight() ? heroY + hero->getLightRadius() + 1 : map.getHeight();
+
+    for (int y = startY; y < endY; y++) 
     {  
-        for (int x = 0; x < map.getWidth(y); x++) 
+        const int startX = heroX - hero->getLightRadius() > 0 ? heroX - hero->getLightRadius() : 0;
+        const int endX = heroX + hero->getLightRadius() + 1 < map.getWidth(y) ? heroX + hero->getLightRadius() + 1 : map.getWidth(y);   
+
+        for (int x = startX; x < endX; x++) 
         {    
             if(map.get(x, y) == map.type::Wall) std::cout << "██";
             else if (heroX == x && heroY == y) std::cout << "┣┫";
