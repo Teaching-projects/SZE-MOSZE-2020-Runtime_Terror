@@ -37,3 +37,13 @@ int Map::getWidth(int line) const
 {
     return map[line].length();
 }
+
+int Map::getMaxWidth() const 
+{
+    size_t maxWidth = 0;
+    for(size_t i = 0; i < map.size(); i++)
+    {
+        if(map[i].length() > maxWidth) maxWidth = map[i].length(); 
+    }
+    return maxWidth;
+}

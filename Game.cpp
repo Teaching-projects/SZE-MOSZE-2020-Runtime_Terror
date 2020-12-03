@@ -166,8 +166,9 @@ void Game::print()
 
         if(y == startY)
         {
+            int until = frameUntil();
             std::cout << "╔";
-            for(int i = 0; i < 2*hero->getLightRadius()+1; i++) std::cout << "══";
+            for(int i = startX; i < until; i++) std::cout << "══";
             std::cout << "╗" << std::endl;
         }  
         std::cout << "║";
@@ -195,14 +196,29 @@ void Game::print()
         }
         if(endX == map.getWidth(y)) 
         {
-            for(int i = endX; i < heroX + hero->getLightRadius() + 1; i++) std::cout << "██";
+            int until = frameUntil();
+            for(int i = endX; i < until; i++) std::cout << "██";
         } 
         std::cout << "║";
         std::cout << std::endl;
+        if(y == endY - 1)
+        {
+            int until = frameUntil();
+            std::cout << "╚";
+            for(int i = startX; i < until; i++) std::cout << "══";
+            std::cout << "╝" << std::endl;
+        }
+    }    
+}
+
+int Game::frameUntil()
+{
+    int until = map.getMaxWidth();
+    if(heroX + hero->getLightRadius() + 1 < map.getMaxWidth()) 
+    {
+        until = heroX + hero->getLightRadius() + 1;
     }
-    std::cout << "╚";
-    for(int i = 0; i < 2*hero->getLightRadius()+1; i++) std::cout << "══";
-    std::cout << "╝" << std::endl;
+    return until;
 }
 
 bool Game::isMapSet()

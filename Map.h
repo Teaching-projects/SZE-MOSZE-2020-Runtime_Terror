@@ -29,6 +29,7 @@ public:
 
     int getWidth(int line) const; ///< This getter function return with width of map
     int getHeight() const;        ///< This getter function return with height of map
+    int getMaxWidth() const;      ///< This getter function return with max width of map
 
     class WrongIndexException : public std::runtime_error ///< Map class Exception function
     {
