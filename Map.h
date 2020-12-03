@@ -14,7 +14,7 @@
 
 class Map
 {
-private:
+protected:
     std::vector<std::string> map; ///< This vector store a map
 
 public:
