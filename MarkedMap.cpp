@@ -13,7 +13,7 @@ coordinate MarkedMap::getHeroPosition() const
         {
             if (map[i][j] == 'H')
             {
-                coordinate c(i, j);
+                coordinate c(j, i);
                 return c;
             }
         }
@@ -29,7 +29,7 @@ std::vector<coordinate> MarkedMap::getMonsterPositions(char c) const
         {
             if (map[i][j] == c)
             {
-                coordinate temp(i, j);
+                coordinate temp(j, i);
                 coord.push_back(temp);
             }
         }

@@ -4,7 +4,7 @@
 #include "MarkedMap.h"
 #include "JSON.h"
 
-PreparedGame::PreparedGame(std::string mapjson) : Game(NULL) {
+PreparedGame::PreparedGame(std::string mapjson) : Game("map.txt") {
     JSON json = JSON::parseFromFile(mapjson);
 
     std::string mapfilename = json.get<std::string>("map");
@@ -19,7 +19,7 @@ PreparedGame::PreparedGame(std::string mapjson) : Game(NULL) {
     int maxMonsterNumber = 1;
     while(true)
     {
-        std::string search = "monster-" + std::to_string(maxMonsterNumber);
+        std::string search = "monster" + std::to_string(maxMonsterNumber);
         if(json.count(search))
             maxMonsterNumber++;
         else break;
@@ -28,12 +28,13 @@ PreparedGame::PreparedGame(std::string mapjson) : Game(NULL) {
     std::string actualMonsterFile;
 
     for (int i = 1; i <= maxMonsterNumber; i++) {
-        actualMonsterFile = json.get<std::string>("monster-" + std::to_string(i));
+        actualMonsterFile = json.get<std::string>("monster" + std::to_string(i));
         Monster monster = Monster::parse(actualMonsterFile);
         std::vector<coordinate> monsterPositions = map.getMonsterPositions((char)(i + '0'));
 
         for (auto& pos : monsterPositions) {
-            this->putMonster(monster, pos.x, pos.y);
+            std::cout << "X: " << pos.x << " Y: " << pos.y << std::endl;
+            this->putMonster(monster, pos.x, pos.y);            
         }
     }    
 }

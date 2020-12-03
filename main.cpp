@@ -11,6 +11,7 @@
 #include "Hero.h"
 #include "Monster.h"
 #include "Game.h"
+#include "PreparedGame.h"
 
 const std::map<int, std::string> error_messages = {
     {1, "Bad number of arguments. Only a single scenario file should be provided."},
@@ -60,12 +61,7 @@ int main(int argc, char **argv)
         for (const auto &monster_file : monster_files)
             monsters.push_back(Monster::parse(monster_file));
 
-        Game game = Game("map.txt");
-        game.putHero(hero, 2, 5);
-        for (const auto& monster : monsters) 
-        {
-            game.putMonster(monster, 3,5);
-        }
+        PreparedGame game = PreparedGame("preparedgame.json");
         game.run();
     }
     catch (const JSON::ParseException &e)
