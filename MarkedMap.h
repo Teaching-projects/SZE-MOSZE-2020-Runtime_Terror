@@ -8,6 +8,9 @@
  * Created on: 2020/11/26 18:21
 */
 
+#ifndef MARKEDMAP_HEADER
+#define MARKEDMAP_HEADER
+
 #include <string>
 #include <fstream>
 #include <vector>
@@ -36,3 +39,5 @@ public:                               ///< Constructor of MarkedMap class
         explicit Herodoesntexist(const std::string &Error) : std::runtime_error(Error) {}
     };
 };
+
+#endif

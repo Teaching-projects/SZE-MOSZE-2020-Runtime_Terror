@@ -8,6 +8,9 @@
  * Created on: 2020/11/26 18:21
 */
 
+#ifndef MAP_HEADER
+#define MAP_HEADER
+
 #include <string>
 #include <fstream>
 #include <vector>
@@ -37,3 +40,5 @@ public:
         explicit WrongIndexException(const std::string &Error) : std::runtime_error(Error) {}
     };
 };
+
+#endif
