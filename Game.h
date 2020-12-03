@@ -58,6 +58,7 @@ class Game
     bool isMapSet(); ///< Function to decide wether the map is set or not
     int getLivingMonsterCount(); ///< A getter function to get the number of living Monsters
     bool isValidDirection(std::string&); ///< Returns whether the given direction is valid or not
+    int frameUntil(); ///< Returns the end point of the frame
 
     class OccupiedException : public std::runtime_error
     {
