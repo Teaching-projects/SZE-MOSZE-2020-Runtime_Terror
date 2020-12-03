@@ -8,11 +8,13 @@ var searchData=
   ['getheight_13',['getHeight',['../classMap.html#a67113f1ffac80d9a20b15fa18a58edc2',1,'Map']]],
   ['getheroposition_14',['getHeroPosition',['../classMarkedMap.html#a67ff89cf4ce4816ad4edc98403d3b40a',1,'MarkedMap']]],
   ['getlevel_15',['getLevel',['../classHero.html#a17e77f3769e62aeb4e1807bbfc720f47',1,'Hero']]],
-  ['getmagicaldamage_16',['getMagicalDamage',['../classMonster.html#ad0cc0de8870f9a5170a757e73c9fe009',1,'Monster']]],
-  ['getmaxhealthpoints_17',['getMaxHealthPoints',['../classHero.html#ac6a7deeb6e390a23536d622042f4c48e',1,'Hero']]],
-  ['getmonsterpositions_18',['getMonsterPositions',['../classMarkedMap.html#ae1fef29a66c8e6dca4f98fc82afe623c',1,'MarkedMap']]],
-  ['getname_19',['getName',['../classMonster.html#a28ae1112e37262ce150e3c02465b3dd5',1,'Monster']]],
-  ['getphysicaldamage_20',['getPhysicalDamage',['../classMonster.html#a6c970e972db4e7a515ecf387a0d6c9b3',1,'Monster']]],
-  ['getwidth_21',['getWidth',['../classMap.html#a53609fccd117a5a069bf33ef1e0c65c2',1,'Map']]],
-  ['getxp_22',['getXp',['../classHero.html#a2477a58e24f6cd1e330c694d68594a94',1,'Hero']]]
+  ['getlightradius_16',['getLightRadius',['../classHero.html#abb3f50ace2a337b9dfaa4d32c58f4307',1,'Hero']]],
+  ['getmagicaldamage_17',['getMagicalDamage',['../classMonster.html#ad0cc0de8870f9a5170a757e73c9fe009',1,'Monster']]],
+  ['getmaxhealthpoints_18',['getMaxHealthPoints',['../classHero.html#ac6a7deeb6e390a23536d622042f4c48e',1,'Hero']]],
+  ['getmaxwidth_19',['getMaxWidth',['../classMap.html#a0565eebee42eaf18131b89fbae8f15b6',1,'Map']]],
+  ['getmonsterpositions_20',['getMonsterPositions',['../classMarkedMap.html#ae1fef29a66c8e6dca4f98fc82afe623c',1,'MarkedMap']]],
+  ['getname_21',['getName',['../classMonster.html#a28ae1112e37262ce150e3c02465b3dd5',1,'Monster']]],
+  ['getphysicaldamage_22',['getPhysicalDamage',['../classMonster.html#a6c970e972db4e7a515ecf387a0d6c9b3',1,'Monster']]],
+  ['getwidth_23',['getWidth',['../classMap.html#a53609fccd117a5a069bf33ef1e0c65c2',1,'Map']]],
+  ['getxp_24',['getXp',['../classHero.html#a2477a58e24f6cd1e330c694d68594a94',1,'Hero']]]
 ];
