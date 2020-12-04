@@ -28,7 +28,7 @@ class Game
 
     void setMap(Map&); ///< Function to set the map
     void putHero(Hero&, int, int); ///< Function to add a Hero to the game
-    void putMonster(Monster, int, int);  ///< Function to add a Monster to the game
+    void putMonster(Monster&, int, int);  ///< Function to add a Monster to the game
 
     void run(); ///< The function that runs the game
 
@@ -48,7 +48,6 @@ class Game
 
     Map map; ///< It stores the map: walls and empty fields
     std::vector<MonsterPlace> monsterPlaces; ///< A vector which contains the location of the Monsters
-
     Hero* hero; ///< A pointer to the Hero
     int heroX, heroY; ///< The location of the Hero
  
