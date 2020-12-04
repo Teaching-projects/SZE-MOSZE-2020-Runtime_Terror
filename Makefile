@@ -39,7 +39,7 @@ buildtest:
 	./test.sh
 
 memory_leak_check:
-	echo "east" | valgrind --error-exitcode=1 --leak-check=full ./$(OUT) scenario/scenario1.json 2> ./memory-leak-check.txt
+	cat input.txt | valgrind --error-exitcode=1 --leak-check=full ./$(OUT) 2> ./memory-leak-check.txt
 
 static_code_analysis:
 	cppcheck --enable=all *.cpp 2> static-code-analysis.txt
