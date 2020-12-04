@@ -1,3 +1,14 @@
+/**
+ * \class PreparedGame
+ * 
+ * \brief PreparedGame class inherited from Game class
+ * The class runs the game and places units on the map according to a json file.
+ * 
+ * \author Jaksics Benedek
+ * 
+ * Created on: 2020/12/13 18:25
+*/
+
 #include <string>
 
 #include "Game.h"
@@ -8,8 +19,8 @@
 class PreparedGame : Game {
 
     public:
-        PreparedGame(std::string mapjson);
-        void run();
+        PreparedGame(std::string mapjson); ///< Constructor of PreparedGame class, reads map, monsters and hero from file 
+        void run(); ///< The function that runs the game
 
 };
 
