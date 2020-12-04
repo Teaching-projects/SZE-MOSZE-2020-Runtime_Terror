@@ -95,6 +95,7 @@ void Game::run()
     {
         std::cout << "The hero died." << std::endl;
     }
+    delete hero;
     hero = NULL;
 }
 

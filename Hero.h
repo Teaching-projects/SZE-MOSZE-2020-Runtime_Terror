@@ -31,6 +31,8 @@ public:
     void Attack(Monster & /** [in] The Monster the attack is targeting*/);
     static Hero parse(const std::string &);
 
+    virtual ~Hero() {};
+
 private:
     int xp = 0;                             ///< The experience points of a Hero
     int level = 1;                          ///< The level of a Hero
