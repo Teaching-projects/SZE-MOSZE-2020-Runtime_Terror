@@ -4,7 +4,7 @@
 #include "MarkedMap.h"
 #include "JSON.h"
 
-PreparedGame::PreparedGame(std::string mapjson) : Game("map.txt") {
+PreparedGame::PreparedGame(std::string mapjson) {
     JSON json = JSON::parseFromFile(mapjson);
 
     std::string mapfilename = json.get<std::string>("map");
@@ -24,6 +24,7 @@ PreparedGame::PreparedGame(std::string mapjson) : Game("map.txt") {
             maxMonsterNumber++;
         else break;
     }
+    maxMonsterNumber -= 1;
 
     std::string actualMonsterFile;
 
@@ -33,12 +34,12 @@ PreparedGame::PreparedGame(std::string mapjson) : Game("map.txt") {
         std::vector<coordinate> monsterPositions = map.getMonsterPositions((char)(i + '0'));
 
         for (auto& pos : monsterPositions) {
-            std::cout << "X: " << pos.x << " Y: " << pos.y << std::endl;
             this->putMonster(monster, pos.x, pos.y);            
         }
-    }    
+    }   
 }
 
-void PreparedGame::run(){
+void PreparedGame::run()
+{
     Game::run();
 }
