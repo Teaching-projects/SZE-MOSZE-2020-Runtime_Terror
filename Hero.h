@@ -18,7 +18,7 @@
 class Hero : public Monster
 {
 public:
-    Hero(const std::string &, const int, const int, const int, const double, const int, const int, const int, const int, const int, const double, const int, const int, const int); ///< Constructor of Hero class
+    Hero(const std::string &, const int, const int, const int, const double, const int, const int, const int, const int, const int, const double, const int, const int, const int, const std::string); ///< Constructor of Hero class
 
     int getLevel() const;           ///< This is a simple getter function for level value
     int getXp() const;              ///< This is a simple getter function for xp value

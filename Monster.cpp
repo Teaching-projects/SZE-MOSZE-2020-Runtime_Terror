@@ -12,8 +12,8 @@ bool Monster::isAlive() const
     return health > 0;
 }
 
-Monster::Monster(const std::string name, const int health, const int physicalDamage, const int magicalDamage, const double atkcooldown, const int defense) 
-    : name(name), health(health), damage(Damage(physicalDamage, magicalDamage)), atkcooldown(atkcooldown), defense(defense)
+Monster::Monster(const std::string name, const int health, const int physicalDamage, const int magicalDamage, const double atkcooldown, const int defense, const std::string texture) 
+    : name(name), health(health), damage(Damage(physicalDamage, magicalDamage)), atkcooldown(atkcooldown), defense(defense), texture(texture)
 {
 }
 
@@ -45,6 +45,11 @@ double Monster::getAttackCoolDown() const
 int Monster::getDefense() const
 {
     return defense;
+}
+
+std::string Monster::getTexture() const
+{
+    return texture;
 }
 
 void Monster::fightTilDeath(Monster &enemy)
@@ -101,5 +106,6 @@ Monster Monster::parse(const std::string &fileName)
         data.get<int>("damage", 0), 
         data.get<int>("magical_damage", 0), 
         data.get<double>("attack_cooldown"), 
-        data.get<int>("defense"));
+        data.get<int>("defense"),
+        data.get<std::string>("texture"));
 }
