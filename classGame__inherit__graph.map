@@ -1,0 +1,4 @@
+<map id="Game" name="Game">
+<area shape="rect" id="node1" title="Game class runs the game, and it can add units to the game." alt="" coords="34,5,95,32"/>
+<area shape="rect" id="node2" href="$classPreparedGame.html" title="PreparedGame class inherited from Game class The class runs the game and places units on the map acco..." alt="" coords="5,80,124,107"/>
+</map>
