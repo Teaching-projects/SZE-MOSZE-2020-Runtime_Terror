@@ -18,6 +18,7 @@
 
 #include "string"
 #include <variant>
+#include <list>
 #include <iostream>
 
 class Game 
@@ -35,7 +36,7 @@ class Game
 
     protected:
 
-    std::vector<Renderer*> renderers;
+    std::list<Renderer*> renderers;
 
     virtual void render();
     void registerRenderer(Renderer*);
@@ -65,6 +66,17 @@ class Game
     int getLivingMonsterCount(); ///< A getter function to get the number of living Monsters
     bool isValidDirection(std::string&); ///< Returns whether the given direction is valid or not
     int frameUntil() const; ///< Returns the end point of the frame
+
+    ~Game()
+    {
+        delete hero;
+        
+        for(auto &&renderer : renderers)
+        {
+            delete renderer;
+        }
+        renderers.clear();
+    };
 
     class OccupiedException : public std::runtime_error
     {

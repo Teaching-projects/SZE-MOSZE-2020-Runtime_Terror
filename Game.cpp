@@ -184,14 +184,13 @@ int Game::getLivingMonsterCount()
 
 void Game::render() 
 {
-    Game *game = this;
-    for (size_t i = 0; i < this->renderers.size(); i++) 
-    {
-        this->renderers[i]->render((Game)(*game));
-    }
+    for (auto renderer : renderers)
+	{
+		renderer->render(*this);
+	}
 }
 
 void Game::registerRenderer(Renderer* renderer) 
 {
-    this->renderers.push_back(renderer);
+    this->renderers.emplace_back(renderer);
 }
