@@ -38,6 +38,9 @@ PreparedGame::PreparedGame(std::string mapjson) {
             this->putMonster(monster, pos.x, pos.y);            
         }
     }   
+
+    freeTexture = json.get<std::string>("free_texture");
+    wallTexture = json.get<std::string>("wall_texture");
 }
 
 void PreparedGame::run()
