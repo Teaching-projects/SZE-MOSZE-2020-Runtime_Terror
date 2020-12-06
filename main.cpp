@@ -3,6 +3,8 @@
 #include "PreparedGame.h"
 #include "HeroTextRenderer.h"
 #include "ObserverTextRenderer.h"
+#include "CharacterSVGRenderer.h"
+#include "ObserverSVGRenderer.h"
 
 int main(int argc, char **argv)
 {
@@ -15,6 +17,10 @@ int main(int argc, char **argv)
         auto observerStream = std::ofstream("log.txt");
         game.registerRenderer(new ObserverTextRenderer(observerStream));
         
+        game.registerRenderer(new CharacterSVGRenderer("character.svg"));
+
+        game.registerRenderer(new ObserverSVGRenderer("observer.svg"));
+
         game.run();
     }
     catch (const JSON::ParseException &e)
