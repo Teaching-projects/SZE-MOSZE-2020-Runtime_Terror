@@ -12,6 +12,7 @@
 #include <string>
 
 #include "Game.h"
+#include "Renderer.h"
 
 #ifndef PREPAREDGAME_HEADER
 #define PREPAREDGAME_HEADER

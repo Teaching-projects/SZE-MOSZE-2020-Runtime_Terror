@@ -25,19 +25,19 @@ Map.o: Map.cpp
 MarkedMap.o: MarkedMap.cpp MarkedMap.h Map.h
 	$(CC) $(CFLAGS) -c MarkedMap.cpp 
 
-Game.o: Game.cpp Monster.h Hero.h Map.h
+Game.o: Game.cpp Monster.h Hero.h Map.h Renderer.h
 	$(CC) $(CFLAGS) -c Game.cpp
 
-PreparedGame.o: PreparedGame.cpp PreparedGame.h MarkedMap.h JSON.h
+PreparedGame.o: PreparedGame.cpp PreparedGame.h Game.h MarkedMap.h JSON.h Renderer.h
 	$(CC) $(CFLAGS) -c PreparedGame.cpp
 
-ObserverTextRenderer.o: ObserverTextRenderer.cpp ObserverTextRenderer.h Game.h Renderer.h TextRenderer.h
+ObserverTextRenderer.o: ObserverTextRenderer.cpp ObserverTextRenderer.h Game.h TextRenderer.h
 	$(CC) $(CFLAGS) -c ObserverTextRenderer.cpp
 
-HeroTextRenderer.o: HeroTextRenderer.cpp HeroTextRenderer.h Game.h Renderer.h TextRenderer.h Game.h
+HeroTextRenderer.o: HeroTextRenderer.cpp HeroTextRenderer.h Game.h TextRenderer.h
 	$(CC) $(CFLAGS) -c HeroTextRenderer.cpp
 
-main.o: main.cpp Hero.h Monster.h JSON.h
+main.o: main.cpp JSON.h PreparedGame.h HeroTextRenderer.h ObserverTextRenderer.h
 	$(CC) $(CFLAGS) -c main.cpp
 
 buildtest:
