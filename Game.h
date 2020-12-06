@@ -14,6 +14,7 @@
 #include "Map.h"
 #include "Monster.h"
 #include "Hero.h"
+#include "Renderer.h"
 
 #include "string"
 #include <variant>
@@ -32,7 +33,14 @@ class Game
 
     void run(); ///< The function that runs the game
 
-    private:   
+    protected:
+
+    std::vector<Renderer*> renderers;
+
+    virtual void render();
+    void registerRenderer(Renderer*);
+
+    public:   
 
     /**
      * \brief A struct to store a place where a Monster is located
@@ -53,11 +61,10 @@ class Game
  
     void move(std::string&); ///< It moves the Hero, paramter: direction string
     void attackMonsters(int&); ///< Function to attack Monsters
-    void print(); ///< Function to print the current state of the game
     bool isMapSet(); ///< Function to decide wether the map is set or not
     int getLivingMonsterCount(); ///< A getter function to get the number of living Monsters
     bool isValidDirection(std::string&); ///< Returns whether the given direction is valid or not
-    int frameUntil(); ///< Returns the end point of the frame
+    int frameUntil() const; ///< Returns the end point of the frame
 
     class OccupiedException : public std::runtime_error
     {
