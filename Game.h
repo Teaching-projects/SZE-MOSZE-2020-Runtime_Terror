@@ -40,8 +40,11 @@ class Game
 
     virtual void render();
     void registerRenderer(Renderer*);
-
+    
     public:   
+
+    std::string freeTexture; 
+    std::string wallTexture;
 
     /**
      * \brief A struct to store a place where a Monster is located
