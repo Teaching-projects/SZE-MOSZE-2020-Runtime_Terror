@@ -4,9 +4,7 @@ IFS=$'\n\r'
 
 > output.txt
 
-for i in `cat input.txt`; do
-    echo "east" | ./a.out $i >> output.txt
-done
+cat input.txt | ./a.out >> output.txt
 
 different="$(diff output.txt expected-output.txt)"
 

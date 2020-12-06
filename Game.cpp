@@ -7,6 +7,8 @@
 #include <iostream>
 #include <algorithm>
 
+Game::Game() : hero(NULL), heroX(-1), heroY(-1) {}
+
 Game::Game(std::string mapfilename) : hero(NULL), heroX(-1), heroY(-1)
 {
     Map map = Map(mapfilename);
@@ -39,15 +41,12 @@ void Game::putHero(Hero& hero, int x, int y)
     {
         throw OccupiedException("You can't place the hero on the wall.");
     }
-    else if(map.get(x, y) == map.type::Free)
-    { 
-        this->hero = &hero;
-        heroX = x;
-        heroY = y;      
-    }
+    this->hero = new Hero(hero); 
+    heroX = x;
+    heroY = y;  
 }
 
-void Game::putMonster(Monster monster, int x, int y)
+void Game::putMonster(Monster& monster, int x, int y)
 { 
     if(!isMapSet())
     {
@@ -96,6 +95,7 @@ void Game::run()
     {
         std::cout << "The hero died." << std::endl;
     }
+    delete hero;
     hero = NULL;
 }
 

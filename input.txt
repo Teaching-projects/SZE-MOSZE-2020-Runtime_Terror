@@ -1,1 +1,14 @@
-scenario/scenario1.json
+west
+south
+south
+east
+east
+south
+south
+east
+east
+east
+west
+north
+north
+east
