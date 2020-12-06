@@ -17,6 +17,7 @@
 class ObserverTextRenderer : public TextRenderer
 {
     public:
+    explicit ObserverTextRenderer(std::ostream &output) : TextRenderer(output) {};
     virtual void render(const Game&) const;
 };
 

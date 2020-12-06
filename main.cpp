@@ -9,7 +9,12 @@ int main(int argc, char **argv)
     try
     {
         PreparedGame game = PreparedGame("preparedgame.json");
+
         game.registerRenderer(new HeroTextRenderer());
+
+        auto observerStream = std::ofstream("log.txt");
+        game.registerRenderer(new ObserverTextRenderer(observerStream));
+        
         game.run();
     }
     catch (const JSON::ParseException &e)
