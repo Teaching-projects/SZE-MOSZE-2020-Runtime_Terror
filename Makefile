@@ -1,6 +1,6 @@
 SHELL=/bin/bash
 
-OBJS = Monster.o Hero.o main.o JSON.o Map.o MarkedMap.o Game.o PreparedGame.o
+OBJS = Monster.o Hero.o main.o JSON.o Map.o MarkedMap.o Game.o PreparedGame.o ObserverTextRenderer.o ObserverSVGRenderer.o HeroTextRenderer.o CharacterSVGRenderer.o
 OUT = a.out
 CFLAGS = -Wall -std=c++17
 CC = g++-9
@@ -25,13 +25,25 @@ Map.o: Map.cpp
 MarkedMap.o: MarkedMap.cpp MarkedMap.h Map.h
 	$(CC) $(CFLAGS) -c MarkedMap.cpp 
 
-Game.o: Game.cpp Monster.h Hero.h Map.h
+Game.o: Game.cpp Monster.h Hero.h Map.h Renderer.h
 	$(CC) $(CFLAGS) -c Game.cpp
 
-PreparedGame.o: PreparedGame.cpp PreparedGame.h MarkedMap.h JSON.h
+PreparedGame.o: PreparedGame.cpp PreparedGame.h MarkedMap.h JSON.h Renderer.h
 	$(CC) $(CFLAGS) -c PreparedGame.cpp
 
-main.o: main.cpp Hero.h Monster.h JSON.h
+CharacterSVGRenderer.o: SVGRenderer.h Game.h
+	$(CC) $(CFLAGS) -c CharacterSVGRenderer.cpp
+
+HeroTextRenderer.o: TextRenderer.h Game.h
+	$(CC) $(CFLAGS) -c HeroTextRenderer.cpp
+
+ObserverSVGRenderer.o: SVGRenderer.h Game.h
+	$(CC) $(CFLAGS) -c ObserverSVGRenderer.cpp
+
+ObserverTextRenderer.o: TextRenderer.h Game.h
+	$(CC) $(CFLAGS) -c ObserverTextRenderer.cpp
+
+main.o: main.cpp Hero.h Monster.h JSON.h HeroTextRenderer.h ObserverTextRenderer.h CharacterSVGRenderer.h ObserverSVGRenderer.h
 	$(CC) $(CFLAGS) -c main.cpp
 
 buildtest:

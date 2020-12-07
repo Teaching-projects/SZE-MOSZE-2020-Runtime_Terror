@@ -4,8 +4,8 @@
 
 Hero::Hero(const std::string &name, const int health, const int physicalDamage, const int magicalDamage, const double atkcooldown, const int defense,
            const int ExperiencePerLevel, const int HealthPointBonusPerLevel, const int PhysicalDamageBonusPerLevel, const int MagicalDamageBonusPerLevel, const double ColdownMultiplierPerLevel, 
-           const int DefenseBonusPerLevel, const int lightRadius, const int LightRadiusBonusPerLevel)
-    : Monster{name, health, physicalDamage, magicalDamage, atkcooldown, defense}, maxHealth(health), ExperiencePerLevel(ExperiencePerLevel), HealthPointBonusPerLevel(HealthPointBonusPerLevel),
+           const int DefenseBonusPerLevel, const int lightRadius, const int LightRadiusBonusPerLevel, const std::string texture)
+    : Monster{name, health, physicalDamage, magicalDamage, atkcooldown, defense, texture}, maxHealth(health), ExperiencePerLevel(ExperiencePerLevel), HealthPointBonusPerLevel(HealthPointBonusPerLevel),
       PhysicalDamageBonusPerLevel(PhysicalDamageBonusPerLevel), MagicalDamageBonusPerLevel(MagicalDamageBonusPerLevel), ColdownMultiplierPerLevel(ColdownMultiplierPerLevel), DefenseBonusPerLevel(DefenseBonusPerLevel),
       lightRadius(lightRadius), LightRadiusBonusPerLevel(LightRadiusBonusPerLevel)
 {
@@ -88,5 +88,6 @@ Hero Hero::parse(const std::string &fileName)
         data.get<double>("cooldown_multiplier_per_level"),
         data.get<int>("defense_bonus_per_level"),
         data.get<int>("light_radius"),
-        data.get<int>("light_radius_bonus_per_level", 1));
+        data.get<int>("light_radius_bonus_per_level", 1),
+        data.get<std::string>("texture"));
 }

@@ -71,7 +71,7 @@ void Game::run()
 
     while(hero->isAlive() && remainingMonsters > 0)
     {     
-        print();
+        render();
 
         if(remainingMonsters > 0)
         {
@@ -86,6 +86,8 @@ void Game::run()
         }
         attackMonsters(remainingMonsters);
     }
+
+    render();
 
     if(hero->isAlive()) 
     {
@@ -154,64 +156,7 @@ void Game::attackMonsters(int &remainingMonsters)
     }    
 }
 
-void Game::print()
-{
-    const int startY = heroY - hero->getLightRadius() > 0 ? heroY - hero->getLightRadius() : 0;
-    const int endY = heroY + hero->getLightRadius() + 1 < map.getHeight() ? heroY + hero->getLightRadius() + 1 : map.getHeight();
-
-    for (int y = startY; y < endY; y++) 
-    {  
-        const int startX = heroX - hero->getLightRadius() > 0 ? heroX - hero->getLightRadius() : 0;
-        const int endX = heroX + hero->getLightRadius() + 1 < map.getWidth(y) ? heroX + hero->getLightRadius() + 1 : map.getWidth(y);   
-
-        if(y == startY)
-        {
-            int until = frameUntil();
-            std::cout << "╔";
-            for(int i = startX; i < until; i++) std::cout << "══";
-            std::cout << "╗" << std::endl;
-        }  
-        std::cout << "║";
-
-        for (int x = startX; x < endX; x++) 
-        {   
-            if(map.get(x, y) == map.type::Wall) std::cout << "██";
-            else if (heroX == x && heroY == y) std::cout << "┣┫";
-            else
-            {
-                int monsterCount = 0;
-
-                for (size_t i = 0; i < monsterPlaces.size(); i++) 
-                {
-                    if(monsterPlaces[i].x == x && monsterPlaces[i].y == y && monsterPlaces[i].monster.isAlive())
-                    {
-                        monsterCount++;
-                    }
-                }
-
-                if (monsterCount == 1) std::cout << "M░";
-                else if (monsterCount > 1) std::cout << "MM";
-                else std::cout << "░░";
-            }                                                    
-        }
-        if(endX == map.getWidth(y)) 
-        {
-            int until = frameUntil();
-            for(int i = endX; i < until; i++) std::cout << "██";
-        } 
-        std::cout << "║";
-        std::cout << std::endl;
-        if(y == endY - 1)
-        {
-            int until = frameUntil();
-            std::cout << "╚";
-            for(int i = startX; i < until; i++) std::cout << "══";
-            std::cout << "╝" << std::endl;
-        }
-    }    
-}
-
-int Game::frameUntil()
+int Game::frameUntil() const
 {
     int until = map.getMaxWidth();
     if(heroX + hero->getLightRadius() + 1 < map.getMaxWidth()) 
@@ -237,4 +182,17 @@ int Game::getLivingMonsterCount()
         }
     }
     return monsterCount;
+}
+
+void Game::render() 
+{
+    for (auto renderer : renderers)
+	{
+		renderer->render(*this);
+	}
+}
+
+void Game::registerRenderer(Renderer* renderer) 
+{
+    this->renderers.emplace_back(renderer);
 }

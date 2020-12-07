@@ -3,6 +3,7 @@
 #include "PreparedGame.h"
 #include "MarkedMap.h"
 #include "JSON.h"
+#include "Renderer.h"
 
 PreparedGame::PreparedGame(std::string mapjson) {
     JSON json = JSON::parseFromFile(mapjson);
@@ -37,9 +38,17 @@ PreparedGame::PreparedGame(std::string mapjson) {
             this->putMonster(monster, pos.x, pos.y);            
         }
     }   
+
+    freeTexture = json.get<std::string>("free_texture");
+    wallTexture = json.get<std::string>("wall_texture");
 }
 
 void PreparedGame::run()
 {
     Game::run();
+}
+
+void PreparedGame::registerRenderer(Renderer* renderer) 
+{
+    Game::registerRenderer(renderer);
 }

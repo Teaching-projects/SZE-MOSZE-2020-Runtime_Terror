@@ -1,42 +1,32 @@
 #include <iostream>
-#include <map>
-#include <string>
-#include <filesystem>
-#include <sstream>
-#include <algorithm>
-#include <iterator>
-#include <list>
-
 #include "JSON.h"
-#include "Hero.h"
-#include "Monster.h"
-#include "Game.h"
 #include "PreparedGame.h"
-
-const std::map<int, std::string> error_messages = {
-    {1, "Bad number of arguments. Only a single scenario file should be provided."},
-    {2, "The provided scenario file is not accessible."},
-    {3, "The provided scenario file is invalid."},
-    {4, "JSON parsing error."}};
-
-void bad_exit(int exitcode)
-{
-    std::cerr
-        << (error_messages.count(exitcode) ? error_messages.at(exitcode) : "Unknown error")
-        << std::endl;
-    exit(exitcode);
-}
+#include "HeroTextRenderer.h"
+#include "ObserverTextRenderer.h"
+#include "CharacterSVGRenderer.h"
+#include "ObserverSVGRenderer.h"
 
 int main(int argc, char **argv)
 {
     try
     {
         PreparedGame game = PreparedGame("preparedgame.json");
+
+        game.registerRenderer(new HeroTextRenderer());
+
+        auto observerStream = std::ofstream("log.txt");
+        game.registerRenderer(new ObserverTextRenderer(observerStream));
+        
+        game.registerRenderer(new CharacterSVGRenderer("character.svg"));
+
+        game.registerRenderer(new ObserverSVGRenderer("observer.svg"));
+
         game.run();
     }
-    catch (const JSON::ParseException &e)
+    catch (const std::exception& e)
     {
-        bad_exit(4);
+        std::cerr << "Error: " << e.what() << std::endl;
+        return 1;
     }
     return 0;
 }

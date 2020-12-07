@@ -18,7 +18,7 @@ class Monster
 {
 
 public:
-    Monster(const std::string, const int, const int, const int, const double, const int); ///< Constructor of Monster class
+    Monster(const std::string, const int, const int, const int, const double, const int, const std::string); ///< Constructor of Monster class
 
     /**
      * \brief Checks if the Monster's health value is greater than zero
@@ -54,6 +54,8 @@ public:
     double getAttackCoolDown() const;
     /// This is a simple getter function for current defense value
     int getDefense() const;
+
+    std::string getTexture() const;
 
     protected:
 
@@ -93,6 +95,7 @@ public:
     Monster::Damage damage; ///< The damage values of a unit
     double atkcooldown; ///< The time between the unit's attacks
     int defense; ///< The defense value of a unit
+    std::string texture;
 
     private:
     static void RemoveChar(std::string & /** [in] The target string the charater(s) need to be removed from */, const char /** [in] The charater to be removed*/); ///< Removes specified characters from a given string. Used by the parseMonster function
