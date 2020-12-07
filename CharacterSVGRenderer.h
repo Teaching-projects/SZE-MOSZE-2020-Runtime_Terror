@@ -18,8 +18,8 @@
 class CharacterSVGRenderer : public SVGRenderer
 {
     public:
-    CharacterSVGRenderer(std::string filename) : SVGRenderer(filename) {};
-    virtual void render(const Game&) const;
+    CharacterSVGRenderer(std::string filename) : SVGRenderer(filename) {}; ///< Constructor of the CharacterSVGRenderer
+    virtual void render(const Game&) const; ///< Virtual render function to render the Character SVG
 };
 
 #endif

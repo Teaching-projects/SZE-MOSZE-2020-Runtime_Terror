@@ -20,11 +20,11 @@ class SVGRenderer : public Renderer
 {
     public:
 
-    std::string filename;
+    std::string filename; ///< The name of the SVG file
 
-    SVGRenderer(std::string filename) : filename(filename) {};
+    SVGRenderer(std::string filename) : filename(filename) {}; ///< Constructor of the SVGRenderer
 
-    virtual void render(const Game&) const = 0;
+    virtual void render(const Game&) const = 0; ///< Virtual render function
 };
 
 #endif
