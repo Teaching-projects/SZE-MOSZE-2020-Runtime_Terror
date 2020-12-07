@@ -70,43 +70,60 @@ $(function() {
 <div class="textblock"><p>Csapat: Runtime_Terror</p>
 <p>Tagok: Tömördi Tamás, Jaksics Benedek, Csillag Bence</p>
 <h1><a class="anchor" id="autotoc_md1"></a>
-Összegzés</h1>
-<p>Az első három feladat óta az alábbi feature-ök kerültek be a programba:</p>
+Finish</h1>
 <h2><a class="anchor" id="autotoc_md2"></a>
+Renderers</h2>
+<p>A programhoz hozzáadott render osztályok segítségével lehetőség van a játék aktuális állását különböző kimeneteteken megjeleníteni. Például console-on szöveges fomátumban, szövegesen fájlban, vagy SVG kép formátumban. Emellett lehetőség van Observer segítségével az egész játéktér vagy külön csak a <a class="el" href="classHero.html" title="Hero class inherited from Monster class The Hero is a Monster, but it has experience points and level...">Hero</a> által látott terület kiírására.</p>
+<h3><a class="anchor" id="autotoc_md3"></a>
+Az SVG fájlba renderelt grafika:</h3>
+<p><img src="/texture/readme_image/svg_render.JPG?raw=true" alt=" Az SVG fájlba renderelt grafika" title="Az SVG fájlba renderelt grafika" class="inline"/></p>
+<h3><a class="anchor" id="autotoc_md4"></a>
+A console-ra renderelt grafika:</h3>
+<p><img src="/texture/readme_image/console_render.JPG?raw=true" alt=" A console-ra renderelt grafika" title="A console-ra renderelt grafika" class="inline"/></p>
+<h2><a class="anchor" id="autotoc_md5"></a>
+Light radius</h2>
+<p>Beállítható egy sugár, amelyet a hero lát. Ez a sugár szintlépések esetén képes növekedni is.</p>
+<h2><a class="anchor" id="autotoc_md6"></a>
+Marked map és prepared game</h2>
+<p>A <a class="el" href="classMarkedMap.html" title="&lt; Inheritance from Map class">MarkedMap</a> egy olyan osztály, amely olyan pályát képes txt-ből beolvasni, amelyen már a <a class="el" href="classHero.html" title="Hero class inherited from Monster class The Hero is a Monster, but it has experience points and level...">Hero</a> kezdőhelye és a Monsterek elhelyezkedése is be van jelölve. A <a class="el" href="classPreparedGame.html" title="PreparedGame class inherited from Game class The class runs the game and places units on the map acco...">PreparedGame</a> ezen a MarkedMap-en futtatja a játékot.</p>
+<h1><a class="anchor" id="autotoc_md7"></a>
+További feladatok</h1>
+<p>Az első három feladat óta az alábbi feature-ök kerültek be a programba:</p>
+<h2><a class="anchor" id="autotoc_md8"></a>
 JSON parser fejlesztése</h2>
 <p>A <a class="el" href="classJSON.html" title="JSON Parser class containing static functions The class is able to parse datas from different sources...">JSON</a> parser annyi plusz funkciót kapott, hogy képes az egyszintű JSON-ökből adat listát is beolvasni. Például, ha valahol több <a class="el" href="classMonster.html" title="Monster class A Monster can attack, suffer damage and we can also get its values and wether it is ali...">Monster</a> kerül átadásra.</p>
-<h2><a class="anchor" id="autotoc_md3"></a>
+<h2><a class="anchor" id="autotoc_md9"></a>
 Osztály átnevezések</h2>
 <p>A korábbi Unit új neve <a class="el" href="classMonster.html" title="Monster class A Monster can attack, suffer damage and we can also get its values and wether it is ali...">Monster</a>, a korábbi Player új neve <a class="el" href="classHero.html" title="Hero class inherited from Monster class The Hero is a Monster, but it has experience points and level...">Hero</a>.</p>
-<h2><a class="anchor" id="autotoc_md4"></a>
+<h2><a class="anchor" id="autotoc_md10"></a>
 Map class</h2>
 <p>A <a class="el" href="classMap.html" title="Map class can read a game map from text file.">Map</a> osztály egy fájlból képes beolvasni egy pályát, amin a játék történik majd.</p>
-<h2><a class="anchor" id="autotoc_md5"></a>
+<h2><a class="anchor" id="autotoc_md11"></a>
 Game class</h2>
 <p>A <a class="el" href="classGame.html" title="Game class runs the game, and it can add units to the game.">Game</a> osztály lehetőséget ad egy <a class="el" href="classMap.html" title="Map class can read a game map from text file.">Map</a> beállítására, Hero-k és Monster-ek pályára helyezésére, illetve egy loop-ot futtat, amely különböző irányokat vár bemenetként, ezzel irányítható a <a class="el" href="classHero.html" title="Hero class inherited from Monster class The Hero is a Monster, but it has experience points and level...">Hero</a>. Ha a hős a pályán Monster-ekkel találkozik, azokkal harcba száll. A játék akkor ér véget, ha a <a class="el" href="classHero.html" title="Hero class inherited from Monster class The Hero is a Monster, but it has experience points and level...">Hero</a> meghal vagy az összes <a class="el" href="classMonster.html" title="Monster class A Monster can attack, suffer damage and we can also get its values and wether it is ali...">Monster</a> legyőzésre kerül.</p>
-<h2><a class="anchor" id="autotoc_md6"></a>
+<h2><a class="anchor" id="autotoc_md12"></a>
 Defense</h2>
 <p>Az egységek már védekező erővel is rendelkeznek. Csak akkor vihető be sebzés, ha a damage nagyobb mint a defense.</p>
-<h1><a class="anchor" id="autotoc_md7"></a>
+<h1><a class="anchor" id="autotoc_md13"></a>
 3. feladat</h1>
-<h2><a class="anchor" id="autotoc_md8"></a>
+<h2><a class="anchor" id="autotoc_md14"></a>
 JsonParser és Google test</h2>
 <p>Egy olyan osztály lett létrehozva, ami 3 különböző bemenetről tud adatot beolvasni, és feldolgozni.</p>
 <p>Az újonnan létrehozott osztály függvényeit Google teszttel ellenőrizve.</p>
-<h2><a class="anchor" id="autotoc_md9"></a>
+<h2><a class="anchor" id="autotoc_md15"></a>
 Levelup</h2>
 <p>A játék kiegészítésre került egy Player osztállyal, amely abban különbözik a Unit-tól, hogy az áltatala bevitt sebzés értékével megegyező xp-t kap. 100 xp-nként szintet lép, ekkor változik a health és damage értéke.</p>
 <p>Illetve a kódon a test workflow már statikus kódanalízist és memory leak check-et is futtat minden push után.</p>
-<h2><a class="anchor" id="autotoc_md10"></a>
+<h2><a class="anchor" id="autotoc_md16"></a>
 Attackspeed</h2>
 <p>A <a class="el" href="classJSON.html" title="JSON Parser class containing static functions The class is able to parse datas from different sources...">JSON</a> fájlok bővültek egy új adattaggal, ami egy Unit két ütése között eltelt "időt" jelzi. A program most már ezt a tulajdonságot figyelembe véve ütközteti az ellenfeleket.</p>
 <p>Emellett minden osztály kibővült DoxyGen dokumentációhoz használt kommentekkel. Ezt a dokumentációt a pushdocs.yml workflow generálja a gh-pages branchre minden push után.</p>
 <p>Dokumentáció: <a href="https://teaching-projects.github.io/SZE-MOSZE-2020-Runtime_Terror/">https://teaching-projects.github.io/SZE-MOSZE-2020-Runtime_Terror/</a></p>
-<h1><a class="anchor" id="autotoc_md11"></a>
+<h1><a class="anchor" id="autotoc_md17"></a>
 2. feladat</h1>
 <p>A program két argumentumként vár két json fájlt, amelyekben a Unit-ok adatai vannak tárolva. Ezt a két Unitot ütközteti a program. Ha valamelyik fájl nem létezik, a program hibaüzenetet ír ki.</p>
 <p>Elkészült a test.yml workflow is. Ez egy test.sh nevű bash scriptet futtat, amely három egységet ütköztet egymással hat féle képpen, majd ellenőrzi, hogy az output.txt -ben lévő eredmények megegyeznek e az expected-output.txt tartalmával.</p>
-<h1><a class="anchor" id="autotoc_md12"></a>
+<h1><a class="anchor" id="autotoc_md18"></a>
 1. feladat</h1>
 <p>A játék alapjai: van két egység, amelyek addig ütögetik egymást, amíg egyikőjük meg nem hal.</p>
 <p>A main.cpp eddig ezeket tartalmazza:</p>

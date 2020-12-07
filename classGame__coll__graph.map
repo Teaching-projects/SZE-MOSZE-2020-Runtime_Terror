@@ -1,0 +1,7 @@
+<map id="Game" name="Game">
+<area shape="rect" id="node1" title="Game class runs the game, and it can add units to the game." alt="" coords="35,260,96,287"/>
+<area shape="rect" id="node2" href="$classMap.html" title="Map class can read a game map from text file." alt="" coords="5,171,56,197"/>
+<area shape="rect" id="node3" href="$classHero.html" title="Hero class inherited from Monster class The Hero is a Monster, but it has experience points and level..." alt="" coords="80,171,133,197"/>
+<area shape="rect" id="node4" href="$classMonster.html" title="Monster class A Monster can attack, suffer damage and we can also get its values and wether it is ali..." alt="" coords="69,95,144,121"/>
+<area shape="rect" id="node5" href="$structMonster_1_1Damage.html" title=" " alt="" coords="37,5,176,32"/>
+</map>

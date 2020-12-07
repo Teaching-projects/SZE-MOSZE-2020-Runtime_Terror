@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['wrongindexexception_60',['WrongIndexException',['../classMap_1_1WrongIndexException.html',1,'Map']]]
+  ['observersvgrenderer_88',['ObserverSVGRenderer',['../classObserverSVGRenderer.html',1,'']]],
+  ['observertextrenderer_89',['ObserverTextRenderer',['../classObserverTextRenderer.html',1,'']]],
+  ['occupiedexception_90',['OccupiedException',['../classGame_1_1OccupiedException.html',1,'Game']]]
 ];
