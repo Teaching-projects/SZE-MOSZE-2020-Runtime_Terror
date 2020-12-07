@@ -10,9 +10,13 @@ Tagok: Tömördi Tamás, Jaksics Benedek, Csillag Bence
 
 A programhoz hozzáadott render osztályok segítségével lehetőség van a játék aktuális állását különböző kimeneteteken megjeleníteni. Például console-on szöveges fomátumban, szövegesen fájlban, vagy SVG kép formátumban. Emellett lehetőség van Observer segítségével az egész játéktér vagy külön csak a Hero által látott terület kiírására.
 
-#### Az SVG fájlba renderelt grafika
+#### Az SVG fájlba renderelt grafika:
 
 ![ Az SVG fájlba renderelt grafika](/texture/readme_image/svg_render.JPG?raw=true "Az SVG fájlba renderelt grafika")
+
+#### A console-ra renderelt grafika:
+
+![ A console-ra renderelt grafika](/texture/readme_image/console_render.JPG?raw=true "A console-ra renderelt grafika")
 
 ### Light radius
 Beállítható egy sugár, amelyet a hero lát. Ez a sugár szintlépések esetén képes növekedni is.
