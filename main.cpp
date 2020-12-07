@@ -23,9 +23,9 @@ int main(int argc, char **argv)
 
         game.run();
     }
-    catch (const JSON::ParseException &e)
+    catch (const std::exception& e)
     {
-        std::cerr << "Unknown error" << std::endl;
+        std::cerr << "Error: " << e.what() << std::endl;
         return 1;
     }
     return 0;
