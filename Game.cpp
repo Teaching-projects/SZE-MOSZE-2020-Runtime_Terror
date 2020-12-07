@@ -87,6 +87,8 @@ void Game::run()
         attackMonsters(remainingMonsters);
     }
 
+    render();
+
     if(hero->isAlive()) 
     {
         std::cout << "The hero won." << std::endl;
