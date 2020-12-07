@@ -4,8 +4,19 @@ Csapat: Runtime_Terror
 
 Tagok: Tömördi Tamás, Jaksics Benedek, Csillag Bence
 
+## Finish
 
-## Összegzés
+### Renderers
+
+A programhoz hozzáadott render osztályok segítségével lehetőség van a játék aktuális állását különböző kimeneteteken megjeleníteni. Például console-on szöveges fomátumba, szövegesen fájlba, vagy SVG kép formátumba. Emellett lehetőség van Observer segítségével az egész játéktér vagy külön csak a Hero által látott terület kiírására.
+
+### Light radius
+Beállítható egy sugár, amelyet a hero lát. Ez a sugár szintlépések esetén képes növekedni is.
+
+### Marked map és prepared game
+A MarkedMap egy olyan osztály, amely olyan pályát képes txt-ből beolvasni, amelyen már a Hero kezdőhelye és a Monsterek elhelyezkedése is be van jelölve. A PreparedGame ezen a MarkedMap-en futtatja a játékot.
+
+## További feladatok
 
 Az első három feladat óta az alábbi feature-ök kerültek be a programba:
 
