@@ -14,9 +14,16 @@
 class Game;
 class Renderer
 {
-    public:
-    virtual void render(const Game&) const = 0; ///< Virtual render function
-    virtual ~Renderer() {}; ///< Virtual destructor of the Renderer
+public:
+    /**
+     * Virtual render function
+    */
+    virtual void render(const Game&) const = 0;
+
+    /**
+     * Virtual destructor of the Renderer
+    */
+    virtual ~Renderer() {};
 };
 
 #endif

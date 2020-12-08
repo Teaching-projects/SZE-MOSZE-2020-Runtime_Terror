@@ -22,7 +22,7 @@ class PreparedGame : Game {
     public:
         PreparedGame(std::string mapjson); ///< Constructor of PreparedGame class, reads map, monsters and hero from file 
         void run(); ///< The function that runs the game
-        void registerRenderer(Renderer*);
+        void registerRenderer(Renderer*); ///< Registers a renderer
 };
 
 #endif

@@ -17,9 +17,16 @@
 
 class ObserverSVGRenderer : public SVGRenderer {
     
-    public:
-    ObserverSVGRenderer(std::string filename) : SVGRenderer(filename) {}; ///< Constructor of the ObserverSVGRenderer
-    virtual void render(const Game&) const; ///< Virtual render function to render the SVG image
+public:
+    /**
+     * Constructor of the ObserverSVGRenderer
+    */
+    ObserverSVGRenderer(std::string filename) : SVGRenderer(filename) {};
+
+    /**
+     * Virtual render function to render the SVG image
+    */
+    virtual void render(const Game&) const;
 };
 
 #endif

@@ -17,18 +17,27 @@
 
 class TextRenderer : public Renderer
 {
-    public:
+public:
 
     std::ostream &stream; ///< The output stream of the renderer
 
-    TextRenderer(std::ostream &stream = std::cout) : stream(stream) {}; ///< Constructor of the renderer
+    /**
+     * Constructor of the renderer
+    */
+    TextRenderer(std::ostream &stream = std::cout) : stream(stream) {};
 
-    void setOutputStream(std::ostream &stream) ///< Function to set the output stream
+    /**
+     * Function to set the output stream
+    */
+    void setOutputStream(std::ostream &stream)
     {
         stream.copyfmt(stream);
     };
 
-    virtual void render(const Game&) const = 0; ///< Virtual render function
+    /**
+     * Virtual render function
+    */
+    virtual void render(const Game&) const = 0;
 };
 
 #endif

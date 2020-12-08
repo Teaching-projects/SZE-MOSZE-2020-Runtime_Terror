@@ -16,9 +16,16 @@
 
 class ObserverTextRenderer : public TextRenderer
 {
-    public:
-    explicit ObserverTextRenderer(std::ostream &output = std::cout) : TextRenderer(output) {}; ///< Constructor of the ObserverTextRenderer
-    virtual void render(const Game&) const; ///< Virtual render function to render the text
+public:
+    /**
+     * Constructor of the ObserverTextRenderer
+    */
+    explicit ObserverTextRenderer(std::ostream &output = std::cout) : TextRenderer(output) {};
+
+    /**
+     * Virtual render function to render the text
+    */
+    virtual void render(const Game&) const;
 };
 
 #endif
