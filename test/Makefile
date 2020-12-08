@@ -123,6 +123,33 @@ runTests/fast:
 	$(MAKE) -f CMakeFiles/runTests.dir/build.make CMakeFiles/runTests.dir/build
 .PHONY : runTests/fast
 
+GameTest.o: GameTest.cpp.o
+
+.PHONY : GameTest.o
+
+# target to build an object file
+GameTest.cpp.o:
+	$(MAKE) -f CMakeFiles/runTests.dir/build.make CMakeFiles/runTests.dir/GameTest.cpp.o
+.PHONY : GameTest.cpp.o
+
+GameTest.i: GameTest.cpp.i
+
+.PHONY : GameTest.i
+
+# target to preprocess a source file
+GameTest.cpp.i:
+	$(MAKE) -f CMakeFiles/runTests.dir/build.make CMakeFiles/runTests.dir/GameTest.cpp.i
+.PHONY : GameTest.cpp.i
+
+GameTest.s: GameTest.cpp.s
+
+.PHONY : GameTest.s
+
+# target to generate assembly for a file
+GameTest.cpp.s:
+	$(MAKE) -f CMakeFiles/runTests.dir/build.make CMakeFiles/runTests.dir/GameTest.cpp.s
+.PHONY : GameTest.cpp.s
+
 HeroTester.o: HeroTester.cpp.o
 
 .PHONY : HeroTester.o
@@ -257,33 +284,6 @@ MonsterTest.s: MonsterTest.cpp.s
 MonsterTest.cpp.s:
 	$(MAKE) -f CMakeFiles/runTests.dir/build.make CMakeFiles/runTests.dir/MonsterTest.cpp.s
 .PHONY : MonsterTest.cpp.s
-
-PreparedGameTest.o: PreparedGameTest.cpp.o
-
-.PHONY : PreparedGameTest.o
-
-# target to build an object file
-PreparedGameTest.cpp.o:
-	$(MAKE) -f CMakeFiles/runTests.dir/build.make CMakeFiles/runTests.dir/PreparedGameTest.cpp.o
-.PHONY : PreparedGameTest.cpp.o
-
-PreparedGameTest.i: PreparedGameTest.cpp.i
-
-.PHONY : PreparedGameTest.i
-
-# target to preprocess a source file
-PreparedGameTest.cpp.i:
-	$(MAKE) -f CMakeFiles/runTests.dir/build.make CMakeFiles/runTests.dir/PreparedGameTest.cpp.i
-.PHONY : PreparedGameTest.cpp.i
-
-PreparedGameTest.s: PreparedGameTest.cpp.s
-
-.PHONY : PreparedGameTest.s
-
-# target to generate assembly for a file
-PreparedGameTest.cpp.s:
-	$(MAKE) -f CMakeFiles/runTests.dir/build.make CMakeFiles/runTests.dir/PreparedGameTest.cpp.s
-.PHONY : PreparedGameTest.cpp.s
 
 Tester.o: Tester.cpp.o
 
@@ -618,6 +618,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... runTests"
+	@echo "... GameTest.o"
+	@echo "... GameTest.i"
+	@echo "... GameTest.s"
 	@echo "... HeroTester.o"
 	@echo "... HeroTester.i"
 	@echo "... HeroTester.s"
@@ -633,9 +636,6 @@ help:
 	@echo "... MonsterTest.o"
 	@echo "... MonsterTest.i"
 	@echo "... MonsterTest.s"
-	@echo "... PreparedGameTest.o"
-	@echo "... PreparedGameTest.i"
-	@echo "... PreparedGameTest.s"
 	@echo "... Tester.o"
 	@echo "... Tester.i"
 	@echo "... Tester.s"
