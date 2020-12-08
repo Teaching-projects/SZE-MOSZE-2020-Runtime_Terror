@@ -34,18 +34,6 @@ class Game
 
     void run(); ///< The function that runs the game
 
-    protected:
-
-    std::list<Renderer*> renderers;
-
-    virtual void render();
-    void registerRenderer(Renderer*);
-    
-    public:   
-
-    std::string freeTexture; 
-    std::string wallTexture;
-
     /**
      * \brief A struct to store a place where a Monster is located
     */
@@ -60,15 +48,27 @@ class Game
 
     Map map; ///< It stores the map: walls and empty fields
     std::vector<MonsterPlace> monsterPlaces; ///< A vector which contains the location of the Monsters
+
     Hero* hero; ///< A pointer to the Hero
     int heroX, heroY; ///< The location of the Hero
- 
+
+    std::string freeTexture; ///< Free texture
+    std::string wallTexture; ///< Wall texture
+
+    int frameUntil() const; ///< Returns the end point of the frame
+
+    protected:
+
     void move(std::string&); ///< It moves the Hero, paramter: direction string
     void attackMonsters(int&); ///< Function to attack Monsters
     bool isMapSet(); ///< Function to decide wether the map is set or not
     int getLivingMonsterCount(); ///< A getter function to get the number of living Monsters
     bool isValidDirection(std::string&); ///< Returns whether the given direction is valid or not
-    int frameUntil() const; ///< Returns the end point of the frame
+
+    std::list<Renderer*> renderers;
+
+    virtual void render();
+    void registerRenderer(Renderer*); 
 
     ~Game()
     {
