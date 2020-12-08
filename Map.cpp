@@ -8,7 +8,7 @@ Map::Map(std::string &filename)
 {
     std::ifstream file(filename);
     if (!file.good())
-        throw std::runtime_error("doesn't exist file");
+        throw WrongIndexException("doesn't exist file");
 
     std::string line;
     while (getline(file, line))
@@ -38,12 +38,13 @@ int Map::getWidth(int line) const
     return map[line].length();
 }
 
-int Map::getMaxWidth() const 
+int Map::getMaxWidth() const
 {
     size_t maxWidth = 0;
-    for(size_t i = 0; i < map.size(); i++)
+    for (size_t i = 0; i < map.size(); i++)
     {
-        if(map[i].length() > maxWidth) maxWidth = map[i].length(); 
+        if (map[i].length() > maxWidth)
+            maxWidth = map[i].length();
     }
     return maxWidth;
 }

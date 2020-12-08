@@ -3,7 +3,7 @@
 
 #include <gtest/gtest.h>
 
-TEST(UnitTest, ParseUnit)
+TEST(MonsterTest, ParseUnit)
 {
     Monster expected("Fallen", 4, 1, 1, 1.6, 2, "texture/fallen.png");
     Monster result = Monster::parse("../unit/Fallen.json");
@@ -15,7 +15,7 @@ TEST(UnitTest, ParseUnit)
     EXPECT_EQ(expected.getDefense(), result.getDefense());
     EXPECT_EQ(expected.getTexture(), result.getTexture());
 }
-TEST(UnitTest, Minusheal)
+TEST(MonsterTest, Minusheal)
 {
     Monster alive("Blood Raven", 113, 5, 3, 1.2, 3, "texture/blood_raven.png");
     EXPECT_EQ(alive.isAlive(), true);
