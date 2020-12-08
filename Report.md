@@ -16,25 +16,25 @@
 
 | Feladat | Merge ideje a határidóhöz (nap) | Change request körök | Reviewer | 
 | ------- | ------------------------------- | -------------------- | -------- |
-| Feladat 1 | +4 | 0 | @hegyhati | 
+| Feladat 1 | +4 | 3 | @hegyhati | 
 | Feladat 2 | 0 | 1 | @hegyhati |
-| jsonparser | +8 | ... | @wajzy |
-| levelup | +2 | ... | @oliverosz |
-| attackspeed | 0 | ... | @vizvezetek |
-| documentation | -2 | ... | @plusplusplus / @csibe1999, @Jabezare |
-| unittest | -1 | ... | @plusplusplus / @Jabezare, @tamastomordi |
-| makefile | -2 | ... | @hegyhati |
-| refactor | -2 | ... | @hegyhati |
-| docker | +1 | ... | @hegyhati |
-| jsonpimp | Merge: 11.14 | ... | @Jabezare, @csibe1999 |
-| map | Merge: 11.19 | ... | @plusplusplus / @tamastomordi, @Jabezare |
-| game | Merge: 11.27 | ... | @plusplusplus / @Jabezare, @csibe1999 |
-| defense | Merge: 11.27 | ... | @plusplusplus / @tamastomordi, @csibe1999 |
-| damage | Merge: 11.30 | ... | @karcagtamas @bencebaranyai / @csibe1999, @Jabezare |
-| markedmap | Merge: 12.03 | ... | @bencebaranyai @Cerberuuus / @Jabezare |
-| preparedgame | Merge: 12.06 | ... | @tamastomordi, @csibe1999 |
-| light radius | Merge: 12.03 | ... | @bencebaranyai / @Jabezare, @csibe1999 |
-| rendering | Merge: 12.07 | ... | @Jabezare, @csibe1999 |
+| jsonparser | +8 | 2 | @wajzy |
+| levelup | +2 | 1 | @oliverosz |
+| attackspeed | 0 | 1 | @vizvezetek |
+| documentation | -2 | 1 | @karcagtamas, @bencebaranyai, @Cerberuuus / @csibe1999, @Jabezare |
+| unittest | -1 | 3 | @karcagtamas @bencebaranyai / @Jabezare, @tamastomordi |
+| makefile | -2 | 1 | @hegyhati |
+| refactor | -2 | 0 | @hegyhati |
+| docker | +1 | 1 | @hegyhati |
+| jsonpimp | Merge: 11.14 | 1 | @Jabezare, @csibe1999 |
+| map | Merge: 11.19 | 2 | @karcagtamas / @tamastomordi, @Jabezare |
+| game | Merge: 11.27 | 1 | @karcagtamas / @Jabezare, @csibe1999 |
+| defense | Merge: 11.27 | 1 | @karcagtamas / @tamastomordi, @csibe1999 |
+| damage | Merge: 11.30 | 2 | @karcagtamas @bencebaranyai / @csibe1999, @Jabezare |
+| markedmap | Merge: 12.03 | 2 | @bencebaranyai @Cerberuuus / @Jabezare |
+| preparedgame | Merge: 12.06 | 0 | @tamastomordi, @csibe1999 |
+| light radius | Merge: 12.03 | 1 | @bencebaranyai / @Jabezare, @csibe1999 |
+| rendering | Merge: 12.07 | 0 | @Jabezare, @csibe1999 |
 
 # Unit tesztek
 
