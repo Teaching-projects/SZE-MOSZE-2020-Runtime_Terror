@@ -2,9 +2,9 @@
 
 | Név | Github azonosito  | Javasolt relatív érdemjegy | Becsült óra | Indoklás  | 
 | --- | ---- | --- | ------------------ | --------- |
-| Jaksics Benedek | @Jabezare | 0 | 20-30 | Szépen csinálta a dolgát, főként a makefile és a docker nagy szakértője volt. |
-| Csillag Bence | @csibe1999 | 0 | 20-30 | Szépen csinálta a dolgát, főként a unit testek szakértője volt. |
-| Tömördi Tamás | @tamastomordi | +1 | 30-40 | ... |
+| Jaksics Benedek | @Jabezare | 0 | 20-30 | Szépen csinálta a dolgát, főként a makefile és a doxygen nagy szakértője volt. |
+| Csillag Bence | @csibe1999 | 0 | 20-30 | Szépen csinálta a dolgát, főként a unit testek és a docker szakértője volt. |
+| Tömördi Tamás | @tamastomordi | +1 | 30-40 | Önként vállalta a legnehezebb feladatokat, a program gerincének megalkotója. |
 
 
 # Videók
@@ -77,7 +77,9 @@
 # Mindenféle számok
 
  - Összes cpp kódsor :
- - Egyéb kódsor (make,doxyfile,shellscript, ...) :
+ - Egyéb kódsor (make,doxyfile,shellscript, ...) : 
+   - Make: 71
+   - Shellscript: 18
  - cppcheck
    - warning :
    - style :
