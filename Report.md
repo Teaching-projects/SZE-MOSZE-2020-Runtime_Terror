@@ -40,9 +40,20 @@
 
 | Osztály | Publikus metódusok száma | Unit tesztelt metódusok száma | Unit tesztek száma |
 | --- | --- | --- | --- |
-| `Unit` | 4 | 2 | 8 |
-| `Hero` | 5 | 0 | 0 | 
-| ... |
+| `Monster` | 11 | ... | ... |
+| `Hero` | 7 | ... | ... | 
+| `JSON` | 5 | ... | ... | 
+| `Map` | 4 | ... | ... | 
+| `Game` | 10 | ... | ... | 
+| `MarkedMap` | 2 | ... | ... | 
+| `PreparedGame` | 2 | ... | ... | 
+| `Renderer` | 1 | ... | ... | 
+| `TextRenderer` | 2 | ... | ... | 
+| `SVGRenderer` | 1 | ... | ... | 
+| `HeroTextRenderer` | 1 | ... | ... | 
+| `CharacterSVGRenderer` | 1 | ... | ... | 
+| `ObserverTextRenderer` | 1 | ... | ... | 
+| `ObserverSVGRenderer` | 1 | ... | ... | 
 
 # Kód dokumentáció
 
@@ -76,16 +87,18 @@
  
 # Implicit megtanult dolgok
 Olyanok, amik nem a tárgy anyaga, de muszáj/hasznos volt elsajátítani:
- - alapvető shell/python scripting
+ - alapvető shell scripting
  - `std::variant`
- - ...
+ - van egy titkos mágikus shell parancsunk, be fogjuk kereteztetni
 
 # Feedback (optional)
  
-Melyik részt találtátok a leghasznosabbnak, miért. Használtátok-e az itt megszerzett dolgokat esetleg közben máskor. Volt-e olyan, amit hiányoltatok a tárgyból. Utólag visszagondolva is jó volt-e az online videósdi?
+ - Meglepődtünk, hogy van olyan tárgy az egyetemen, amely egyszerre nehéz és hasznos is. Összességében elmondhatjuk, hogy ennyit még életünkben nem kódoltunk, és korábban nem is nagyon tanultunk ennyi új dolgot. Elsősorban a kódolás részével volt sok melónk, mert a tárgyat mind a hárman az OOP-vel párhuzamosan vettük fel.
 
-Ha szívesebben írnátok meg anoním módon, OHV-nál várom.
+ - Az online videós megoldás szeritünk nagyon jó volt, sokkal jobb mintha be kellett volna ülni az órákra. Talán néhol a videó hang és kép minősége lehetett volna egy picit jobb.
 
 # Üzenet a jövőbe (optional)
 
 Így, hogy túlvagytok rajta, mi az, aminek örültetek volna, ha első héten elmondom, avagy: jövőre mit lenne jó, ha elmondanék majd?
+
+ - ...hogy igazából nem is lesz vendég előadó :D
