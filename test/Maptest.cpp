@@ -26,7 +26,7 @@ TEST(Maptest, GetWidth)
 {
     std::string file = "../map.txt";
     Map map(file);
-    int width[7] = {14, 14, 13, 12, 11, 10, 8};
+    int width[7] = {14, 14, 13, 12, 11, 10, 9};
     for (int i = 0; i < map.getHeight(); i++)
     {
         ASSERT_EQ(map.getWidth(i), width[i]);
