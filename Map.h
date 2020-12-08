@@ -18,7 +18,7 @@
 class Map
 {
 protected:
-    std::vector<std::string> map; ///< This vector store a map
+    std::vector<std::string> map; ///< This vector stores a map
 
 public:
     Map();                      ///< Constructor of Map class
