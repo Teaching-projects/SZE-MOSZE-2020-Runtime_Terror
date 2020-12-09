@@ -6,6 +6,8 @@
 | Csillag Bence   | @csibe1999       | 0                          | 20-30       | Szépen csinálta a dolgát, főként a unit testek és a docker szakértője volt.    |
 | Tömördi Tamás   | @tamastomordi    | +1                         | 30-40       | Önként vállalta a legnehezebb feladatokat, a program gerincének megalkotója.   |
 
+Törekedtünk arra is, hogy mindenki minden típusú feladatba belekóstoljon.
+
 # Videók
 
 - [Gameplay](/videos/gameplay.mp4)
@@ -13,7 +15,7 @@
 
 # Befejezett feladatok
 
-| Feladat       | Merge ideje a határidóhöz (nap) | Change request körök | Reviewer                                                          |
+| Feladat       | Merge ideje a határidőhöz (nap) | Change request körök | Reviewer                                                          |
 | ------------- | ------------------------------- | -------------------- | ----------------------------------------------------------------- |
 | Feladat 1     | +4                              | 3                    | @hegyhati                                                         |
 | Feladat 2     | 0                               | 1                    | @hegyhati                                                         |
@@ -68,20 +70,20 @@
 
 # Mindenféle számok
 
-- Összes cpp kódsor :
-- Egyéb kódsor (make,doxyfile,shellscript, ...) :
-  - Make: 71
+- Összes cpp kódsor : 1021
+- Egyéb kódsor (make,doxyfile,shellscript, ...)
+  - Makefile: 71
   - Shellscript: 18
 - cppcheck
-  - warning :
-  - style :
-  - performance :
-  - unusedFunction :
-  - missingInclude :
+  - warning : 0
+  - style : 23
+  - performance : 7
+  - unusedFunction : 5
+  - missingInclude : 1
 
 # Implicit megtanult dolgok
 
-Olyanok, amik nem a tárgy anyaga, de muszáj/hasznos volt elsajátítani:
+Olyanok, amik nem a tárgy anyaga, de hasznos volt elsajátítani:
 
 - alapvető shell scripting
 - `std::variant`
@@ -89,12 +91,10 @@ Olyanok, amik nem a tárgy anyaga, de muszáj/hasznos volt elsajátítani:
 
 # Feedback (optional)
 
-- Meglepődtünk, hogy van olyan tárgy az egyetemen, amely egyszerre nehéz és hasznos is. Összességében elmondhatjuk, hogy ennyit még életünkben nem kódoltunk, és korábban nem is nagyon tanultunk ennyi új dolgot. Elsősorban a kódolás részével volt sok melónk, mert a tárgyat mind a hárman az OOP-vel párhuzamosan vettük fel.
+- Az egyik olyan tárgy az egyetemen, amely egyszerre nehéz és hasznos is. Összességében elmondhatjuk, hogy ennyit még életünkben nem kódoltunk, és korábban nem is nagyon tanultunk ennyi új dolgot. Elsősorban a kódolás részével volt sok melónk, mert a tárgyat mind a hárman az OOP-vel párhuzamosan vettük fel.
 
-- Az online videós megoldás szeritünk nagyon jó volt, sokkal jobb mintha be kellett volna ülni az órákra. Talán néhol a videó hang és kép minősége lehetett volna egy picit jobb.
+- Az online videós megoldás szeritünk nagyon jó volt, sokkal jobb mintha be kellett volna ülni az órákra. Talán néhol a videók hang és kép minősége lehetett volna egy picit jobb.
 
 # Üzenet a jövőbe (optional)
 
-Így, hogy túlvagytok rajta, mi az, aminek örültetek volna, ha első héten elmondom, avagy: jövőre mit lenne jó, ha elmondanék majd?
-
-- ...hogy igazából nem is lesz vendég előadó :D
+- Nem jut eszünkbe semmi.
