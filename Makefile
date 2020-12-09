@@ -31,16 +31,16 @@ Game.o: Game.cpp Monster.h Hero.h Map.h Renderer.h
 PreparedGame.o: PreparedGame.cpp PreparedGame.h MarkedMap.h JSON.h Renderer.h
 	$(CC) $(CFLAGS) -c PreparedGame.cpp
 
-CharacterSVGRenderer.o: SVGRenderer.h Game.h
+CharacterSVGRenderer.o: CharacterSVGRenderer.h CharacterSVGRenderer.cpp SVGRenderer.h Game.h
 	$(CC) $(CFLAGS) -c CharacterSVGRenderer.cpp
 
-HeroTextRenderer.o: TextRenderer.h Game.h
+HeroTextRenderer.o: HeroTextRenderer.h HeroTextRenderer.cpp TextRenderer.h Game.h
 	$(CC) $(CFLAGS) -c HeroTextRenderer.cpp
 
-ObserverSVGRenderer.o: SVGRenderer.h Game.h
+ObserverSVGRenderer.o: ObserverSVGRenderer.h ObserverSVGRenderer.cpp SVGRenderer.h Game.h
 	$(CC) $(CFLAGS) -c ObserverSVGRenderer.cpp
 
-ObserverTextRenderer.o: TextRenderer.h Game.h
+ObserverTextRenderer.o: ObserverTextRenderer.h ObserverTextRenderer.cpp TextRenderer.h Game.h
 	$(CC) $(CFLAGS) -c ObserverTextRenderer.cpp
 
 main.o: main.cpp Hero.h Monster.h JSON.h HeroTextRenderer.h ObserverTextRenderer.h CharacterSVGRenderer.h ObserverSVGRenderer.h
