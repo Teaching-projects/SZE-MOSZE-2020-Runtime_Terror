@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['charactersvgrenderer_76',['CharacterSVGRenderer',['../classCharacterSVGRenderer.html',1,'']]],
-  ['coordinate_77',['coordinate',['../structcoordinate.html',1,'']]]
+  ['charactersvgrenderer_80',['CharacterSVGRenderer',['../classCharacterSVGRenderer.html',1,'']]],
+  ['coordinate_81',['coordinate',['../structcoordinate.html',1,'']]]
 ];
