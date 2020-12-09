@@ -15,7 +15,7 @@
 #include <fstream>
 #include <vector>
 #include "Map.h"
-struct coordinate ///< Enum for a coordinates
+struct coordinate ///< Struct for coordinates
 {
     int x;
     int y;

@@ -3,7 +3,7 @@
 
 #include <gtest/gtest.h>
 
-TEST(PlayerTest, GoodValues)
+TEST(HeroTest, GoodValues)
 {
     Hero player = Hero::parse("../unit/Dark_Wanderer.json");
     EXPECT_EQ(player.getName(), "Prince Aidan of Khanduras");
@@ -16,20 +16,21 @@ TEST(PlayerTest, GoodValues)
     EXPECT_EQ(player.getXp(), 0);
 }
 
-TEST(PlayerTest, Player)
+TEST(HeroTest, Player)
 {
     Hero expected = Hero("Kakarott", 200, 90, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, "");
     EXPECT_EQ(expected.getLevel(), 1);
     EXPECT_EQ(expected.getXp(), 0);
 }
-TEST(PlayerTest, PlayerAttack)
+TEST(HeroTest, PlayerAttack)
 {
 
     Hero A = Hero::parse("../unit/Dark_Wanderer.json");
     Monster B = Monster::parse("../unit/Fallen.json");
 
     int physicalDamage = A.getPhysicalDamage() - B.getDefense();
-    if(physicalDamage < 0) physicalDamage = 0;
+    if (physicalDamage < 0)
+        physicalDamage = 0;
 
     int health = B.getHealthPoints() - physicalDamage - A.getMagicalDamage();
 
@@ -37,7 +38,7 @@ TEST(PlayerTest, PlayerAttack)
     EXPECT_EQ(B.getHealthPoints(), health);
 }
 
-TEST(PlayerTest, PlayerXPAfterAttack)
+TEST(HeroTest, PlayerXPAfterAttack)
 {
     Hero A = Hero::parse("../unit/Dark_Wanderer.json");
     Monster B = Monster::parse("../unit/Zombie.json");

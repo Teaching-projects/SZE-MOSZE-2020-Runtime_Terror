@@ -17,8 +17,11 @@
 
 class HeroTextRenderer : public TextRenderer
 {
-    public:
-    virtual void render(const Game& game) const; ///< Virtual render function to render the text
+public:
+    /**
+     * Virtual render function to render the text
+    */
+    virtual void render(const Game& game) const;
 };
 
 #endif

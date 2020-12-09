@@ -18,13 +18,18 @@
 
 class SVGRenderer : public Renderer
 {
-    public:
-
+public:
     std::string filename; ///< The name of the SVG file
 
-    SVGRenderer(std::string filename) : filename(filename) {}; ///< Constructor of the SVGRenderer
+    /**
+     * Constructor of the SVGRenderer
+    */
+    SVGRenderer(std::string filename) : filename(filename) {};
 
-    virtual void render(const Game&) const = 0; ///< Virtual render function
+    /**
+     * Virtual render function
+    */
+    virtual void render(const Game&) const = 0;
 };
 
 #endif

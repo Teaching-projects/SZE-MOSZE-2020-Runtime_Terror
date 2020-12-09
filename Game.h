@@ -21,60 +21,46 @@
 #include <list>
 #include <iostream>
 
-class Game 
+class Game
 {
-    public:
-
-    Game(); ///< Constructor of Game class
+public:
+    Game();            ///< Constructor of Game class
     Game(std::string); ///< Constructor of Game class, which reads map from file
 
-    void setMap(Map&); ///< Function to set the map
-    void putHero(Hero&, int, int); ///< Function to add a Hero to the game
-    void putMonster(Monster&, int, int);  ///< Function to add a Monster to the game
+    void setMap(Map &);                   ///< Function to set the map
+    void putHero(Hero &, int, int);       ///< Function to add a Hero to the game
+    void putMonster(Monster &, int, int); ///< Function to add a Monster to the game
 
     void run(); ///< The function that runs the game
-
-    protected:
-
-    std::list<Renderer*> renderers;
-
-    virtual void render();
-    void registerRenderer(Renderer*);
-    
-    public:   
-
-    std::string freeTexture; 
-    std::string wallTexture;
 
     /**
      * \brief A struct to store a place where a Monster is located
     */
     struct MonsterPlace
     {
-        int x; ///< Location of the Monster
-        int y; ///< Location of the Monster
+        int x;           ///< Location of the Monster
+        int y;           ///< Location of the Monster
         Monster monster; ///< A Monster in the game
 
         MonsterPlace(int x, int y, Monster monster) : x(x), y(y), monster(monster) {}
     };
 
-    Map map; ///< It stores the map: walls and empty fields
+    Map map;                                 ///< It stores the map: walls and empty fields
     std::vector<MonsterPlace> monsterPlaces; ///< A vector which contains the location of the Monsters
-    Hero* hero; ///< A pointer to the Hero
+
+    Hero *hero;       ///< A pointer to the Hero
     int heroX, heroY; ///< The location of the Hero
- 
-    void move(std::string&); ///< It moves the Hero, paramter: direction string
-    void attackMonsters(int&); ///< Function to attack Monsters
-    bool isMapSet(); ///< Function to decide wether the map is set or not
-    int getLivingMonsterCount(); ///< A getter function to get the number of living Monsters
-    bool isValidDirection(std::string&); ///< Returns whether the given direction is valid or not
+
+    std::string freeTexture; ///< Free texture
+    std::string wallTexture; ///< Wall texture
+
     int frameUntil() const; ///< Returns the end point of the frame
 
     ~Game()
     {
         delete hero;
-        
-        for(auto &&renderer : renderers)
+
+        for (auto &&renderer : renderers)
         {
             delete renderer;
         }
@@ -83,21 +69,33 @@ class Game
 
     class OccupiedException : public std::runtime_error
     {
-        public:
+    public:
         explicit OccupiedException(const std::string &Error) : std::runtime_error(Error) {}
     };
 
     class AlreadyHasHeroException : public std::runtime_error
     {
-        public:
+    public:
         explicit AlreadyHasHeroException(const std::string &Error) : std::runtime_error(Error) {}
     };
 
     class AlreadyHasUnitsException : public std::runtime_error
     {
-        public:
+    public:
         explicit AlreadyHasUnitsException(const std::string &Error) : std::runtime_error(Error) {}
-    };   
+    };
+
+protected:
+    void move(std::string &);             ///< It moves the Hero, paramter: direction string
+    void attackMonsters(int &);           ///< Function to attack Monsters
+    bool isMapSet();                      ///< Function to decide wether the map is set or not
+    int getLivingMonsterCount();          ///< A getter function to get the number of living Monsters
+    bool isValidDirection(std::string &); ///< Returns whether the given direction is valid or not
+
+    std::list<Renderer *> renderers;
+
+    virtual void render();
+    void registerRenderer(Renderer *);
 };
 
 #endif
