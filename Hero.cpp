@@ -64,7 +64,7 @@ void Hero::Attack(Monster &enemy)
         this->xp += xp;
     }    
 
-    while (level - 1 != (xp / ExperiencePerLevel))
+    while (level - 1 < (getXp() / ExperiencePerLevel))
     {
         LevelUp();
     }
